@@ -1,0 +1,20 @@
+.main-body{
+    background-color: #187cae;
+    width: 100vw;
+    height: 100vh;
+    .nav-bar{
+        display: flex;
+        padding-left: 20px;
+        font-family: 'playfair Display', sans-serif;
+        margin: 2px;
+    }
+}
+.main-body2{
+background-color: #FFF;
+height: 100vh;
+width: 43vw;
+display: flex;
+float: right;
+border-top-left-radius: 80px 50%;
+border-bottom-left-radius: 80px 50%;
+}
