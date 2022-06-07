@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Tab1Page {
   @Input() deltaState:string = "./assets/images/DeltaState.png";
-  @Input() help:string = "assets/images/images.jpg";
+  @Input() help:string = "./assets/images/images.jpg";
 
   constructor() {}
 
