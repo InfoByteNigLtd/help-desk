@@ -6,11 +6,11 @@
   <div class="wrapper">
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Contact</a></li>
       <li><a href="#">FAQs</a></li>
-      <li><a href="#">HelpDesk</a></li>
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Sign-Up</a></li>
+      <li><a href="#">Forum</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Chat</a></li>
+      <li><a href="#">Profile</a></li>
     </ul>
   </div>
   <!-- end of nav bar -->
@@ -22,13 +22,15 @@
         <div class="box">
           <div class="box-12">
             <div class="box-1">
-              <div class="title">
+              <div class="title ion-activatable">
                 <h2>FAQs</h2>
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
               </div>
             </div>
             <div class="box-2">
-              <div class="title">
-                <h2>HELP</h2>
+              <div class="title ion-activatable">
+                <h2>FORUM</h2>
+              <ion-ripple-effect type="unbounded"></ion-ripple-effect>
               </div>
             </div>
           </div>
@@ -47,15 +49,15 @@
             </div>
           </div>
         </div>
-        
-          
       </div>
-      
+      <div class="delta-state-logo">
+        <img [src]=deltaState alt="state-logo">
+      </div>
       <div class="images">
-        <img src="assets/images/images.jpg" alt="hello" >
+        <img [src]=help alt="help-desk">
       </div>
       <button class="login button login__submit">
-        <span class="button__text">Welcome, Infobytes </span>
+        <span class="button__text">Welcome, Mr User </span>
       </button>
       <div class="screen__background">
         <span class="screen__background__shape screen__background__shape4"></span>
@@ -66,8 +68,5 @@
     </div>
   </div>
   <!-- end of main content -->
-
-
-
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

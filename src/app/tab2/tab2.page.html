@@ -1,17 +1,106 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- nav bar -->
+  <input type="checkbox" id="active">
+  <label for="active" class="menu-btn"><span></span></label>
+  <label for="active" class="close"></label>
+  <div class="wrapper">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Forum</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Chat</a></li>
+      <li><a href="#">Profile</a></li>
+    </ul>
+  </div>
+  <!-- end of nav bar -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- main content -->
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <!-- <div class="box">
+        </div> -->
+        <div class="accordion-menu">
+          <ul>
+              <li>
+                  <input type="checkbox" checked>
+                  <i class="arrow"></i>
+                  <h2><i class="fas fa-code"></i>How often is the money paid</h2>
+                  <p>This UI was written in HTML and CSS.
+                  </p>
+              </li>
+              <li>
+                  <input type="checkbox" checked>
+                  <i class="arrow"></i>
+                  <h2><i class="fas fa-question"></i>How it Works</h2>
+                  <p>Using the sibling and checked selectors, we can determine 
+                      the styling of sibling elements based on the checked state
+                      of the checkbox input element. 
+                  </p>
+              </li>
+              <li>
+                  <input type="checkbox" checked>
+                  <i class="arrow"></i>
+                  <h2><i class="fas fa-laugh"></i>Points of Interest</h2>
+                  <p>By making the open state default for when :checked isn't 
+                      detected, we can make this system accessable for browsers 
+                      that don't recognize :checked.
+                  </p>
+              </li>
+              <li>
+                <input type="checkbox" checked>
+                <i class="arrow"></i>
+                <h2><i class="fas fa-laugh"></i>Points of Interest</h2>
+                <p>By making the open state default for when :checked isn't 
+                    detected, we can make this system accessable for browsers 
+                    that don't recognize :checked.
+                </p>
+            </li>
+            <li>
+              <input type="checkbox" checked>
+              <i class="arrow"></i>
+              <h2><i class="fas fa-laugh"></i>Points of Interest</h2>
+              <p>By making the open state default for when :checked isn't 
+                  detected, we can make this system accessable for browsers 
+                  that don't recognize :checked.
+              </p>
+          </li>
+          <li>
+            <input type="checkbox" checked>
+            <i class="arrow"></i>
+            <h2><i class="fas fa-laugh"></i>Points of Interest</h2>
+            <p>By making the open state default for when :checked isn't 
+                detected, we can make this system accessable for browsers 
+                that don't recognize :checked.
+            </p>
+        </li>
+        <li>
+          <input type="checkbox" checked>
+          <i class="arrow"></i>
+          <h2><i class="fas fa-laugh"></i>is Certificate ready</h2>
+          <p>By making the open state default for when :checked isn't 
+              detected, we can make this system accessable for browsers 
+              that don't recognize :checked.
+          </p>
+      </li>
+          </ul>
+      </div>
+      </div>
+      <div class="delta-state-logo">
+        <img [src]=deltaState alt="state-logo">
+      </div>
+      <button class="login button login__submit">
+        <span class="button__text">Welcome, Mr User </span>
+      </button>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
+    </div>
+  </div>
+  <!-- end of main content -->
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
