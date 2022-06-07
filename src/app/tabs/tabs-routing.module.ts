@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForumComponent } from '../forum/forum.component';
 import { LoginComponent } from '../login/login.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { SupportComponent } from '../support/support.component';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -18,7 +20,7 @@ const routes: Routes = [
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },
       {
-        path: 'tab3',
+        path: 'chat',
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
@@ -28,6 +30,14 @@ const routes: Routes = [
       {
         path: 'sign-up',
         component: SignUpComponent
+      },
+      {
+        path: 'support',
+        component: SupportComponent
+      },
+      {
+        path: 'forum',
+        component: ForumComponent,
       },
       {
         path: '',
