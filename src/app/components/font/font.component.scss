@@ -1,0 +1,52 @@
+/** icon size definitions **/
+
+.x-small {
+    font-size: 15px;
+  }
+  
+  .small {
+    font-size: 20px;
+  }
+  .nav-icons {
+    font-size: 23px;
+  }
+  
+  .medium {
+    font-size: 40px;
+  }
+  
+  .large {
+    font-size: 60px;
+  }
+  
+  .x-large {
+    font-size: 80px;
+  }
+  
+  .xx-large {
+    font-size: 100px;
+  }
+  
+  .toast {
+    font-size: 18px;
+  }
+.custom {
+  font-size: inherit;
+}
+  
+  
+  /** Icon colors definitions */
+  
+  .main-icon {
+    color: var(--white);
+  }
+  .primary-icon {
+    color: var(--theme-color);
+  }
+  .secondary-icon {
+    color: var(--dark-gray);
+  }
+  .gray-icon {
+    color: var(--dark-gray);
+  }
+  
