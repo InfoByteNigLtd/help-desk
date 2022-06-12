@@ -1,0 +1,19 @@
+<div [class]="inputTypeClass" >
+  <div class='input-field'[style]="sx">
+    <input
+      [id]="id"
+      [type]="type"
+      [placeholder]="inputType !== 'default' ? placeholder : ' '"
+      (keyup)="inputVal($event)"
+    />
+    <app-font-icon
+      iconType="remix"
+      [iconName]="icon"
+      iconColor="primary-icon"
+      iconSize="custom"
+     style="margin-right: 10px;"></app-font-icon>
+  </div>
+  <div class="cut"></div>
+  <label [for]="label" class="legend">{{ legend }}</label>
+</div>
+

@@ -1,0 +1,125 @@
+@mixin inputStyle {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+}
+.input-container {
+  margin: 20px 0;
+  height: 50px;
+  position: relative;
+  width: 100%;
+
+  .top-space {
+    margin-top: 40px;
+  }
+  input {
+    @include inputStyle;
+  }
+}
+
+.input-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: inherit;
+}
+
+.default {
+  .input-field {
+    border-radius: 20px;
+  }
+  .cut {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 76px;
+  }
+
+  .cut-short {
+    width: 50px;
+  }
+
+  .input-field:hover ~ .cut,
+  input:not(:placeholder-shown) ~ .cut {
+    background-color: #15172b;
+    transform: translateY(8px);
+  }
+
+  .legend {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 300ms, color 300ms;
+    top: 20px;
+  }
+
+  .input-field:hover ~ .legend,
+  input:not(:placeholder-shown) ~ .legend {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+  }
+
+  input:not(:placeholder-shown) ~ .legend {
+    color: #808097;
+  }
+
+  .input-field:hover ~ .legend {
+    color: #dc2f55;
+  }
+}
+app-font-icon {
+  color: inherit;
+  padding: 10px;
+}
+
+.outlined {
+  .cut,
+  .legend {
+    display: none;
+  }
+
+  input:focus {
+    // border-bottom: 2px solid #06b;
+  }
+  .input-field:hover {
+    border-bottom: 2px solid #06b;
+  }
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  // outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+.new {
+  padding-top: 30px;
+}
