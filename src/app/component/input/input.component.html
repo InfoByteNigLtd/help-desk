@@ -3,7 +3,7 @@
     <input
       [id]="id"
       [type]="type"
-      [placeholder]="inputType !== 'default' ? placeholder : ' '"
+      [placeholder]="inputType !== 'default' || valu.length < 2 ? placeholder : ' '"
       (keyup)="inputVal($event)"
     />
     <app-font-icon

@@ -59,6 +59,7 @@
   }
 
   .legend {
+    display: none;
     color: #65657b;
     font-family: sans-serif;
     left: 20px;
@@ -72,15 +73,13 @@
 
   .input-field:hover ~ .legend,
   input:not(:placeholder-shown) ~ .legend {
+    display: block;
+    color: #dc2f55;
     transform: translateY(-30px) translateX(10px) scale(0.75);
   }
 
   input:not(:placeholder-shown) ~ .legend {
     color: #808097;
-  }
-
-  .input-field:hover ~ .legend {
-    color: #dc2f55;
   }
 }
 app-font-icon {

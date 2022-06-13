@@ -13,7 +13,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 })
 export class LoginComponent implements OnInit {
 
-  public firstname;
+  public email;
   public password;
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'localhost://8100/api';
@@ -26,17 +26,17 @@ export class LoginComponent implements OnInit {
 
     ) { }
 
-  updateFirstName(value){
-    this.firstname = value;
+  updateEmail(value){
+    this.email = value;
   }
   updatePassword(value){
     this.password = value;
   }
   
   validateInput() {
-    console.log('firstname',this.firstname);
+    console.log('email',this.email);
     console.log('password',this.password);
-    if(this.firstname === ' ' || this.firstname === undefined || this.password === ' ' || this.password === undefined)
+    if(this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined)
     {
       this.alertModal('Error!!!', 'All fields are required');
     }
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     {
       this.loadingModal();
 
-      this.http.post(this.apiEndPoit, {firstname: this.firstname, password: this.password}).subscribe({
+      this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
         next: data => {
           console.log('sent successfully');
           
@@ -60,6 +60,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  gotoSignup() {
+    setTimeout(() => {
+      this.router.navigate(['/tabs/sign-up']);
+    }, 500);
+  }
   async loadingModal() {
     this.loadingScreen = await this.loadingCtrl.create({
       cssClass: "my-custom-class",

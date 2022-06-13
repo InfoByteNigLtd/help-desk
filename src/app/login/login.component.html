@@ -2,11 +2,11 @@
 	<div class="title">Welcome</div>
 	<div class="subtitle">Login your account!</div>
 
-	<app-input (value)="updateFirstName($event)" type="text" inputType="default" legend="Email" placeholder="username@gmail.com" id="firstname" label="firstname" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
-	<app-input (value)="updatePassword($event)" type="password" inputType="outlined" legend="Password" placeholder="password" id="lastname" label="lastname" sx="background-color: #303245; color: #eee" icon="key-fill"></app-input>
+	<app-input (value)="updateEmail($event)" type="email" id="1" inputType="default" legend="Email" placeholder="username@gmail.com"  bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+	<app-input (value)="updatePassword($event)" type="password" id="2" inputType="outlined" legend="Password" placeholder="password" label="lastname" sx="background-color: #303245; color: #eee" icon="lock-fill"></app-input>
 
 	<div class="cut cut-short"></div>
 	<button type="text" class="submit" (click)="validateInput()">submit</button>
-	<h3 class="subtitle new">Sign up <span>here</span></h3>
-	<button type="text" tab="sign-up"></button>
+	<h3 class="subtitle new" (click)="gotoSignup()">Sign up <span style="color: #23bfff;">here</span></h3>
+	
   </div>
