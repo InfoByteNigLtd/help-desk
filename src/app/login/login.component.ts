@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public email;
   public password;
   loadingScreen!: HTMLIonLoadingElement;
-  private apiEndPoit = 'localhost://8100/api';
+  private apiEndPoit = 'http://infome.nationalplanning.gov.ng/IBHelpDeskWebAPI/api/tickets';
 
   constructor(
     private http: HttpClient,
@@ -43,14 +43,19 @@ export class LoginComponent implements OnInit {
     else
     {
       this.loadingModal();
+      // this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
+      //   next: data => {
+      //     console.log('sent successfully');
+          
+      //   }
 
-      this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
+      this.http.get(this.apiEndPoit, { observe: 'response' }).subscribe({
         next: data => {
-          console.log('sent successfully');
+          console.log('sent successfully', data);
           
         },
         error: data => {
-          console.log('something went wrong');
+          console.log('something went wrong', data);
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(()=>{this.alertModal('Error!!!', 'Something went wrong');});
           }, 1000);
