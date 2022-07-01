@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/quotes */
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./inbox.component.scss'],
 })
 export class InboxComponent implements OnInit {
-  @Input() logo:string = "./assets/images/coat-of-arm.png";
+  @Input() logo = "./assets/images/coat-of-arm.png";
 
 
   constructor() { }

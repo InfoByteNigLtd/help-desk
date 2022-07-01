@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable no-trailing-spaces */
 import { Component, OnInit, Input } from '@angular/core';
 import { FontIconSizes, FontIconTypes } from './types';
 
@@ -49,7 +51,7 @@ export class IconFontComponent implements OnInit {
     material: "mdi mdi",
     remix: "ri",
     flag: "flag-icon flag-icon"
-  }
+  };
 
   constructor() { }
 
@@ -57,9 +59,9 @@ export class IconFontComponent implements OnInit {
     /**
      * construct the full icon class name based on the icon 
      */
-    if(this.iconType)
-      this.iconClassName = `${this.iconClassPrefixMapper[this.iconType]}-${this.iconName} ${this.iconSize}`
-
+    if(this.iconType){
+      this.iconClassName = `${this.iconClassPrefixMapper[this.iconType]}-${this.iconName} ${this.iconSize}`;
+    }
     /** 
      * icon style full definition. We can only use either `iconStyle` or `iconColor`  
      * If `iconStyle` is provided, `iconColor` will not be used

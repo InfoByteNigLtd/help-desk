@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -6,8 +8,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  @Input() deltaState:string = "./assets/images/DeltaState.png";
-  @Input() help:string = "assets/images/images.jpg";
+  @Input() deltaState = "./assets/images/DeltaState.png";
+  @Input() help = "assets/images/images.jpg";
   constructor() {}
 
 }
