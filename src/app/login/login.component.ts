@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
   public email;
   public password;
   loadingScreen!: HTMLIonLoadingElement;
-  private apiEndPoit = 'http://app.deltastatepensionsbureau.com/IBHelpDesk/api/tickets';
+  private apiEndPoit = 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/ForumTypes';
+
+  private apiEndPoit2 = 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/';
 
   constructor(
     private http: HttpClient,
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
   updatePassword(value){
     this.password = value;
   }
-  
+
   validateInput() {
     console.log('email',this.email);
     console.log('password',this.password);
@@ -46,20 +48,20 @@ export class LoginComponent implements OnInit {
       // this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
       //   next: data => {
       //     console.log('sent successfully');
-          
+
       //   }
 
-      this.http.get(this.apiEndPoit, { observe: 'response' }).subscribe({
+      this.http.get(this.apiEndPoit2).subscribe({
         next: data => {
           console.log('sent successfully', data);
-          
+
         },
         error: data => {
           console.log('something went wrong', data);
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(()=>{this.alertModal('Error!!!', 'Something went wrong');});
           }, 1000);
-          
+
         }
     });
     }
@@ -92,7 +94,10 @@ export class LoginComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init');
+    
+  }
 
 }
 
