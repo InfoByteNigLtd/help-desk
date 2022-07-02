@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public email;
   public password;
   loadingScreen!: HTMLIonLoadingElement;
-  private apiEndPoit = 'http://infome.nationalplanning.gov.ng/IBHelpDeskWebAPI/api/tickets';
+  private apiEndPoit = 'http://app.deltastatepensionsbureau.com/IBHelpDesk/api/tickets';
 
   constructor(
     private http: HttpClient,
