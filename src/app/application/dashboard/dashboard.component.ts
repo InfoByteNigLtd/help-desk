@@ -18,10 +18,10 @@ import { AlertController } from '@ionic/angular';
 export class DashboardComponent implements OnInit {
 
   public services = [
-    { id: 1, title: 'forum', image: '../../../assets/images/forum.svg', route: '/app/users/checkuser', icon: 'man-outline'},
-    { id: 2, title: 'support', image: '../../../assets/images/support.svg', route: '/app/drivers/checkdriver', icon: 'car-sport-outline' },
-    { id: 3, title: 'chat', image: '../../../assets/images/chat.svg', route: '/app/dispatcher/checkuser', icon: 'bicycle-outline' },
-    { id: 4, title: 'other', image: '../../../assets/images/help.jpg', route: '/app/parcel/checkparcel', icon: 'briefcase-outline'}
+    { id: 1, title: 'forum', image: '../../../assets/images/forum.svg', route: '/app/router/forum', icon: 'man-outline'},
+    { id: 2, title: 'support', image: '../../../assets/images/support.svg', route: '/app/router/support', icon: 'car-sport-outline' },
+    { id: 3, title: 'chat', image: '../../../assets/images/chat.svg', route: '/app/router/chat', icon: 'bicycle-outline' },
+    { id: 4, title: 'faq', image: '../../../assets/images/help.jpg', route: '/app/router/faq', icon: 'briefcase-outline'}
   ];
 
   public selectedUserType: any;
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     this.iconName = service[0].icon;
     this.serviceRoute = service[0].route;
 
-    this.buttonText = this.selectedUserType == 'parcel'? `Send ${this.selectedUserType}` : `Proceed as ${this.selectedUserType}` ;
+    this.buttonText = `Proceed to ${this.selectedUserType}` ;
   }
 
    /** Route to the selected user dashboard */
@@ -66,9 +66,9 @@ export class DashboardComponent implements OnInit {
             this.router.navigate(['/app/router/chat']);
           }
           else if (this.selectedUserType == 'support') {
-            this.router.navigate(['/app/router/dashboard']);
+            this.router.navigate(['/app/router/support']);
           }else{
-            console.log('no condition met check the implementation in dashboard component');
+            this.router.navigate(['/app/router/faq']);
           }
         }
     }

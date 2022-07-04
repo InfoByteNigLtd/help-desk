@@ -7,6 +7,9 @@ import { SupportComponent } from './support/support.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { ApplicationPage } from './application.page';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { Tab2Page } from './tab2/tab2.page';
+import { Tab3Page } from './tab3/tab3.page';
+import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
   {
@@ -14,8 +17,8 @@ const routes: Routes = [
     component: ApplicationPage,
     children: [
       {
-        path: 'home',
-        component: HomeComponent
+        path: 'login',
+        component: LoginComponent
       },
       {
         path: 'support',
@@ -26,8 +29,12 @@ const routes: Routes = [
         component: TicketsComponent,
       },
       {
-        path: 'inbox',
-        component: InboxComponent,
+        path: 'faq',
+        component: Tab2Page,
+      },
+      {
+        path: 'chat',
+        component: Tab3Page,
       },
       {
         path: 'forum',
@@ -39,14 +46,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/application/homepage',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
       },
     ]
   },
   {
     path: '',
-    redirectTo: '/application/homepage',
+    redirectTo: '/router/dashboard',
     pathMatch: 'full'
   }
 ];
