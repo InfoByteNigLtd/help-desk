@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CheckuserComponent } from './checkuser/checkuser.component';
-import { HomeComponent } from './home/home.component';
-import { InboxComponent } from './inbox/inbox.component';
 
 const routes: Routes = [
   {
@@ -11,15 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'inbox',
-    component: InboxComponent
+    loadChildren: () => import('./application/application.module').then(m => m.ApplicationPageModule)
   },
   {
     path: 'component',

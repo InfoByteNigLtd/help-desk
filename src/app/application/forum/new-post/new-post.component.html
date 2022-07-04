@@ -1,0 +1,21 @@
+<div class="post-wrapper">
+  <div class="post">
+    <div class="topic">
+      <ion-item>
+        <ion-label color="primary" position="floating">Post Topic</ion-label>
+        <ion-input maxlength="50" clearInput  placeholder="Topic" (ionBlur)="getPostTopic($event)" ></ion-input>
+      </ion-item>
+    </div>
+
+   <div class="message">
+    <ion-item>
+      <ion-label color="primary" position="floating">Post message</ion-label>
+      <ion-textarea maxlength="700" rows="6" cols="20" placeholder="Type your post here. 700 max word..." (ionBlur)="getPostMessage($event) "></ion-textarea>
+    </ion-item>
+   </div>
+
+    <div class="submit-button">
+      <ion-button>Post</ion-button>
+    </div>
+  </div>
+</div>

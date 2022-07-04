@@ -6,7 +6,7 @@
 /* eslint-disable @typescript-eslint/type-annotation-spacing */
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from '../service/storage.service';
+import { StorageService } from '../../service/storage.service';
 
 @Component({
   selector: 'app-home',

@@ -1,0 +1,53 @@
+<div class="page-wrapper">
+  <div class="header-wrapper">
+    <div class="text">Dashboard</div>
+    <div class="icons">
+      <app-font-icon
+        iconType="remix"
+        iconName="search-line"
+        iconColor="primary-icon"
+        iconSize="custom"
+      ></app-font-icon>
+      <div class="notification">
+        <app-font-icon
+          iconType="remix"
+          iconName="notification-3-line"
+          iconColor="primary-icon"
+          iconSize="custom"
+        ></app-font-icon>
+        <div class="notification-dot"></div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="user-info">
+    <div class="image">
+      <img src="../../../assets/images/avatar_nick.png" alt="" />
+    </div>
+    <div class="name" >{{userName}}</div>
+  </div> -->
+
+  <div class="service-wrapper">
+    <div
+      *ngFor="let service of services"
+      [class]="selectedCardId === service.id ? 'services selected' : 'services'"
+    >
+      <div class="service" (click)="selectCard(service.id)">
+        <img class="avatar" [src]="service.image" />
+        <div class="title">{{ service.title }}</div>
+      </div>
+    </div>
+
+    <div class="button">
+      <app-button
+        buttonType="round"
+        buttonClass="dark"
+        [title]="buttonText"
+        [showIcon]=true
+        [iconName]="iconName"
+        iconSlot="start"
+        (click) = "goToSelectedUserDashboard()"
+      ></app-button>
+    </div>
+  </div>
+
+</div>

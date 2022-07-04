@@ -20,30 +20,52 @@ export class LoginComponent implements OnInit {
 
   private apiEndPoit2 = 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/';
 
+//   data: any = { 
+//     accruedRight: 0
+// accruedRightPaid: 0
+// applicationStatus: "Certificate not yet Prepared"
+// certificateNumber: "NA"
+// certificateReady: false
+// computerNo: "1000139"
+// dateRetired: "2022-07-01T00:00:00"
+// employeeAmount: 6490.79
+// employerAmount: 23760.7
+// firstName: "STEPHEN"
+// indebtedness: 0
+// memberId: 1
+// middleName: "S"
+// paymentSchedule: "Not yet Released"
+// pfaCode: "ARM"
+// picture: null
+// pinNo: "PEN678668903322"
+// processedMonth: 0
+// processedYear: 0
+// registered: false
+// surname: "NWAINOKPO"
+
+//   }
   constructor(
     private http: HttpClient,
     private router: Router,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
 
-    ) { }
+  ) { }
 
-  updateEmail(value){
+  updateEmail(value) {
     this.email = value;
   }
-  updatePassword(value){
+  updatePassword(value) {
     this.password = value;
   }
 
   validateInput() {
-    console.log('email',this.email);
-    console.log('password',this.password);
-    if(this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined)
-    {
+    console.log('email', this.email);
+    console.log('password', this.password);
+    if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
       this.alertModal('Error!!!', 'All fields are required');
     }
-    else
-    {
+    else {
       this.loadingModal();
       // this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
       //   next: data => {
@@ -51,19 +73,20 @@ export class LoginComponent implements OnInit {
 
       //   }
 
-      this.http.get(this.apiEndPoit2).subscribe({
+      this.http.get(this.apiEndPoit2, {params: {id: 2} }).subscribe({
         next: data => {
           console.log('sent successfully', data);
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'data found'); });
 
         },
         error: data => {
           console.log('something went wrong', data);
           setTimeout(() => {
-            this.loadingScreen?.dismiss().then(()=>{this.alertModal('Error!!!', 'Something went wrong');});
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
           }, 1000);
 
         }
-    });
+      });
     }
   }
 
@@ -96,7 +119,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log('init');
-    
+
   }
 
 }

@@ -1,0 +1,43 @@
+.comment-wrapper {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #dedede;
+  margin-top: 20px;
+  background-color: #f0f9ff;
+
+  .post {
+    width: 100%;
+    align-self: flex-start;
+    text-align: justify;
+    padding: 20px;
+  }
+
+  .reactions {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #97b0bd;
+    color: #fff;
+
+    .likes {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .no-of-comment {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

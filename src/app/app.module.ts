@@ -13,11 +13,14 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CheckuserComponent } from './checkuser/checkuser.component';
-import { HomeComponent } from './home/home.component';
-import { InboxComponent } from './inbox/inbox.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignUpComponent, CheckuserComponent, InboxComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignUpComponent,
+    CheckuserComponent
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ComponentPageModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
