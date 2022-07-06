@@ -13,8 +13,8 @@ import { ForumComponent } from './forum/forum.component';
 import { PostDetailComponent } from './forum/post-detail/post-detail.component';
 import { NewPostComponent } from './forum/new-post/new-post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Tab2PageModule } from './tab2/tab2.module';
-import { Tab3PageModule } from './tab3/tab3.module';
+import { ChatPageComponent } from './chat/chat.page';
+import { FaqPageComponent } from './faq/faq.page';
 
 @NgModule({
   imports: [
@@ -23,8 +23,6 @@ import { Tab3PageModule } from './tab3/tab3.module';
     FormsModule,
     ApplicationPageRoutingModule,
     ComponentPageModule,
-    Tab2PageModule,
-    Tab3PageModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -34,7 +32,9 @@ import { Tab3PageModule } from './tab3/tab3.module';
     ForumComponent,
     PostDetailComponent,
     NewPostComponent,
-    DashboardComponent
+    DashboardComponent,
+    ChatPageComponent,
+    FaqPageComponent,
   ],
   exports: [
     ApplicationPage,

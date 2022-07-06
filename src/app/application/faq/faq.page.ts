@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/type-annotation-spacing */
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-faq',
+  templateUrl: 'faq.page.html',
+  styleUrls: ['faq.page.scss']
 })
-export class Tab2Page {
+export class FaqPageComponent implements OnInit {
   @Input() deltaState = "./assets/images/DeltaState.png";
   @Input() help = "assets/images/images.jpg";
   constructor() {}
 
+  ngOnInit(): void {
+    console.log('init');
+  }
 }
