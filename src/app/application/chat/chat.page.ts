@@ -20,7 +20,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     {id: 1, question: 'Guess you are doing well?'},
     {id: 2, question: 'Would you like to know update about your pension status'},
     {id: 3, question: 'Oops!!! No update on your status now'},
-    {id: 4, question: 'How about your the payment aprroval, would you like to know about it?'},
+    {id: 4, question: 'How about your payment approval, would you like to know about it?'},
     {id: 5, question: 'Payment process is yet to commence. You can ask me later '},
     {id: 6, question: 'How about your accessment due date, would you like to know about it?'},
     {id: 7, question: 'Your accessment due date is 20th of Jan 2023'},

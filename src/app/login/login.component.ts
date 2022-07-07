@@ -92,7 +92,8 @@ export class LoginComponent implements OnInit {
 
   gotoSignup() {
     setTimeout(() => {
-      this.router.navigate(['/tabs/sign-up']);
+      window.location.href='http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register';
+      // this.router.navigate(['/tabs/sign-up']);
     }, 500);
   }
   async loadingModal() {

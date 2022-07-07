@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ForumComponent implements OnInit {
 
-  apiLink = environment.memberAPI;
+  apiLink = environment.baseAPIURL;
 
   postTopic = "Government has release new pension";
   posterImage: string = "../assets/images/images.jpg";
