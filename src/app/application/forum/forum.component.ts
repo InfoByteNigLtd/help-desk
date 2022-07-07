@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/quotes */
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-forum',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forum.component.scss'],
 })
 export class ForumComponent implements OnInit {
+
+  apiLink = environment.baseAPIURL;
 
   postTopic = "Government has release new pension";
   posterImage: string = "../assets/images/images.jpg";
@@ -20,7 +24,9 @@ export class ForumComponent implements OnInit {
   isPostDetail: boolean = false;
 
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   swtichActivePage(page){
     if (page === 'new-post') {
@@ -46,6 +52,18 @@ export class ForumComponent implements OnInit {
     this.isTopicList = true;
   }
 
-  ngOnInit() {}
+  getForumData() {
+    this.http.post(this.apiLink, {params : {id : 1}}).subscribe({
+      next: (data) => {
+        console.log('forum data', data);
+      },
+      error: data => {
+        console.log('error', data);
+      }
+    });
+  }
+  ngOnInit() {
+    this.getForumData();
+  }
 
 }
