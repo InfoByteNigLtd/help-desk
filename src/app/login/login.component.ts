@@ -90,9 +90,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  gotoSignup() {
+  gotoSignup(url: string) {
     setTimeout(() => {
-      window.location.href='http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register';
+      window.open(url, "_blank");
+      // window.location.href='http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register';
       // this.router.navigate(['/tabs/sign-up']);
     }, 500);
   }

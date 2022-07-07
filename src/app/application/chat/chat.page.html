@@ -11,7 +11,9 @@
     <div class="name">
       <h2>Pension Board</h2>
     </div>
-    <div class="dot">:</div>
+    <div class="dot">
+      <app-font-icon iconType="remix" iconName="menu-4-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+      </div>
   </div>
   <div class="chat">
     <div *ngFor="let msg of messages" [class]="msg.mtype === messageType[0] ? 'incoming' : 'outgoing' ">
