@@ -122,7 +122,8 @@
 .send{ 
   flex: 0 1 40px;
   width: 95vw;
-  background: rgba(0, 0, 0, 0.3);
+  // background: rgba(0, 0, 0, 0.3);
+  background: #97b0bd;
   padding: 5px;
   position: fixed;
   border-radius: 100px;
@@ -136,7 +137,7 @@
   resize: none;
   color: #000;
   font-size: 17px;
-  height: 25px;
+  height: 30px;
   margin: 0;
   padding-right: 20px;
   width: 265px;
