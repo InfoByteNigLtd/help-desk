@@ -31,14 +31,15 @@
       *ngFor="let service of services"
       [class]="selectedCardId === service.id ? 'services selected' : 'services'"
     >
-      <div class="service" (click)="selectCard(service.id)">
+      <div class="service" (click)="selectCard(service.id)" (click) = "goToSelectedUserDashboard()">
         <img class="avatar" [src]="service.image" />
         <div class="title">{{ service.title }}</div>
       </div>
     </div>
 
     <div class="button" (click) = "goToSelectedUserDashboard()">
-      <ion-button>{{buttonText}}</ion-button>
+      <!-- to add a confirm button to it -->
+      <!-- <ion-button>{{buttonText}}</ion-button> -->
     </div>
   </div>
 

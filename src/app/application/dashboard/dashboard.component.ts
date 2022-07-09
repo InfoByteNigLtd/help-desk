@@ -52,8 +52,8 @@ export class DashboardComponent implements OnInit {
 
    /** Route to the selected user dashboard */
     async goToSelectedUserDashboard() {
-  
-      // Check if a user type has been selected
+      setTimeout(() => {
+              // Check if a user type has been selected
       if (this.selectedUserType == undefined) {
         this.presentAlert( "Select A Service",'', "<i> Please select your preferred service <br> from the dashboard </i>");
       }
@@ -71,6 +71,9 @@ export class DashboardComponent implements OnInit {
             this.router.navigate(['/app/router/faq']);
           }
         }
+      }, 700);
+  
+
     }
 
     async presentAlert(
