@@ -1,0 +1,59 @@
+<div class="post-wrapper">
+  <div class="post-content">
+    <div class="header">
+      <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items:center">
+        <div class="poster-avatar">
+          <img [src]="posterImage" alt="poster-image">
+        </div>
+        <div class="poster-name">{{name}}</div>
+      </div>
+      <div class="posted-time">{{time}}</div>
+    </div>
+    <div class="main-post">
+      <div class="post-picture">
+        <img [src]="image" alt="">
+      </div>
+      <div class="post-message">{{message}}</div>
+      <div class="reactions">
+        <div class="likes">
+          <span>{{reactions.likes}}</span>
+          <app-font-icon
+          iconType="remix"
+          iconName="thumb-up-line"
+          iconColor="primary-icon"
+          iconSize="custom"
+         style="margin-left: 10px;"></app-font-icon>
+        </div>
+    
+        <div class="no-of-comment">
+          <span>{{reactions.commentNo}}</span>
+          <app-font-icon
+          iconType="remix"
+          iconName="chat-3-line"
+          iconColor="primary-icon"
+          iconSize="custom"
+         style="margin-left: 10px;"></app-font-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <!-- <div class="comment-input">
+        <ion-item>
+            <ion-input maxlength="500" clearInput  placeholder="add comment" (ionBlur)="getPostTopic($event)" ></ion-input>
+          </ion-item>
+    </div> -->
+    <div class="send">
+      <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+      <button type="submit" class="message-submit" (click)="getPostTopic($event)">Send</button>
+    </div>
+    <div class="comments">
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+    </div>
+  </div>
+</div>

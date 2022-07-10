@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true"> 
+  <div class="container">
+     <!-- title page -->
+  <div class="title">
+    <div class="back-arrow">
+      <h2></h2>
+    </div>
+    <div class="image">
+      <img src="../../assets/icon/logo.png" alt="avatar">
+    </div>
+    <div class="name">
+      <h2>Pension Board</h2>
+    </div>
+    <div class="dot">
+      <app-sidebar style="position:absolute; top: -31px; padding-left: 20px;"></app-sidebar>
+      <!-- <app-font-icon iconType="remix" iconName="menu-4-line" iconSize="nav-icons" iconColor="custom"></app-font-icon> -->
+      </div>
+  </div>
+  <div class="chat">
+    <div *ngFor="let msg of messages" [class]="msg.mtype === messageType[0] ? 'incoming' : 'outgoing' ">
+      {{msg.message}}
+    </div> 
+    <div style="width: 100%; min-height: 500px;"></div>  
+  </div>
+  <div class="response-wrapper" *ngIf="showResponse">
+    <div class="response" *ngFor="let u of responses">
+      <span (click)="getResponse(u.id)">{{u.response}}</span>
+    </div>
+  </div>
+  <div class="response-wrapper" *ngIf="showSupportLink">
+    <div class="response" style="background-color: #fff; color: #0f77ff">
+      <span (click)="navigateToSupport()">Admin help desk</span>
+    </div>
+  </div>
+  </div>
+</ion-content>
