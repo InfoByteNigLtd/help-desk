@@ -25,15 +25,19 @@ export class InputComponent implements OnInit {
   @Input() color: string = 'inherit';
   @Input() sx: string = `background-color:${this.bgColor}; color:${this.color};`;
 
-  valu: string = '0';
+  valu: string = '';
 
   inputTypeClass = `input-container top-space ${this.inputType} `;
   
-  constructor() { }
+  constructor() {  this.valu=''; }
 
-  inputVal(event) {
-    this.valu = event.target.value;
-    this.value.emit(event.target.value);    
+  // inputVal(event) {
+  //   this.valu = event.target.value;
+  //   this.value.emit(event.target.value);    
+  // }
+
+  inputVal() {
+    this.value.emit(this.valu);
   }
   /** 
    * @method ngOnChanges is used here to enable passing of value from parent components to the button components
@@ -72,6 +76,8 @@ export class InputComponent implements OnInit {
 
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  
+  }
 
 }

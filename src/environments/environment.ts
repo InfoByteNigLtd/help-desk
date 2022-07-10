@@ -8,7 +8,7 @@ export const environment = {
   forumAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/ForumTypes',
   conversationsAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Conversations/GetConversations',
   commentAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Comments',
-  memberAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members',
+  memberAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/',
 };
 
 /*

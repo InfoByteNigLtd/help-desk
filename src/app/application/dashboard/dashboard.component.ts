@@ -34,7 +34,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController
-  ) { }
+  ) {
+    this.verifyLogin();
+   }
   /**
    * This method is used to change the service card when selected and also define the user type for router
    * 
@@ -95,6 +97,34 @@ export class DashboardComponent implements OnInit {
       console.log("onDidDismiss resolved with role", role);
     }
 
-  ngOnInit() { }
+    //local storage 
+    /**change the localStorage to sessionStorage if you want session storage 
+     * localStirage.removeItem;
+    */
+    memoryData: any = localStorage.getItem('userData');
+
+    verifyLogin(){
+      if (this.memoryData == undefined || this.memoryData == null ) {
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 500);
+      } else {
+        this.getUserData();
+        
+      }
+    }
+
+    getUserData(){
+      this.memoryData = JSON.parse(this.memoryData);
+      console.log('from local storage',this.memoryData);
+      this.memoryData?.fullname; 
+      this.userName = this.memoryData?.fullname.split(" ");
+      this.userName = `${this.userName?.[0]} ${this.userName?.[1]}`;
+
+    }
+
+  ngOnInit() { 
+    
+  }
 
 }

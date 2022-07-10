@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,20 @@ export class LoginComponent implements OnInit {
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10008237/Admin@123';
 
-  private apiEndPoit2 = 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/';
+  private apiEndPoit2 = environment.memberAPI;
+
+  isLogin: boolean = false;
+  isLogout: boolean = true;
+
+  userStatus: string = 'inactive';
+
+  getStatus(): string {
+    return localStorage.getItem('userStatus');
+  }
+  setStatus(value: string){
+    localStorage.setItem('userStatus', value);
+  }
+
 
 //   data: any = { 
 //     accruedRight: 0
@@ -72,12 +86,17 @@ export class LoginComponent implements OnInit {
       //     console.log('sent successfully');
 
       //   }
+      //test username and password;
+      let userIdentity = 'ukah@gmail.com';
+      let passcode = 'Ukah@gmail.com123'
 
-      this.http.get(this.apiEndPoit, {params: {id: 2} }).subscribe({
+      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {param: []}).subscribe({
         next: data => {
           console.log('sent successfully', data);
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'data found'); });
-
+          localStorage.setItem('userData', JSON.stringify(data));
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'login Succefully'); });
+          this.setStatus('active');
+          this.gotoDashboard();
         },
         error: data => {
           console.log('something went wrong', data);
@@ -92,11 +111,19 @@ export class LoginComponent implements OnInit {
 
   gotoSignup(url: string) {
     setTimeout(() => {
-      window.open(url, "_blank");
+      window.open(url, "_blank"); //to signup page
       // window.location.href='http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register';
       // this.router.navigate(['/tabs/sign-up']);
     }, 500);
   }
+
+  gotoDashboard() {
+    setTimeout(() => {
+      this.router.navigate(['app/router/dashboard']);
+    }, 500);
+  }
+
+
   async loadingModal() {
     this.loadingScreen = await this.loadingCtrl.create({
       cssClass: "my-custom-class",
@@ -119,8 +146,22 @@ export class LoginComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
+  logout(){
+    localStorage.removeItem('userData');
+    this.setStatus('inactive');
+    this.router.navigate(['/login']);
+    window.location.reload();
+  }
+
   ngOnInit() {
-    console.log('init');
+    if (this.getStatus() != undefined && this.getStatus() == 'inactive') {
+    this.isLogin = true;
+    this.isLogout = false;
+    } else {
+      this.isLogin = false;
+      this.isLogout = true;
+      this.setStatus('inactive');
+    }
 
   }
 

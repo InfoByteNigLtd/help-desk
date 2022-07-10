@@ -1,12 +1,23 @@
-<div class="form">
+<div class="form" *ngIf="isLogin">
 	<div class="title">Welcome</div>
 	<div class="subtitle">Login your account!</div>
 
-	<app-input (value)="updateEmail($event)" type="email" id="1" inputType="default" legend="Email" placeholder="username@gmail.com"  bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
-	<app-input (value)="updatePassword($event)" type="password" id="2" inputType="default" legend="Password" placeholder="password" label="lastname" sx="background-color: #303245; color: #eee" icon="lock-fill"></app-input>
+	<app-input (value)="updateEmail($event)" type="email" id="1" inputType="default" legend="Email"
+		placeholder="username@gmail.com" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+	<app-input (value)="updatePassword($event)" type="password" id="2" inputType="default" legend="Password"
+		placeholder="password" label="lastname" sx="background-color: #303245; color: #eee" icon="lock-fill">
+	</app-input>
 
 	<div class="cut cut-short"></div>
 	<button type="text" class="submit" (click)="validateInput()">submit</button>
-      
-	<h3 class="subtitle new" (click)="gotoSignup('http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register')">Sign up <span style="color: #23bfff;">here</span></h3>
-  </div>
+
+	<h3 class="subtitle new"
+		(click)="gotoSignup('http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register')">Sign up <span
+			style="color: #23bfff;">here</span></h3>
+
+</div>
+
+<div class="logout form" *ngIf="isLogout">
+	<button type="text" class="submit" (click)="logout()">Logout</button>
+
+</div>
