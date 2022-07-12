@@ -17,7 +17,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     IonicModule,
     ComponentPageRoutingModule,
   ],
-  declarations: [IconFontComponent, InputComponent, CommentComponent, SidebarComponent],
+  declarations: [
+    IconFontComponent,
+    InputComponent,
+    CommentComponent,
+    SidebarComponent,
+  ],
   exports: [
     IconFontComponent,
     InputComponent,
@@ -25,4 +30,4 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
   ],
 })
-export class ComponentPageModule {}
+export class ComponentPageModule { }

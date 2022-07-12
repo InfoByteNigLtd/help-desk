@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   public services = [
     { id: 1, title: 'forum', image: '../../../assets/images/forum.svg', route: '/app/router/forum', icon: 'man-outline'},
     { id: 2, title: 'support', image: '../../../assets/images/support.svg', route: '/app/router/support', icon: 'car-sport-outline' },
-    { id: 3, title: 'chat', image: '../../../assets/images/chat.svg', route: '/app/router/chat', icon: 'bicycle-outline' },
+    { id: 3, title: 'status', image: '../../../assets/images/chat.svg', route: '/app/router/chat', icon: 'bicycle-outline' },
     { id: 4, title: 'faq', image: '../../../assets/images/help.jpg', route: '/app/router/faq', icon: 'briefcase-outline'}
   ];
 
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
             this.router.navigate(['/app/router/chat']);
           }
           else if (this.selectedUserType == 'support') {
-            this.router.navigate(['/app/router/support']);
+            this.router.navigate(['/app/router/inbox']);
           }else{
             this.router.navigate(['/app/router/faq']);
           }
@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
     /**change the localStorage to sessionStorage if you want session storage 
      * localStirage.removeItem;
     */
-    memoryData: any = localStorage.getItem('userData');
+    memoryData: any = sessionStorage.getItem('userData');
 
     verifyLogin(){
       if (this.memoryData == undefined || this.memoryData == null ) {

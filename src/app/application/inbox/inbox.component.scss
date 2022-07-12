@@ -1,130 +1,118 @@
-.bg {
-    width: 100vw;
-    height: 100vh;
-    background-color: #f0ffff;
-  }
-  @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
-  .logo{
-    top: 150px;
+.forum-page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  .forum-header {
+    width: 100%;
     display: flex;
-    position: absolute;
-  }
-  .container{
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    z-index: 2;
-    top: 0;
-    h2{
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      // font-family: 'Poppins', sans-serif;
-    }
-    position: absolute;
-    .title{
-      display: flex;
-      justify-content: space-between;
-      height: 73px;
-      width: 100vw;
-      background-color: #50c878;
-      top: 0;
-      position: fixed;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      .back-arrow{
-        padding-left: 10px;
-      }
-      .image{
-        img{
-          padding: 7px;
-          height:70px;
-          width: 70px;
-          border-radius: 50%;
-          border: 2px solid #ffeb3b;
-        }
-      }
-      .name{
-        h2{
-          font-family: 'Poppins', sans-serif;
-        }
-      }
-      .dot{
-        padding: 24px;
-      }
-    }
-    .chat{
-      margin-top: 73px;
-      padding: 10px;
-      z-index: -1;
-      .incoming,.outgoing{
-        display: block;
-        position: relative;
-        clear: both;
-        animation: bounce 500ms linear both;
-      }
-      .incoming{
-        float: left;
-        margin-left: 2px;
-        background-color: #87ceeb;
-        border-radius: 10px;
-        padding: 5px;
-        max-width: 60vw;
-        h2{
-        font-size: 15px;
-        }
-      }
-    }
-    .outgoing{
-        float: right;
-        margin-right: -116px;
-      background-color: #9fe2bf;
-        border-radius: 10px;
-        padding: 5px;
-        // max-width: 60vw;
-        position: relative;
-        h2{
-        font-size: 15px;
-        }
-    }
-    .send{ 
-      flex: 0 1 40px;
-      width: 95vw;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 5px;
-      position: fixed;
-      border-radius: 100px;
-      margin: auto;
-      bottom: 5px;
-    }
-    .message-input{
-      background: none;
-      border: none;
-      outline: none!important;
-      resize: none;
-      color: #fff;
-      font-size: 17px;
-      height: 25px;
-      margin: 0;
-      padding-right: 20px;
-      width: 265px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #207edf;
+    padding: 10px;
 
-      textarea:focus:-webkit-placeholder{
-        color: transparent;
-    }
-    }
-    .message-submit{
-      position: absolute;
-      z-index: 1;
-      top: 9px;
-      right: 10px;
+    .title {
+      width: 100%;
       color: #fff;
-      border: none;
-      background: #248A52;
-      font-size: 10px;
-      text-transform: uppercase;
-      line-height: 1;
-      padding: 6px 10px; 
-      border-radius: 10px;
-      outline: none!important;
-      transition: background .2s ease;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .search-area {
+      background-color: #f9f9f9;
+      width: 100%;
+      padding: 2px;
+      border-radius: 50px;
+      overflow: hidden;
+      input {
+        background-color: #f9f9f9;
+        color: #000;
+        width: 100%;
+        padding: 5px;
+        padding-left: 20px;
+        font-size: 20px;
+        border: none;
+        outline: none;
+      }
+      &:hover {
+        border: 2px solid #ffc400;
+      }
     }
   }
+
+  .forum-topic-wrapper {
+    width: 100%;
+    height: auto;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    padding-bottom: 20px;
+    .topic-card {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0px 0px 12px 3px #ccc;
+      margin-top: 20px;
+      color: #222;
+
+      .post-topic {
+        width: 100%;
+        padding: 10px;
+      }
+      .poster-detail {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #fff;
+        padding-left: 10px;
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 10px;
+        }
+        .name {
+          font-size: 14px;
+          font-weight: 600px;
+          color: #000;
+        }
+        .likes {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .comments {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .post-date {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .new-post-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

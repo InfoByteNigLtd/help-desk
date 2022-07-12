@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class ChatPageComponent implements OnInit, AfterContentChecked {
   @Input() logo:string = "./assets/images/coat-of-arm.png";
+  public userName: string;
+
 
   public userFirstName = 'Frank';
   public questions: any = [
@@ -49,7 +51,8 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   constructor(
     private ref: ChangeDetectorRef,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngAfterContentChecked(): void {
     this.ref.detectChanges();
@@ -121,7 +124,39 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     this.router.navigate(['/router/support']);
   }
   ngOnInit(): void {
-    this.postQuestion()
+    this.verifyLogin();
+    setTimeout(() => {
+       this.postQuestion();
+    }, 2000);
+
+   
+
+  }
+
+
+  
+  memoryData: any = localStorage.getItem('userData');
+
+  verifyLogin(){
+    if (this.memoryData == undefined || this.memoryData == null ) {
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 500);
+    } else {
+      this.getUserData();
+      
+    }
+  }
+
+  getUserData(){
+    this.memoryData = JSON.parse(this.memoryData);
+    console.log('from local storage chT',this.memoryData);
+    this.memoryData?.fullname; 
+    this.userFirstName = this.memoryData?.fullname.split(" ");
+    // this.userFirstName = `${this.userName?.[0]} ${this.userName?.[1]}`;
+    console.log('working', this.userFirstName);
+    
+
   }
 
 }

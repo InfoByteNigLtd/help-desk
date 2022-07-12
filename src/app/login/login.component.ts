@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {param: []}).subscribe({
         next: data => {
           console.log('sent successfully', data);
-          localStorage.setItem('userData', JSON.stringify(data));
+          sessionStorage.setItem('userData', JSON.stringify(data));
           this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'login Succefully'); });
           this.setStatus('active');
           this.gotoDashboard();
@@ -147,7 +147,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem('userData');
+    sessionStorage.removeItem('userData');
     this.setStatus('inactive');
     this.router.navigate(['/login']);
     window.location.reload();

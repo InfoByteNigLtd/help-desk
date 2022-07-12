@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from '../login/login.component';
 import { FaqPageComponent } from './faq/faq.page';
 import { ChatPageComponent } from './chat/chat.page';
+import { InboxComponent } from './inbox/inbox.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'support',
         component: SupportComponent
+      },
+      {
+        path: 'inbox',
+        component: InboxComponent
       },
       {
         path: 'ticket',

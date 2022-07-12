@@ -3,13 +3,32 @@
     <img src="../../assets/images/Delta-state-logo.png" alt="stateLogo">
   </div>
   <div class="form-div">
-    <form action="">
-      <label for="">Submit a ticket</label><br>
-      <input type="text" placeholder="userID..." name="request">
-      <input type="text" placeholder="Subject..." name="Subject">
-      <textarea placeholder="your message here..." name="message"></textarea>
-      <input type="file" name="file">
-      <button>submit</button>
+    <form action="#">
+      <div class="holder" style="display:flex;flex-direction: column;">
+        <!-- <label for="">Submit a ticket</label><br> -->
+        <ion-item>
+        <ion-label color="primary" position="floating">Subject</ion-label>
+        <ion-input maxlength="50" clearInput  placeholder="Subject..." (ionBlur)="updateSubject($event)" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" position="floating">Post message</ion-label>
+          <ion-textarea maxlength="700" rows="10" cols="20" placeholder="Type your post here. 700 max word..." (ionBlur)="updateDescripton($event) "></ion-textarea>
+        <!-- <ion-input maxlength="50" clearInput  placeholder="Subject..." (ionBlur)="updateSubject($event)" ></ion-input> -->
+        </ion-item>
+        <!-- <input  (value)="updateSubject($event)"type="text" placeholder="Subject..." name="Subject"> -->
+        <!-- <textarea placeholder="your message here..." name="message"></textarea> -->
+        <ion-select interface="action-sheet" placeholder="select an option" required (ionBlur)=" updateTicketId($event)">
+          <ion-select-option value="1">Application</ion-select-option>
+          <ion-select-option value="2">Certificate</ion-select-option>
+          <ion-select-option value="3">PFA</ion-select-option>
+          <ion-select-option value="4">Technical</ion-select-option>
+        </ion-select>
+
+        <ion-button (click)="validateInput()">submit</ion-button>
+      </div>
+
+
     </form>
   </div>
   

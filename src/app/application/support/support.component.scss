@@ -17,14 +17,14 @@
     }
 
     .form-div {
-        width: 90vw;
+        // width: 90vw;
         background-color: #fff;
-        // opacity: .4;
         border-radius: 20px;
         box-shadow: 1px 1px 2px 2px #555555;
         display: flex;
         z-index: 2;
         margin: auto;
+        padding: 50px;
 
         form {
             display: flex;
@@ -50,16 +50,13 @@
                 }
             }
 
-            input[type=file] {
-                border: 0;
-                box-shadow: 0 0 15px 4px #74c3ee;
-                border-radius: 10px;
-                // background-color: #fff;
-                color: #081b4b;
-                font-size: 15px;
-                padding: 14px 0;
-                margin: 10px 0;
+            select{
+                margin-top: 20px;
+                margin-bottom: 10px;
 
+                option{
+                    padding: 10px;
+                }
             }
 
             textarea {
