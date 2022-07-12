@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
   userStatus: string = 'inactive';
 
   getStatus(): string {
-    return localStorage.getItem('userStatus');
+    return sessionStorage.getItem('userStatus');
   }
   setStatus(value: string){
-    localStorage.setItem('userStatus', value);
+    sessionStorage.setItem('userStatus', value);
   }
 
 
