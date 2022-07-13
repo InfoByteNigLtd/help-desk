@@ -8,24 +8,17 @@
     </div>
 
     <div class="forum-topic-wrapper">
-      <div class="topic-card" (click)="swtichActivePage('post-detail')">
-        <div class="post-topic">{{postTopic}}</div>
+      <div class="topic-card" *ngFor="let item of responseData" (click)="routeToInbox(item.computerNo, item.ticketCategoryId)">
+        <div class="post-topic">{{item.subject}}</div>
         <div class="poster-detail">
           <div class="avatar">
             <img [src]="posterImage" alt="">
           </div>
-        <div class="name">{{posterName}}</div>
+        <div class="name">{{item.ticketCategoryName}}</div>
+        <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="post-topic">{{postTopic}}</div>
-        <div class="poster-detail">
-          <div class="avatar">
-            <img [src]="posterImage" alt="">
-          </div>
-        <div class="name">{{posterName}}</div>
-        </div>
-      </div>
+     
     </div>
 
     <div class="new-post-icon" (click)="swtichActivePage('new-post')">

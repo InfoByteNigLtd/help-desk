@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
           if (this.selectedUserType == 'forum') {
             this.router.navigate(['/app/router/forum']);
           }
-          else if (this.selectedUserType == 'chat') {
+          else if (this.selectedUserType == 'status') {
             this.router.navigate(['/app/router/chat']);
           }
           else if (this.selectedUserType == 'support') {

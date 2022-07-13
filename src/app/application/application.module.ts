@@ -15,6 +15,8 @@ import { NewPostComponent } from './forum/new-post/new-post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatPageComponent } from './chat/chat.page';
 import { FaqPageComponent } from './faq/faq.page';
+import { SupportComponent } from './support/support.component';
+import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
 
 @NgModule({
   imports: [
@@ -35,6 +37,9 @@ import { FaqPageComponent } from './faq/faq.page';
     DashboardComponent,
     ChatPageComponent,
     FaqPageComponent,
+    SupportComponent,
+    InboxDetailsComponent
+
   ],
   exports: [
     ApplicationPage,
@@ -43,7 +48,9 @@ import { FaqPageComponent } from './faq/faq.page';
     ForumComponent,
     PostDetailComponent,
     NewPostComponent,
-    DashboardComponent
+    DashboardComponent,
+    SupportComponent,
+    InboxDetailsComponent
   ]
 })
 export class ApplicationPageModule {}

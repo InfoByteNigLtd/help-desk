@@ -52,18 +52,18 @@ export class ForumComponent implements OnInit {
     this.isTopicList = true;
   }
 
-  getForumData() {
-    this.http.post(this.apiLink, {params : {id : 1}}).subscribe({
-      next: (data) => {
-        console.log('forum data', data);
-      },
-      error: data => {
-        console.log('error', data);
-      }
-    });
-  }
+  // getForumData() {
+  //   this.http.post(this.apiLink, {params : {id : 1}}).subscribe({
+  //     next: (data) => {
+  //       console.log('forum data', data);
+  //     },
+  //     error: data => {
+  //       console.log('error', data);
+  //     }
+  //   });
+  // }
   ngOnInit() {
-    this.getForumData();
+    // this.getForumData();
   }
 
 }

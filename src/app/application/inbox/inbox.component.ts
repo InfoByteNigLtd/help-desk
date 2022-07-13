@@ -18,14 +18,18 @@ export class InboxComponent implements OnInit {
   posterName: string = "Jone Doe";
   postTime: string = "4:45pm";
   reactions: any = {likes: 451, commentNo: 40};
+  responseData: any = [];
 
   isNewPost: boolean = false;
   isTopicList: boolean = true;
   isPostDetail: boolean = false;
+
+
   computerNo: any;
   id: any = 0;
   plusConversations: boolean = false;
   loadingScreen!: HTMLIonLoadingElement;
+  memoryData: any; 
 
   private apiEndPoit2 = environment.supportAPI2;
 
@@ -35,7 +39,9 @@ export class InboxComponent implements OnInit {
     private router: Router,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-  ) { }
+  ) { 
+    this.getUserData();
+  }
 
   swtichActivePage(page){
     if (page === 'new-post') {
@@ -56,34 +62,35 @@ export class InboxComponent implements OnInit {
     }
   }
 
+  
+  routeToInbox(computerNo, tkCatId){
+    if (computerNo !== undefined && tkCatId !== undefined) {
+      this.isNewPost = true;
+      this.isTopicList = false;
+      this.isPostDetail = false;
+      this.router.navigate(['/app/router/inbox-details', {computerNo: computerNo, tkCatId: tkCatId}])
+
+      // this.router.navigate(['/app/router/support', {computerNo: computerNo, tkCatId: tkCatId}])
+    }
+   
+  }
   closePage(){
     this.isNewPost = false;
     this.isPostDetail = false;
     this.isTopicList = true;
   }
-
-  getForumData() {
-    this.http.post(this.apiLink, {params : {id : 1}}).subscribe({
-      next: (data) => {
-        console.log('inbox data', data);
-      },
-      error: data => {
-        console.log('error', data);
-      }
-    });
+  getUserData() {
+    this.memoryData = JSON.parse(sessionStorage.getItem('userData'));
+    console.log('from support', this.memoryData);
+    this.computerNo = this.memoryData?.computerNo;
+    this.id = this.memoryData?.memberId;
+    console.log('computer no', this.computerNo, 'memberId', this.id);
   }
-
-  memoryData: any = localStorage.getItem('userData');
-
-test(){
-  console.log('from support inbox', this.memoryData);
-  
-}
 
 async loadingModal() {
   this.loadingScreen = await this.loadingCtrl.create({
     cssClass: "my-custom-class",
-    message: "Sign-in...",
+    message: "Loading...",
   });
 
   return await this.loadingScreen.present();
@@ -105,13 +112,21 @@ async alertModal(title: string, message: string) {
 get() {
   this.loadingModal();
 
-  // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, { param: [] }).subscribe({
-  this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.id}/${this.plusConversations}`, { }).subscribe({
+  console.log('passed arg', this.id, this.computerNo, this.plusConversations);
+  
+
+  this.http.get(`${this.apiEndPoit2}${this.computerNo}/0/${this.plusConversations}`, { }).subscribe({
     next: data => {
-      console.log('sent successfully', data);
+      console.log('message gotten from ticket', data);
+      this.responseData = data;
       // localStorage.setItem('userData', JSON.stringify(data));
-      this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message Succefully'); });
-      this.router.navigate(['./app/router/dashboard']);
+      this.loadingScreen?.dismiss();
+      // this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message loaded Succefully'); });
+      // setTimeout(() => {
+      // this.loadingScreen?.dismiss();
+        
+      // }, 500);
+      
     },
     error: data => {
       console.log('something went wrong', data);
@@ -123,9 +138,8 @@ get() {
   });
 }
   
+
   ngOnInit() {
-    this.getForumData();
-    this.test();
-    // this.get()
+    this.get()
   }
 }

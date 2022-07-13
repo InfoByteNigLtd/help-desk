@@ -1,35 +1,37 @@
 <div class="wrapper">
   <div class="image">
+    <span>Compose Ticket Message</span>
     <img src="../../assets/images/Delta-state-logo.png" alt="stateLogo">
   </div>
   <div class="form-div">
-    <form action="#">
-      <div class="holder" style="display:flex;flex-direction: column;">
-        <!-- <label for="">Submit a ticket</label><br> -->
-        <ion-item>
+    <div class="holder" style="display:flex;flex-direction: column;">
+      <ion-item style="padding: 10px;">
         <ion-label color="primary" position="floating">Subject</ion-label>
-        <ion-input maxlength="50" clearInput  placeholder="Subject..." (ionBlur)="updateSubject($event)" ></ion-input>
-        </ion-item>
+        <ion-input maxlength="50" clearInput placeholder="Subject..." (ionBlur)="updateSubject($event)"></ion-input>
+      </ion-item>
 
-        <ion-item>
-          <ion-label color="primary" position="floating">Post message</ion-label>
-          <ion-textarea maxlength="700" rows="10" cols="20" placeholder="Type your post here. 700 max word..." (ionBlur)="updateDescripton($event) "></ion-textarea>
-        <!-- <ion-input maxlength="50" clearInput  placeholder="Subject..." (ionBlur)="updateSubject($event)" ></ion-input> -->
-        </ion-item>
-        <!-- <input  (value)="updateSubject($event)"type="text" placeholder="Subject..." name="Subject"> -->
-        <!-- <textarea placeholder="your message here..." name="message"></textarea> -->
-        <ion-select interface="action-sheet" placeholder="select an option" required (ionBlur)=" updateTicketId($event)">
+      <ion-item style="padding: 10px;">
+        <ion-label color="primary" position="floating">Post message</ion-label>
+        <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..." (ionBlur)="updateDescripton($event) ">
+        </ion-textarea>
+      </ion-item>
+      <!-- <ion-textarea maxlength="700" rows="10" cols="20" placeholder="Type your post here. 700 max word..." (ionBlur)="updateDescripton($event) "></ion-textarea> -->
+
+      <!-- <input  (value)="updateSubject($event)"type="text" placeholder="Subject..." name="Subject"> -->
+      <!-- <textarea placeholder="your message here..." name="message"></textarea> -->
+      <div class="select" style="background-color: rgb(133, 137, 245); border-radius:5px">
+        <ion-select interface="action-sheet" placeholder="select an option" required
+          (ionBlur)=" updateTicketId($event)">
           <ion-select-option value="1">Application</ion-select-option>
           <ion-select-option value="2">Certificate</ion-select-option>
           <ion-select-option value="3">PFA</ion-select-option>
           <ion-select-option value="4">Technical</ion-select-option>
         </ion-select>
-
-        <ion-button (click)="validateInput()">submit</ion-button>
       </div>
 
 
-    </form>
+      <ion-button (click)="validateInput()">submit</ion-button>
+    </div>
   </div>
-  
+
 </div>

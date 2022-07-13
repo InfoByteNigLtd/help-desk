@@ -1,18 +1,17 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable no-trailing-spaces */
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { environment } from 'src/environments/environment';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterContentChecked {
 
   public email;
   public password;
@@ -29,42 +28,24 @@ export class LoginComponent implements OnInit {
   getStatus(): string {
     return sessionStorage.getItem('userStatus');
   }
-  setStatus(value: string){
+  setStatus(value: string) {
     sessionStorage.setItem('userStatus', value);
   }
 
 
-//   data: any = { 
-//     accruedRight: 0
-// accruedRightPaid: 0
-// applicationStatus: "Certificate not yet Prepared"
-// certificateNumber: "NA"
-// certificateReady: false
-// computerNo: "1000139"
-// dateRetired: "2022-07-01T00:00:00"
-// employeeAmount: 6490.79
-// employerAmount: 23760.7
-// firstName: "STEPHEN"
-// indebtedness: 0
-// memberId: 1
-// middleName: "S"
-// paymentSchedule: "Not yet Released"
-// pfaCode: "ARM"
-// picture: null
-// pinNo: "PEN678668903322"
-// processedMonth: 0
-// processedYear: 0
-// registered: false
-// surname: "NWAINOKPO"
-
-//   }
   constructor(
     private http: HttpClient,
     private router: Router,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
+    private ref: ChangeDetectorRef,
 
   ) { }
+
+
+  ngAfterContentChecked(): void {
+    this.ref.detectChanges();
+  }
 
   updateEmail(value) {
     this.email = value;
@@ -81,22 +62,25 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.loadingModal();
-      // this.http.post(this.apiEndPoit, {email: this.email, password: this.password}).subscribe({
-      //   next: data => {
-      //     console.log('sent successfully');
 
-      //   }
-      //test username and password;
       let userIdentity = 'ukah@gmail.com';
       let passcode = 'Ukah@gmail.com123'
 
-      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {param: []}).subscribe({
+      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }).subscribe({
         next: data => {
           console.log('sent successfully', data);
           sessionStorage.setItem('userData', JSON.stringify(data));
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'login Succefully'); });
-          this.setStatus('active');
-          this.gotoDashboard();
+          // stop the first loadingModal
+          this.loadingScreen?.dismiss();
+          // show login success loading
+          this.loadingModal('Login successful...');
+          setTimeout(() => {
+            this.loadingScreen?.dismiss().then(() => {
+              this.setStatus('active');
+              this.gotoDashboard();
+            });
+          }, 1000);
+
         },
         error: data => {
           console.log('something went wrong', data);
@@ -124,10 +108,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-  async loadingModal() {
+  async loadingModal(message: string = "Sign-in...") {
     this.loadingScreen = await this.loadingCtrl.create({
       cssClass: "my-custom-class",
-      message: "Sign-in...",
+      message: message,
     });
 
     return await this.loadingScreen.present();
@@ -146,7 +130,7 @@ export class LoginComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('userData');
     this.setStatus('inactive');
     this.router.navigate(['/login']);
@@ -154,13 +138,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.getStatus() != undefined && this.getStatus() == 'inactive') {
-    this.isLogin = true;
-    this.isLogout = false;
-    } else {
+    console.log('workinng on login');
+
+    let lStatus = this.getStatus();
+    console.log('status', lStatus);
+
+    if (lStatus === 'active') {
+      console.log('active');
+
       this.isLogin = false;
       this.isLogout = true;
-      this.setStatus('inactive');
+    } else {
+      console.log('inactive');
+
+      this.isLogin = true;
+      this.isLogout = false;
     }
 
   }

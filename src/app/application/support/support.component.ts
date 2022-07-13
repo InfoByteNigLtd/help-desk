@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
@@ -17,13 +17,25 @@ export class SupportComponent implements OnInit {
   public description;
   public status: any = 'new';
   loadingScreen!: HTMLIonLoadingElement;
+  plusConversation: boolean = false;
+  private tkCatId: any;
 
   private apiEndPoit2 = environment.supportAPI;
 
   constructor(private router: Router,
     private http: HttpClient,
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController,) { }
+    private loadingCtrl: LoadingController,
+    private activatedRoute: ActivatedRoute,
+    ) { 
+      this.activatedRoute.params.subscribe( param => {
+        console.log('params from suppoort', param);
+        
+        this.computerNo = param.computerNo;
+        this.tkCatId = param.tkCatId;
+        console.log('recieved data from route', this.computerNo, this.tkCatId);
+      });
+    }
 
   async loadingModal() {
     this.loadingScreen = await this.loadingCtrl.create({
@@ -47,7 +59,7 @@ export class SupportComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  memoryData: any = localStorage.getItem('userData');
+  memoryData: any = sessionStorage.getItem('userData');
 
   verifyLogin() {
     if (this.memoryData == undefined || this.memoryData == null) {
@@ -118,8 +130,24 @@ export class SupportComponent implements OnInit {
     }
   }
 
+  get() {
+    // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, { param: [] }).subscribe({
+    this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.tkCatId}/true`, { }).subscribe({
+      next: data => {
+        console.log('inbox details received', data);
+        // this.responseData = data.conversationDTOs;
+        // localStorage.setItem('userData', JSON.stringify(data));
+        this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
+      },
+      error: data => {
+        console.log('something went wrong', data);
+      }
+    });
+  }
+
   ngOnInit() {
     this.verifyLogin();
+    this.get();
   }
 
 }

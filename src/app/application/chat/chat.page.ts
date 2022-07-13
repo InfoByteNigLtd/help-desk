@@ -17,7 +17,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   public userName: string;
 
 
-  public userFirstName = 'Frank';
+  public userFirstName = '';
   public questions: any = [
     {id: 1, question: 'Guess you are doing well?'},
     {id: 2, question: 'Would you like to know update about your pension status'},
@@ -135,7 +135,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
 
   
-  memoryData: any = localStorage.getItem('userData');
+  memoryData: any = sessionStorage.getItem('userData');
 
   verifyLogin(){
     if (this.memoryData == undefined || this.memoryData == null ) {
@@ -150,12 +150,10 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
   getUserData(){
     this.memoryData = JSON.parse(this.memoryData);
-    console.log('from local storage chT',this.memoryData);
+    console.log('from local storage chat',this.memoryData);
     this.memoryData?.fullname; 
-    this.userFirstName = this.memoryData?.fullname.split(" ");
-    // this.userFirstName = `${this.userName?.[0]} ${this.userName?.[1]}`;
-    console.log('working', this.userFirstName);
-    
+    this.userName = this.memoryData?.fullname.split(" ");
+    this.userName = `${this.userName?.[0]} ${this.userName?.[1]}`;
 
   }
 

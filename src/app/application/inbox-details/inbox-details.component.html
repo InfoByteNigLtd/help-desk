@@ -1,0 +1,54 @@
+<div class="post-wrapper">
+  <div class="post-content">
+    <div class="header" *ngFor="let item of responseData">
+      <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items:center">
+        <div class="poster-avatar">
+          <img [src]="posterImage" alt="poster-image">
+        </div>
+        <div class="poster-name">{{item.memberName}}</div>
+      </div>
+      <div class="posted-time">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="main-post" *ngFor="let item of responseData">
+      <div class="post-message">{{item.subject}}</div>
+      <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
+      <div class="reactions">
+        <div class="likes">
+          <span>{{reactions.likes}}</span>
+          <app-font-icon
+          iconType="remix"
+          iconName="thumb-up-line"
+          iconColor="primary-icon"
+          iconSize="custom"
+         style="margin-left: 10px;"></app-font-icon>
+        </div>
+    
+        <div class="no-of-comment">
+          <span>{{reactions.commentNo}}</span>
+          <app-font-icon
+          iconType="remix"
+          iconName="chat-3-line"
+          iconColor="primary-icon"
+          iconSize="custom"
+         style="margin-left: 10px;"></app-font-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <div class="comment-input">
+        <ion-item class="send">
+          <ion-textarea placeholder="Enter comment here..." (ionBlur)="getPostTopic($event)"></ion-textarea>
+            <ion-button color="primary" (click)=" submit()">Comment</ion-button>
+          </ion-item>
+    </div>
+    <div class="comments">
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
+    </div>
+  </div>
+</div>
