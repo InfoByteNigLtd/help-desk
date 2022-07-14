@@ -1,7 +1,14 @@
 <ion-content>
   <div class="forum-page-wrapper" *ngIf="isTopicList">
     <div class="forum-header">
-      <div class="title">Support</div>
+      <div class="title">
+        <div class="back-button" (click)="backButton()">
+          <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+        </div>
+        <span class="sub-title">
+          Support
+        </span>
+        </div>
       <!-- <div class="search-area">
         <input type="text" placeholder="search topics">
       </div> -->
@@ -29,8 +36,4 @@
   <div class="post-details" *ngIf="isPostDetail">
     <app-post-detail></app-post-detail>
   </div>
-
-  <new-post *ngIf="isNewPost">
-    <app-support></app-support>
-  </new-post>
 </ion-content>

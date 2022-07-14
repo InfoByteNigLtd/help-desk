@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './inbox-details.component.html',
   styleUrls: ['./inbox-details.component.scss'],
 })
-export class InboxDetailsComponent implements OnInit {
+export class InboxDetailsComponent implements OnInit, AfterContentChecked {
 
   @Input() image: string = "../assets/images/images.jpg";
   posterImage = "../assets/images/images.jpg";
@@ -27,8 +27,11 @@ export class InboxDetailsComponent implements OnInit {
   private ticketId: any;
   responseData : any = [];
   commentData: any = [];
+  responseToQuestionsAsked :any;
 
   private apiEndPoit2 = environment.supportAPI;
+  private apiEndPoit1 = environment.supportAPI3;
+
 
 
   constructor(private router: Router,
@@ -36,6 +39,7 @@ export class InboxDetailsComponent implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private activatedRoute: ActivatedRoute,
+    protected ref: ChangeDetectorRef
     ) { 
       this.activatedRoute.params.subscribe( param => {
         console.log('params from suppoort', param);
@@ -47,10 +51,14 @@ export class InboxDetailsComponent implements OnInit {
       });
     }
 
+    ngAfterContentChecked(): void {
+      this.ref.detectChanges();
+    }
+
   async loadingModal() {
     this.loadingScreen = await this.loadingCtrl.create({
       cssClass: "my-custom-class",
-      message: "Sign-in...",
+      message: "Loading...",
     });
 
     return await this.loadingScreen.present();
@@ -72,10 +80,12 @@ export class InboxDetailsComponent implements OnInit {
   getComment() {
     this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.ticketId}/true`, { }).subscribe({
       next: data => {
+        console.log('computerno', this.computerNo, 'ticketId', this.ticketId);
+        
         console.log('inbox details received working', data);
         this.responseData = data;
-        this.commentData = data[0].conversationDTOs;
-        console.log('from inbox details',this.responseData);
+        this.commentData = data[0].conversationDTOs.slice();
+        console.log('passed from inbox details',this.responseData);
 
 
         // this.responseData = data.conversationDTOs;
@@ -89,27 +99,35 @@ export class InboxDetailsComponent implements OnInit {
   }
 
   getPostTopic(event) {
-    this.postTopic = event.target.value;
+    this.responseToQuestionsAsked = event.target.value;
     console.log(event.target.value);
   }
 
 
   submit() {
-    console.log('entered values', this.postTopic);
-    this.http.post(`${this.apiEndPoit2}${this.computerNo}/${this.tkCatId}/true`, { }).subscribe({
+    console.log('entered values', this.responseToQuestionsAsked);
+      this.loadingModal();
+      this.http.post(this.apiEndPoit1, {
+        "ticketId": this.ticketId,
+        "response": this.responseToQuestionsAsked
+    }).subscribe({
       next: data => {
         console.log('inbox details received working', data);
-        this.responseData = data;
-        // this.responseData = data['conversationDTOs'];
-        // console.log('from inbox details',this.responseData);
-        
-        // localStorage.setItem('userData', JSON.stringify(data));
-        this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
+        this.loadingScreen?.dismiss();
+        this.getComment();
       },
       error: data => {
         console.log('something went wrong', data);
+        this.loadingScreen?.dismiss();
       }
     });
+
+    
+    this.responseToQuestionsAsked = '';
+  }
+
+  backButton(){
+    this.router.navigate(['/app/router/inbox']);
   }
 
   ngOnInit() {

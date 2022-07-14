@@ -20,7 +20,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   public userFirstName = '';
   public questions: any = [
     {id: 1, question: 'Guess you are doing well?'},
-    {id: 2, question: 'Would you like to know update about your pension status'},
+    {id: 2, question: 'Would you like to know update about your application status'},
     {id: 3, question: 'Oops!!! No update on your status now'},
     {id: 4, question: 'How about your payment approval, would you like to know about it?'},
     {id: 5, question: 'Payment process is yet to commence. You can ask me later '},
@@ -124,6 +124,8 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     this.router.navigate(['/router/support']);
   }
   ngOnInit(): void {
+    
+    this.getUserData();
     this.verifyLogin();
     setTimeout(() => {
        this.postQuestion();
@@ -132,7 +134,53 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
    
 
   }
+  // "memberId": 3,
+  // "computerNo": "10000377",
+  // "registered": true,
+  // "surname": "UKAH",
+  // "firstName": "ANTHONIA",
+  // "middleName": "NWAUKPO",
+  // "pfaCode": "OAK",
+  // "pinNo": "PEN200516688213",
+  // "picture": null,
+  // "processedMonth": 0,
+  // "processedYear": 0,
+  // "indebtedness": 0,
+  // "dateRetired": null,
+  // "accruedRight": 10585354,
+  // "accruedRightPaid": 0,
+  // "employeeAmount": 0,
+  // "employerAmount": 0,
+  // "certificateReady": false,
+  // "certificateNumber": "NA",
+  // "paymentSchedule": "Not yet Released",
+  // "applicationStatus": "Certificate not yet Prepared",
+  // "tickets": null
 
+  testData = {
+    "memberId": 3,
+    "computerNo": "10000377",
+    "registered": true,
+    "surname": "UKAH",
+    "firstName": "ANTHONIA",
+    "middleName": "NWAUKPO",
+    "pfaCode": "OAK",
+    "pinNo": "PEN200516688213",
+    "picture": null,
+    "processedMonth": 0,
+    "processedYear": 0,
+    "indebtedness": 0,
+    "dateRetired": null,
+    "accruedRight": 10585354,
+    "accruedRightPaid": 0,
+    "employeeAmount": 0,
+    "employerAmount": 0,
+    "certificateReady": false,
+    "certificateNumber": "NA",
+    "paymentSchedule": "Not yet Released",
+    "applicationStatus": "Certificate not yet Prepared",
+    "tickets": null
+  }
 
   
   memoryData: any = sessionStorage.getItem('userData');
@@ -148,13 +196,13 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  getUserData(){
-    this.memoryData = JSON.parse(this.memoryData);
+  async getUserData(){
+    this.memoryData = await JSON.parse(this.memoryData);
     console.log('from local storage chat',this.memoryData);
-    this.memoryData?.fullname; 
-    this.userName = this.memoryData?.fullname.split(" ");
-    this.userName = `${this.userName?.[0]} ${this.userName?.[1]}`;
-
+    const fullname = this.memoryData?.fullname.split(" ");
+    this.userName = `${fullname?.[0]} ${fullname?.[1]}`;
+    this.userFirstName = fullname?.[0];
+    console.log('user name', this.userFirstName);
   }
 
 }

@@ -45,32 +45,14 @@ export class InboxComponent implements OnInit {
 
   swtichActivePage(page){
     if (page === 'new-post') {
-      this.isNewPost = true;
-      this.isTopicList = false;
-      this.isPostDetail = false;
       this.router.navigate(['/app/router/support'])
-    }
-    else if (page === 'post-detail') {
-      this.isNewPost = false;
-      this.isTopicList = false;
-      this.isPostDetail = true;
-    }
-    else if (page === 'topic-list') {
-      this.isNewPost = false;
-      this.isTopicList = true;
-      this.isPostDetail = false;
     }
   }
 
   
   routeToInbox(computerNo, tkCatId, ticketId){
     if (computerNo !== undefined && tkCatId !== undefined) {
-      this.isNewPost = true;
-      this.isTopicList = false;
-      this.isPostDetail = false;
       this.router.navigate(['/app/router/inbox-details', {computerNo: computerNo, tkCatId: tkCatId, ticketId: ticketId}])
-
-      // this.router.navigate(['/app/router/support', {computerNo: computerNo, tkCatId: tkCatId}])
     }
    
   }
@@ -139,7 +121,10 @@ get() {
     }
   });
 }
-  
+
+backButton(){
+  this.router.navigate(['/app/router/dashboard']);
+}
 
   ngOnInit() {
     this.get()

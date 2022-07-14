@@ -20,7 +20,7 @@ export class SupportComponent implements OnInit {
   plusConversation: boolean = false;
   private tkCatId: any;
 
-  private apiEndPoit2 = environment.supportAPI;
+  private apiEndPoit2 = environment.supportAPI2;
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -110,17 +110,11 @@ export class SupportComponent implements OnInit {
     }
     else {
       this.loadingModal();
-      // "ticketCategoryId": 1,
-      // "computerNo": "10000377",
-      // "subject": "test from swagger",
-      // "description": "testing testing 2",
-      // "status": "new"
-
-      // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, { param: [] }).subscribe({
       this.http.post(this.apiEndPoit2, {
-        "ticketCategoryId": 1,
-        "computerNo": "10000377",
-        "subject": "PostMan",
+        "ticketCategoryId": this.ticketCategoryId,
+        "computerNo": this.computerNo,
+        "subject": this.subject,
+        "description": this.description,
         "status": "new"
     }).subscribe({
         next: data => {
@@ -153,6 +147,10 @@ export class SupportComponent implements OnInit {
         console.log('something went wrong', data);
       }
     });
+  }
+
+  backButton(){
+    this.router.navigate(['/app/router/inbox']);
   }
 
   ngOnInit() {

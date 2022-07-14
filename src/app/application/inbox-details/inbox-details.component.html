@@ -1,24 +1,31 @@
 <div class="post-wrapper">
   <div class="post-content">
-    <div class="header" *ngFor="let item of responseData">
-      <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items:center">
-        <div class="poster-avatar">
-          <img [src]="posterImage" alt="poster-image">
-        </div>
-        <div class="poster-name">{{item.memberName}}</div>
+    <div class="header" >
+      <!-- *ngFor="let item of responseData" -->
+      <!-- {{item.memberName}} -->
+      <!-- {{item.entryDate | date: 'dd/MM/yyyy'}} -->
+      <!-- *ngFor="let item of responseData" -->
+      <!-- {{item.subject}} -->
+      <!-- {{item.entryDate | date: 'dd/MM/yyyy'}} -->
+      <div  class="title">
+          <div class="back-button" (click)="backButton()">
+            <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+          </div>
+        <div class="sub-title">Ticket Response</div>
       </div>
-      <div class="posted-time">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
+      <div class="posted-time"></div>
     </div>
-    <div class="main-post" *ngFor="let item of responseData">
-      <div class="post-message">{{item.subject}}</div>
-      <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
+    <div class="main-post" *ngFor="let item of responseData" >
+      <div class="post-topic">{{item.subject}}</div>
+      <div class="post-desc">{{item.description}}</div>
+      <i class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</i>
     </div>
   </div>
 
   <div class="comment-section">
     <div class="comment-input">
         <div class="send">
-          <textarea placeholder="Enter comment here..." (ionBlur)="getPostTopic($event)"></textarea>
+          <textarea [(ngModel)] = "responseToQuestionsAsked"  placeholder="Enter comment here..." ></textarea>
             <span class="button" (click)=" submit()">Send</span>
         </div>
     </div>

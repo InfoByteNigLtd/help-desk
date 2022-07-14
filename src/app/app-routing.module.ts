@@ -14,10 +14,6 @@ const routes: Routes = [
     loadChildren: () => import('./application/application.module').then(m => m.ApplicationPageModule)
   },
   {
-    path: 'component',
-    loadChildren: () => import('./component/component.module').then( m => m.ComponentPageModule)
-  },
-  {
     path: 'login',
     component: LoginComponent
   },

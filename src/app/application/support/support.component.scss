@@ -5,11 +5,40 @@
     flex-direction: column;
     background-color: #75c5f0;
 
+    .header {
+        display: flex;
+        // justify-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        top: 0;
+        padding-top: 20px;
+
+        .back-button {
+            background-color: #5ab7f4;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 2px;
+        }
+
+        .text {
+            text-align: center;
+            font-size: 24px;
+            color: #000;
+            font-weight: 600;
+        }
+    }
+
     ion-item {
         --background: #f7f7f7;
         // box-shadow: 2px 2px 15px 5px #cfcfcf;
 
-        ion-input, ion-textarea, ion-select {
+        ion-input,
+        ion-textarea,
+        ion-select {
             --border-bottom: none;
             --outline: none;
             --padding-left: 10px;
@@ -18,11 +47,11 @@
             --padding-top: 10px;
             --color: #000;
         }
-     
+
     }
 
     .image {
-        span{
+        span {
             display: flex;
             font-size: 14px;
             text-transform: uppercase;
@@ -32,6 +61,7 @@
             padding-left: 80px;
             font-weight: 700;
         }
+
         img {
             width: 100vw;
             display: flex;

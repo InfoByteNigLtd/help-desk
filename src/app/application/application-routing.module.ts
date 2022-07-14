@@ -21,16 +21,16 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
+        path: 'inbox',
+        component: InboxComponent
+      },
+      {
         path: 'support',
         component: SupportComponent
       },
       {
         path: 'inbox-details',
         component: InboxDetailsComponent
-      },
-      {
-        path: 'inbox',
-        component: InboxComponent
       },
       {
         path: 'ticket',
