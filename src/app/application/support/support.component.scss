@@ -7,8 +7,6 @@
 
     ion-item {
         --background: #f7f7f7;
-        --border-top-left-radius: 20px;
-        --border-top-right-radius: 20px;
         // box-shadow: 2px 2px 15px 5px #cfcfcf;
 
         ion-input, ion-textarea, ion-select {
@@ -18,9 +16,9 @@
             --padding-right: 10px;
             --padding-bottom: 10px;
             --padding-top: 10px;
-            --border-radius: 20px;
             --color: #000;
         }
+     
     }
 
     .image {
@@ -52,7 +50,7 @@
         display: flex;
         z-index: 2;
         margin: auto;
-        padding: 50px;
+        padding: 15px;
 
         form {
             display: flex;
@@ -110,4 +108,12 @@
             }
         }
     }
+}
+
+.select {
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }

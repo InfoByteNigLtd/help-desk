@@ -11,6 +11,7 @@ export class CommentComponent implements OnInit {
 
   @Input() reactions: any = {likes: 1, commentNo: 20};
  @Input() commentId: any;
+ @Input() commentDate:any;
 
   constructor() { }
 

@@ -8,7 +8,7 @@
     </div>
 
     <div class="forum-topic-wrapper">
-      <div class="topic-card" *ngFor="let item of responseData" (click)="routeToInbox(item.computerNo, item.ticketCategoryId)">
+      <div class="topic-card" *ngFor="let item of responseData" (click)="routeToInbox(item.computerNo, item.ticketCategoryId,  item.ticketId)">
         <div class="post-topic">{{item.subject}}</div>
         <div class="poster-detail">
           <div class="avatar">

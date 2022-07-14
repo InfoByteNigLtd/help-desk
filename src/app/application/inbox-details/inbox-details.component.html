@@ -12,43 +12,20 @@
     <div class="main-post" *ngFor="let item of responseData">
       <div class="post-message">{{item.subject}}</div>
       <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
-      <div class="reactions">
-        <div class="likes">
-          <span>{{reactions.likes}}</span>
-          <app-font-icon
-          iconType="remix"
-          iconName="thumb-up-line"
-          iconColor="primary-icon"
-          iconSize="custom"
-         style="margin-left: 10px;"></app-font-icon>
-        </div>
-    
-        <div class="no-of-comment">
-          <span>{{reactions.commentNo}}</span>
-          <app-font-icon
-          iconType="remix"
-          iconName="chat-3-line"
-          iconColor="primary-icon"
-          iconSize="custom"
-         style="margin-left: 10px;"></app-font-icon>
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="comment-section">
     <div class="comment-input">
-        <ion-item class="send">
-          <ion-textarea placeholder="Enter comment here..." (ionBlur)="getPostTopic($event)"></ion-textarea>
-            <ion-button color="primary" (click)=" submit()">Comment</ion-button>
-          </ion-item>
+        <div class="send">
+          <textarea placeholder="Enter comment here..." (ionBlur)="getPostTopic($event)"></textarea>
+            <span class="button" (click)=" submit()">Send</span>
+        </div>
     </div>
-    <div class="comments">
-        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
-        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
-        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
-        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
-        <app-comment [reactions]="reactions" [postComment]="postComment"></app-comment>
-    </div>
+
+      <div class="outgoing"  *ngFor="let comment of commentData" >
+        <div class="res">{{comment.response}}</div>
+        <div class="date">{{comment.entryDate| date: 'dd/MM/yyyy'}}</div>
+      </div>
   </div>
 </div>

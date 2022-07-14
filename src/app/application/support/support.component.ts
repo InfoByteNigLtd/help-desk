@@ -40,7 +40,7 @@ export class SupportComponent implements OnInit {
   async loadingModal() {
     this.loadingScreen = await this.loadingCtrl.create({
       cssClass: "my-custom-class",
-      message: "Sign-in...",
+      message: "Please Wait...",
     });
 
     return await this.loadingScreen.present();
@@ -110,13 +110,23 @@ export class SupportComponent implements OnInit {
     }
     else {
       this.loadingModal();
+      // "ticketCategoryId": 1,
+      // "computerNo": "10000377",
+      // "subject": "test from swagger",
+      // "description": "testing testing 2",
+      // "status": "new"
 
       // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, { param: [] }).subscribe({
-      this.http.post(`${this.apiEndPoit2}${this.ticketCategoryId}${this.computerNo}${this.subject}${this.description}${this.status}`, { param: [] }).subscribe({
+      this.http.post(this.apiEndPoit2, {
+        "ticketCategoryId": 1,
+        "computerNo": "10000377",
+        "subject": "PostMan",
+        "status": "new"
+    }).subscribe({
         next: data => {
           console.log('sent successfully', data);
           // localStorage.setItem('userData', JSON.stringify(data));
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message Succefully'); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message sent Succefully'); });
           this.router.navigate(['./app/router/dashboard']);
         },
         error: data => {

@@ -31,7 +31,7 @@ export class InboxComponent implements OnInit {
   loadingScreen!: HTMLIonLoadingElement;
   memoryData: any; 
 
-  private apiEndPoit2 = environment.supportAPI2;
+  private apiEndPoit2 = environment.supportAPI;
 
 
   constructor(
@@ -63,12 +63,12 @@ export class InboxComponent implements OnInit {
   }
 
   
-  routeToInbox(computerNo, tkCatId){
+  routeToInbox(computerNo, tkCatId, ticketId){
     if (computerNo !== undefined && tkCatId !== undefined) {
       this.isNewPost = true;
       this.isTopicList = false;
       this.isPostDetail = false;
-      this.router.navigate(['/app/router/inbox-details', {computerNo: computerNo, tkCatId: tkCatId}])
+      this.router.navigate(['/app/router/inbox-details', {computerNo: computerNo, tkCatId: tkCatId, ticketId: ticketId}])
 
       // this.router.navigate(['/app/router/support', {computerNo: computerNo, tkCatId: tkCatId}])
     }
@@ -119,6 +119,8 @@ get() {
     next: data => {
       console.log('message gotten from ticket', data);
       this.responseData = data;
+      console.log('full post', this.responseData);
+      
       // localStorage.setItem('userData', JSON.stringify(data));
       this.loadingScreen?.dismiss();
       // this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message loaded Succefully'); });

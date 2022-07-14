@@ -1,8 +1,8 @@
 <div class="comment-wrapper">
   <div class="post">{{postComment}}</div>
   <div class="reactions">
-    <div class="likes">
-      <span>{{reactions.likes}}</span>
+    <div class="likes" *ngIf="reactions?.likes">
+      <span>{{reactions?.likes ? reactions?.likes : ''}}</span>
       <app-font-icon
       iconType="remix"
       iconName="thumb-up-line"
@@ -11,8 +11,8 @@
      style="margin-left: 10px;"></app-font-icon>
     </div>
 
-    <div class="no-of-comment">
-      <span>{{reactions.commentNo}}</span>
+    <div class="no-of-comment" *ngIf="reactions?.commentNo">
+      <span>{{reactions?.commentNo ? reactions.commentNo : ''}}</span>
       <app-font-icon
       iconType="remix"
       iconName="chat-3-line"
@@ -20,5 +20,6 @@
       iconSize="custom"
      style="margin-left: 10px;"></app-font-icon>
     </div>
+    <div>{{commentDate ? commentDate : 0}}</div>
   </div>
 </div>

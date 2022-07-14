@@ -24,7 +24,9 @@ export class InboxDetailsComponent implements OnInit {
   loadingScreen!: HTMLIonLoadingElement;
   computerNo: any;
   private tkCatId: any;
+  private ticketId: any;
   responseData : any = [];
+  commentData: any = [];
 
   private apiEndPoit2 = environment.supportAPI;
 
@@ -40,7 +42,8 @@ export class InboxDetailsComponent implements OnInit {
         
         this.computerNo = param.computerNo;
         this.tkCatId = param.tkCatId;
-        console.log('recieved data from route', this.computerNo, this.tkCatId);
+        this.ticketId = param.ticketId;
+        console.log('recieved data from route', this.computerNo, this.tkCatId, this.ticketId);
       });
     }
 
@@ -66,11 +69,15 @@ export class InboxDetailsComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
-  get() {
-    this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.tkCatId}/true`, { }).subscribe({
+  getComment() {
+    this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.ticketId}/true`, { }).subscribe({
       next: data => {
         console.log('inbox details received working', data);
         this.responseData = data;
+        this.commentData = data[0].conversationDTOs;
+        console.log('from inbox details',this.responseData);
+
+
         // this.responseData = data.conversationDTOs;
         // localStorage.setItem('userData', JSON.stringify(data));
         this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
@@ -93,7 +100,9 @@ export class InboxDetailsComponent implements OnInit {
       next: data => {
         console.log('inbox details received working', data);
         this.responseData = data;
-        // this.responseData = data.conversationDTOs;
+        // this.responseData = data['conversationDTOs'];
+        // console.log('from inbox details',this.responseData);
+        
         // localStorage.setItem('userData', JSON.stringify(data));
         this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
       },
@@ -104,7 +113,7 @@ export class InboxDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.get();
+    this.getComment();
   }
 
 }
