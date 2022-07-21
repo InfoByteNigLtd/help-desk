@@ -22,7 +22,14 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
 
   public userFirstName = '';
-  public memberId: any; qCounter: number = 0;  // chat bot question coutner
+  computerNo: any;
+  responseA: string = 'A';
+  responseB: string = 'B';
+  responseC: string = 'C';
+  responseD: string = 'D';
+
+  public memberId: any;
+  qCounter: number = 0;  // chat bot question coutner
   rCounter: number = 0;  // user response counter
   mCounter: number = 1;  // chat message counter
   showQResponse: boolean = false;
@@ -64,40 +71,40 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   public realQuestions: any = [
     {id: 1, question: 'Hello '},
     {id: 2, question: 'click on any of the question below to get your updates'},
-    {id: 3, question: 'Certificate ready?'},
-    {id: 4, question: 'Is accrued right paid?'},
-    {id: 5, question: 'whats my payment status?'},
-    {id: 6, question: 'What\'s my application status?'},
+    {id: 3, question: 'Application Status?'},
+    {id: 4, question: 'Accrued right?'},
+    {id: 5, question: 'Total Contribution?'},
+    {id: 6, question: 'When is my Payment Schedule?'},
     {id: 7, question: 'click here to send your message to helpdesk center'}
   ];
 
   public mainQuestions: any = {
-   "certificateReady" : "not yet", 
+   "applicationStatus" : "not yet available", 
    "accruedRightPaid": 0, 
-   "paymentSchedule": 'not yet scheduled', 
-   "applicationStatus": ''
+   "totalContribution": 0, 
+   "paymentSchedule": 'not yet approved'
   }
 
   public selectedQuestion(id: number) {
-    console.log('clicked', id);
+    console.log('clicked no', id);
     switch(id){
-      case 3: this.showAnswer(this.mainQuestions.certificateReady); break;
-      case 4: this.showAnswer(this.mainQuestions.accruedRightPaid); break;
-      case 5: this.showAnswer(this.mainQuestions.paymentSchedule); break;
-      case 6: this.showAnswer(this.mainQuestions.applicationStatus); break;
+      case 3: this.showAnswer(this.mainQuestions.applicationStatus); this.newGetUserAnswers('A'); break;
+      case 4: this.showAnswer(this.mainQuestions.accruedRightPaid); this.newGetUserAnswers('B'); break;
+      case 5: this.showAnswer(this.mainQuestions.totalContribution); this.newGetUserAnswers('C'); break;
+      case 6: this.showAnswer(this.mainQuestions.paymentSchedule); this.newGetUserAnswers('D'); break;
       default: this.showAnswer("Please click on any question"); break;
     }
   }
 
 
-  public showAnswer(answer: string) {
+  public showAnswer(answer: string,) {
     console.log('i worked');
     
     this.showQResponse = true;
     this.qAnswer = answer;
     setTimeout(() => {
       this.showQResponse = false;
-    }, 5000);
+    }, 10000);
   }
  
   ngAfterContentChecked(): void {
@@ -171,14 +178,37 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   }
  
   getUserAnswers(){
+    // http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/100050/D
 
     this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/ ${this.memberId}`).subscribe((data: any) => {
       console.log('member data', data);
-      this.mainQuestions.accruedRightPaid = data?.accruedRightPaid == 0 ? 'You currently do not have accrued right paid': data?.accruedRightPaid;
       this.mainQuestions.applicationStatus = 'application status -' + data?.applicationStatus;
-      this.mainQuestions.paymentSchedule = 'payment status - ' + data?.paymentSchedule;
+      this.mainQuestions.accruedRightPaid = data?.accruedRightPaid == 0 ? 'You currently do not have accrued right paid': data?.accruedRightPaid;
+      this.mainQuestions.totalContribution = 'payment status - ' + data?.paymentSchedule;
       this.mainQuestions.certificateReady = data?.certificateReady == false ? 'Your certificate is not yet ready': data?.certificateReady ;
       console.log('user answerr', this.mainQuestions);
+      
+    })
+  }
+  newGetUserAnswers(questionId: any){
+    // http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/100050/D
+
+
+    this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10000377/A`, {headers: {'Content-Type':'application/json'}}).subscribe({
+      next: (data: any)=>{
+        console.log('testing the response',JSON.parse(data));
+        
+      },
+      error: (data: any)=>{
+        console.log('testing the response',JSON.parse(data));
+        
+      }
+      // console.log('new answwer to from api', data);
+      // this.mainQuestions.applicationStatus = 'application status -' + data?.applicationStatus;
+      // this.mainQuestions.accruedRightPaid = data?.accruedRightPaid == 0 ? 'You currently do not have accrued right paid': data?.accruedRightPaid;
+      // this.mainQuestions.totalContribution = 'payment status - ' + data?.paymentSchedule;
+      // this.mainQuestions.certificateReady = data?.certificateReady == false ? 'Your certificate is not yet ready': data?.certificateReady ;
+      // console.log('user answerr', this.mainQuestions);
       
     })
   }
@@ -217,6 +247,8 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     console.log('user name', this.userFirstName);
     this.memberId = this.memoryData?.memberId;
     console.log('member id', this.memberId);
+    this.computerNo = this.memoryData?.computerNo;
+    console.log('user computer number', this.computerNo);
     
     this.getUserAnswers();
     

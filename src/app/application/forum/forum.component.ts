@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/quotes */
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -26,6 +27,8 @@ export class ForumComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private ref: ChangeDetectorRef,
+    private router: Router,
   ) { }
 
   swtichActivePage(page){
@@ -62,7 +65,23 @@ export class ForumComponent implements OnInit {
   //     }
   //   });
   // }
+
+
+  memoryData: any = sessionStorage.getItem('userData');
+
+  verifyLogin(){
+    if (this.memoryData == undefined || this.memoryData == null ) {
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 500);
+    } else {
+      
+      
+    }
+  }
+  
   ngOnInit() {
+    this.verifyLogin();
     // this.getForumData();
   }
 
