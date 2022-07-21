@@ -63,9 +63,6 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     else {
       this.loadingModal();
 
-      let userIdentity = 'ukah@gmail.com';
-      let passcode = 'Ukah@gmail.com123'
-
       this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }).subscribe({
         next: data => {
           console.log('sent successfully', data);
@@ -137,6 +134,10 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     window.location.reload();
   }
 
+  refresh() {
+    window.location.reload();
+    this. gotoDashboard();
+  }
   ngOnInit() {
     console.log('workinng on login');
 
