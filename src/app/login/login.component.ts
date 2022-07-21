@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable no-trailing-spaces */

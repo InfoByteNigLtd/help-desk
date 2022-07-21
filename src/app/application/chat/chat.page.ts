@@ -136,32 +136,6 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
    
 
   }
-
-  testData = {
-    "memberId": 3,
-    "computerNo": "10000377",
-    "registered": true,
-    "surname": "UKAH",
-    "firstName": "ANTHONIA",
-    "middleName": "NWAUKPO",
-    "pfaCode": "OAK",
-    "pinNo": "PEN200516688213",
-    "picture": null,
-    "processedMonth": 0,
-    "processedYear": 0,
-    "indebtedness": 0,
-    "dateRetired": null,
-    "accruedRight": 10585354,
-    "accruedRightPaid": 0,
-    "employeeAmount": 0,
-    "employerAmount": 0,
-    "certificateReady": false,
-    "certificateNumber": "NA",
-    "paymentSchedule": "Not yet Released",
-    "applicationStatus": "Certificate not yet Prepared",
-    "tickets": null
-  }
-
   
   memoryData: any = sessionStorage.getItem('userData');
 
