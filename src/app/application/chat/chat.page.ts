@@ -99,8 +99,6 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
 
   public showAnswer(answer: string,) {
-    console.log('i worked');
-    
     this.showQResponse = true;
     this.qAnswer = answer;
     setTimeout(() => {
