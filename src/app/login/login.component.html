@@ -18,7 +18,10 @@
 </div>
 
 <div class="logout form" *ngIf="isLogout">
-	<button type="text" class="submit" (click)="refresh()">Refresh</button>
-	<button type="text" class="submit" (click)="logout()">Logout</button>
+	<div class="settings" style="display: flex; flex-direction:column;">
+		<button type="text" class="submit" (click)="refresh()">Refresh</button>
+		<button type="text" class="submit" (click)="logout()">Logout</button>
+
+	</div>
 
 </div>
