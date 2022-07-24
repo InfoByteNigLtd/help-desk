@@ -94,6 +94,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
       case 6: this.showAnswer(this.mainQuestions.paymentSchedule); this.newGetUserAnswers('D'); break;
       default: this.showAnswer("Please click on any question"); break;
     }
+    
   }
 
 
@@ -194,29 +195,24 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     // http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/100050/D
 
 
-    this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10000377/A`, {headers: {'Content-Type':'application/json'}}).subscribe({
-      next: (data: any)=>{
-        console.log('testing the response',JSON.parse(data));
-        
-      },
-      error: (data: any)=>{
-        console.log('testing the response',JSON.parse(data));
-        
-      }
-      // console.log('new answwer to from api', data);
-      // this.mainQuestions.applicationStatus = 'application status -' + data?.applicationStatus;
-      // this.mainQuestions.accruedRightPaid = data?.accruedRightPaid == 0 ? 'You currently do not have accrued right paid': data?.accruedRightPaid;
-      // this.mainQuestions.totalContribution = 'payment status - ' + data?.paymentSchedule;
-      // this.mainQuestions.certificateReady = data?.certificateReady == false ? 'Your certificate is not yet ready': data?.certificateReady ;
-      // console.log('user answerr', this.mainQuestions);
-      
-    })
+    // this.http.get(`10000377/A`, {headers: {'Content-Type':'application/json'}}).subscribe({
+      this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10000377/B`, {  }).subscribe({
+        next: data => {
+          console.log('sent successfully', data);
+          // sessionStorage.setItem('userData', JSON.stringify(data));
+        },
+        error: data => {
+          console.log('something went wrong', data);
+
+        }
+      });
   }
 
   ngOnInit(): void {
     
     this.getUserData();
     this.verifyLogin();
+    this.newGetUserAnswers('A');
     // setTimeout(() => {
     //    this.postQuestion();
     // }, 2000);
