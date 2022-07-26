@@ -190,7 +190,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   //   })
   // }
   newGetUserAnswers(questionId: any){
-    this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10000377/${questionId}`, {headers: {'Content-type':'application/json'}}).subscribe({
+    this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/${this.computerNo}/${questionId}`, {headers: {'Content-type':'application/json'}}).subscribe({
       next: (data: any)=>{
         console.log('testing the response',JSON.parse(data));
       },
