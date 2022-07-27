@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   public services = [
     // { id: 1, title: 'forum', image: '../../../assets/images/forum.svg', route: '/app/router/forum', icon: 'man-outline'},
 
-    { id: 1, title: 'profile', image: '../../../assets/images/forum.svg', route: '/app/router/login', icon: 'man-outline'},
+    { id: 1, title: 'profile', image: '../../../assets/images/forum.svg', route: '/app/router/profile', icon: 'man-outline'},
     { id: 2, title: 'support', image: '../../../assets/images/support.svg', route: '/app/router/inbox', icon: 'car-sport-outline' },
     { id: 3, title: 'status', image: '../../../assets/images/chat.svg', route: '/app/router/chat', icon: 'bicycle-outline' },
     { id: 4, title: 'faq', image: '../../../assets/images/help.jpg', route: '/app/router/faq', icon: 'briefcase-outline'}
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
       //Go to selected service
       else{
           if (this.selectedUserType == 'profile') {
-            this.router.navigate(['/app/router/login']);
+            this.router.navigate(['/app/router/profile']);
           }
           else if (this.selectedUserType == 'status') {
             this.router.navigate(['/app/router/chat']);

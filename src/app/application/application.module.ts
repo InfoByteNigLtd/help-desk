@@ -17,6 +17,7 @@ import { ChatPageComponent } from './chat/chat.page';
 import { FaqPageComponent } from './faq/faq.page';
 import { SupportComponent } from './support/support.component';
 import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
     ChatPageComponent,
     FaqPageComponent,
     SupportComponent,
-    InboxDetailsComponent
+    InboxDetailsComponent,
+    ProfileComponent
 
   ],
   exports: [
@@ -49,8 +51,11 @@ import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
     PostDetailComponent,
     NewPostComponent,
     DashboardComponent,
+    ChatPageComponent,
+    FaqPageComponent,
     SupportComponent,
-    InboxDetailsComponent
+    InboxDetailsComponent,
+    ProfileComponent
   ]
 })
 export class ApplicationPageModule {}

@@ -1,0 +1,72 @@
+<ion-content>
+  <!-- Beginning of Page Back Button  -->
+  <div class="back-button">
+    <div class="back-button" (click)="backButton()">
+      <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+    </div>
+   
+  </div>
+  <div class="form-wrapper">
+    <fieldset>
+      <legend>Profile</legend>
+      <!-- Beginning of Profile specs & image -->
+      <div class="image-upload-wrapper">
+        <!-- <div
+          *ngIf="dispatcherImageStatus"
+          class="uploaded-image"
+        >
+          <img src="{{pickedimageDispatcherImage}}" class="image-wrapper" /> -->
+          <!-- <span class="image-wrapper" #driverImage> -->
+          <!-- <input
+            type="file"
+            (change)="loadImageFromDevice($event, 'PF')"
+            id="file-input"
+            accept="image/png, image/jpeg"
+          />
+          <span
+            class="iconify"
+            data-icon="cil:camera"
+            data-inline="false"
+          ></span>
+        </div> -->
+
+        <!-- <div
+          *ngIf="!dispatcherImageStatus"
+          class="uploaded-image"
+        > -->
+        
+          <!-- <img src="{{pickedimageDispatcherImage}}" class="image-wrapper" /> -->
+          <!-- <span class="image-wrapper" #driverImage> -->
+          <!-- <input
+            type="file"
+            (change)="loadImageFromDevice($event, 'PF')"
+            id="file-input"
+            accept="image/png, image/jpeg"
+          /> -->
+        <!-- </div> -->
+      </div>
+
+      <input type="text" placeholder="Surname" value="{{surname}}" disabled />
+      <input type="text" placeholder="Other name" value="{{otherNames}}" disabled />
+      <input type="text" placeholder="MemberId" value="MemberId: {{memberId}}" disabled>
+      <input type="text" placeholder="ComputerNo" value="Computer No:  {{computerNo}}" disabled>
+      <input type="text" placeholder="PfaCode" value="PfaCode: {{pfaCode}}" disabled>
+      <input type="text" placeholder="PinNo" value="PinNo: {{pinNo}}" disabled>
+      <!-- <input type="number" placeholder="Sex" value="{{gender}}" disabled> -->
+
+
+      <!-- <ion-select
+      [(ngModel)]="dispatcherGender"
+      class="single-earning-detail"
+      placeholder="Select Gender"
+
+      *ngIf="dispatcherGender !== null"
+    > -->
+      <!-- <ion-select-option value="FEMALE">Female</ion-select-option>
+      <ion-select-option value="MALE">Male</ion-select-option>
+    </ion-select> -->
+    <br>
+    <!-- <app-button [loadingEffect]="loading" buttonClass="dark" buttonType="round" title="Submit" (click)="updateDispatcherProfile()">hello</app-button> -->
+    </fieldset>
+  </div>
+</ion-content>

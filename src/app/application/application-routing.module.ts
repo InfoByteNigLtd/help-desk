@@ -10,6 +10,7 @@ import { FaqPageComponent } from './faq/faq.page';
 import { ChatPageComponent } from './chat/chat.page';
 import { InboxComponent } from './inbox/inbox.component';
 import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
         path: '',
