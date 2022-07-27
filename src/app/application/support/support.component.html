@@ -25,14 +25,11 @@
       <!-- <textarea placeholder="your message here..." name="message"></textarea> -->
       <div class="select" style="background-color: rgb(133, 137, 245); border-radius:5px">
         <ion-select interface="action-sheet" placeholder="select an option" required
-          (ionBlur)=" updateTicketId($event)">
-          <ion-select-option value="1">Application</ion-select-option>
-          <ion-select-option value="2">Certificate</ion-select-option>
-          <ion-select-option value="3">PFA</ion-select-option>
-          <ion-select-option value="4">Technical</ion-select-option>
+          (ionBlur)=" updateTicketId($event)" >
+          <ion-select-option *ngFor="let result of ticketCategoryApi"
+           value="{{result.ticketCategoryId}}">{{result.category}}</ion-select-option>
         </ion-select>
       </div>
-
 
       <ion-button (click)="validateInput()">submit</ion-button>
     </div>

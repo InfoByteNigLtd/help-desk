@@ -12,6 +12,7 @@ export const environment = {
   supportAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Tickets/',
   supportAPI2: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Tickets',
   supportAPI3: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Conversations/PostConversation',
+  suppourtAPI4: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/TicketCategories',
 
 };
 

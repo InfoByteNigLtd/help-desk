@@ -19,8 +19,10 @@ export class SupportComponent implements OnInit {
   loadingScreen!: HTMLIonLoadingElement;
   plusConversation: boolean = false;
   private tkCatId: any;
+  ticketCategoryApi: any;
 
   private apiEndPoit2 = environment.supportAPI2;
+  private apiEndPoint1 = environment.suppourtAPI4;
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -62,6 +64,7 @@ export class SupportComponent implements OnInit {
   memoryData: any = sessionStorage.getItem('userData');
 
   verifyLogin() {
+
     if (this.memoryData == undefined || this.memoryData == null) {
       setTimeout(() => {
         this.router.navigate(['/login']);
@@ -135,12 +138,11 @@ export class SupportComponent implements OnInit {
   }
 
   get() {
-    // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, { param: [] }).subscribe({
-    this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.tkCatId}/true`, { }).subscribe({
+    this.http.get(`${this.apiEndPoint1}`, { }).subscribe({
       next: data => {
-        console.log('inbox details received', data);
-        // this.responseData = data.conversationDTOs;
-        // localStorage.setItem('userData', JSON.stringify(data));
+        // console.log('inbox details received', data);
+        const ticketCategory = data;
+        this.ticketCategoryApi = ticketCategory;
         this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
       },
       error: data => {
