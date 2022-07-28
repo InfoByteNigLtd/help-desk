@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable no-trailing-spaces */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 import { FontIconSizes, FontIconTypes } from './types';
 
 
@@ -54,6 +54,14 @@ export class IconFontComponent implements OnInit {
   };
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChange) {
+    if(changes['iconName'] !== undefined)
+    {
+      this.iconName = changes['iconName'].currentValue;
+      this.iconClassName = `${this.iconClassPrefixMapper[this.iconType]}-${this.iconName} ${this.iconSize}`;
+    }
+  }
 
   ngOnInit(): void {
     /**

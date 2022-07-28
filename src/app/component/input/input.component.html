@@ -12,7 +12,11 @@
       [iconName]="icon"
       iconColor="primary-icon"
       iconSize="custom"
-     style="margin-right: 10px;"></app-font-icon>
+     style="margin-right: 10px;"
+     (click)="togglePassword()"
+     >
+    
+    </app-font-icon>
   </div>
   <div class="cut"></div>
   <label [for]="label" class="legend">{{ legend }}</label>

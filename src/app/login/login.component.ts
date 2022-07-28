@@ -56,6 +56,10 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   updatePassword(value) {
     this.password = value;
   }
+  hey(value){
+    console.log(this.password);
+    
+  }
 
   validateInput() {
     console.log('email', this.email);

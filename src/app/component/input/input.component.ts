@@ -25,6 +25,9 @@ export class InputComponent implements OnInit {
   @Input() color: string = 'inherit';
   @Input() sx: string = `background-color:${this.bgColor}; color:${this.color};`;
 
+  prevInputType = 'none';
+  prevIcon = 'none';
+
   valu: string = '';
 
   inputTypeClass = `input-container top-space ${this.inputType} `;
@@ -74,6 +77,21 @@ export class InputComponent implements OnInit {
   }
 
 
+  togglePassword(){
+    
+    if (this.type == 'password') {
+      console.log('icon', this.icon);
+      
+      this.prevInputType = this.type;
+      this.prevIcon = this.icon;
+      this.type = 'text';
+      this.icon = 'lock-unlock-line';
+      console.log('icon', this.icon);
+    }else if (this.prevInputType == 'password') {
+      this.type = this.prevInputType;
+      this.icon = this.prevIcon;
+    }
+  }
 
 
   ngOnInit() {
