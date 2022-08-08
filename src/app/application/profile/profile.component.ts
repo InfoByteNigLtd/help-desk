@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
   pfaCode: string = "";
   pinNo: string = "";
   gender: string = "";
+  result: any;
+  
 
 
   dispatcherId: any;
@@ -186,6 +188,7 @@ export class ProfileComponent implements OnInit {
     this.http.get(`${this.apiEndPoit2}${this.memberId}`, {}).subscribe({
       next: data => {
         console.log('sent successfully', data);
+        this.result = data;
         this.loadingScreen?.dismiss();
         const result: any = data;
         this.surname = result.surname;

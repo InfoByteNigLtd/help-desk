@@ -11,6 +11,7 @@ import { ChatPageComponent } from './chat/chat.page';
 import { InboxComponent } from './inbox/inbox.component';
 import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import {AnnouncementsComponent} from "./announcements/announcements.component";
 
 const routes: Routes = [
   {
@@ -58,10 +59,15 @@ const routes: Routes = [
         component: ProfileComponent,
       },
       {
+        path: 'announcements',
+        component: AnnouncementsComponent,
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'
       },
+
     ]
   },
   {

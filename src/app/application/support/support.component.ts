@@ -83,7 +83,6 @@ export class SupportComponent implements OnInit {
     console.log('computer no', this.computerNo, 'memberId', this.memberId);
   }
 
-
   updateTicketId(event) {
     this.ticketCategoryId = event.target.value;
     console.log('id', this.ticketCategoryId);

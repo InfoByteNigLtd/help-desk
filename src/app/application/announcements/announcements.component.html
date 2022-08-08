@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="forum-page-wrapper" *ngIf="isTopicList">
+    <div class="forum-header">
+      <div class="back-button" (click)="backButton()">
+        <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom">
+        </app-font-icon>
+      </div>
+      <div class="title">Annoucements</div>
+      <app-sidebar style="display: flex;
+      margin-top: -120px;
+      position: relative;
+      padding-left: 20%;">
+      </app-sidebar>
+    </div>
+
+    <div class="forum-topic-wrapper">
+      <!-- <div class="topic-card" (click)="swtichActivePage('post-detail')"> -->
+      <div class="topic-card" *ngFor="let item of result">
+
+        <div class="post-topic">{{item?.title}}</div>
+        <div class="poster-detail">
+          <div class="avatar">
+            <img [src]="posterImage" alt="">
+          </div>
+          <div class="name">{{item?.memberName}}</div>
+          <div class="post-date"><i>{{item?.entryDate | date:'d-MMM-YYYY'}}</i></div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="post-details" *ngIf="isPostDetail">
+    <app-post-detail></app-post-detail>
+  </div>
+
+</ion-content>

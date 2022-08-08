@@ -18,6 +18,7 @@ import { FaqPageComponent } from './faq/faq.page';
 import { SupportComponent } from './support/support.component';
 import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import {AnnouncementsComponent} from "./announcements/announcements.component";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
     FaqPageComponent,
     SupportComponent,
     InboxDetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    AnnouncementsComponent,
 
   ],
   exports: [
@@ -55,7 +57,8 @@ import { ProfileComponent } from './profile/profile.component';
     FaqPageComponent,
     SupportComponent,
     InboxDetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    AnnouncementsComponent,
   ]
 })
 export class ApplicationPageModule {}

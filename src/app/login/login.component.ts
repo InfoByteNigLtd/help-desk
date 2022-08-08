@@ -56,10 +56,6 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   updatePassword(value) {
     this.password = value;
   }
-  hey(value){
-    console.log(this.password);
-    
-  }
 
   validateInput() {
     console.log('email', this.email);
@@ -87,9 +83,9 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
         },
         error: data => {
-          console.log('something went wrong', data);
+          console.log('Invalid username/password', data);
           setTimeout(() => {
-            this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Invalid user credentials'); });
           }, 1000);
 
         }
@@ -146,7 +142,6 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     this. gotoDashboard();
   }
   ngOnInit() {
-    console.log('workinng on login');
 
     let lStatus = this.getStatus();
     console.log('status', lStatus);

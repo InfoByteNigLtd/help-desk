@@ -9,6 +9,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,9 +36,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private platform: Platform,
   ) {
     this.verifyLogin();
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      console.log('Handler was called!');
+    });
    }
   /**
    * This method is used to change the service card when selected and also define the user type for router
