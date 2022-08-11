@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
@@ -15,6 +15,7 @@ export class AnnouncementsDetailsComponent implements OnInit {
 
   @Input()  data: any;
   @Input() announcementData: any;
+  @Output() backBtn:any = new EventEmitter();
 
   loadingScreen!: HTMLIonLoadingElement;
   private apiLink = environment.annoucementAPI;
@@ -30,12 +31,7 @@ export class AnnouncementsDetailsComponent implements OnInit {
   ) { }
 
   backButton(){
-    // this.router.navigate(['/app/router/announcements']);
-    // window.location.reload();
-    // this.isTopicList = false;
-    // this.isPostDetail = true;
-    window.history.back()
-    
+    this.backBtn.emit('topic-list');
   }
 
   memoryData: any = sessionStorage.getItem('userData');
