@@ -19,6 +19,7 @@ import { SupportComponent } from './support/support.component';
 import { InboxDetailsComponent } from './inbox-details/inbox-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import {AnnouncementsComponent} from "./announcements/announcements.component";
+import { AnnouncementsDetailsComponent } from './announcements/announcements-details/announcements-details.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {AnnouncementsComponent} from "./announcements/announcements.component";
     InboxDetailsComponent,
     ProfileComponent,
     AnnouncementsComponent,
+    AnnouncementsDetailsComponent
 
   ],
   exports: [
@@ -59,6 +61,7 @@ import {AnnouncementsComponent} from "./announcements/announcements.component";
     InboxDetailsComponent,
     ProfileComponent,
     AnnouncementsComponent,
+    AnnouncementsDetailsComponent
   ]
 })
 export class ApplicationPageModule {}

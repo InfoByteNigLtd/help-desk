@@ -2,60 +2,60 @@
   <div class="forum-page-wrapper" *ngIf="isTopicList">
     <div class="forum-header">
       <div class="title">Trending Topics</div>
-      <!-- <div class="search-area"> -->
-        <!-- <input type="text" placeholder="search topics"> -->
-      <!-- </div> -->
+      <div class="search-area">
+        <input type="text" placeholder="search topics">
+      </div>
     </div>
 
     <div class="forum-topic-wrapper">
-      <!-- <div class="topic-card" (click)="swtichActivePage('post-detail')"> -->
-      <div class="topic-card">
+      <div class="topic-card" (click)="swtichActivePage('post-detail')">
+        <!-- <div class="topic-card"> -->
 
-        <div class="post-topic">{{postTopic}}</div>
-        <div class="poster-detail">
-          <div class="avatar">
-            <img [src]="posterImage" alt="">
-          </div>
-        <div class="name">{{posterName}}</div>
-        <!-- <div class="post-reactions">
-          <div class="likes">
+          <div class="post-topic">{{postTopic}}</div>
+          <div class="poster-detail">
+            <div class="avatar">
+              <img [src]="posterImage" alt="">
+            </div>
+            <div class="name">{{posterName}}</div>
+            <div class="post-reactions">
+              <div class="likes">
 
-          </div>
-          <div class="comments">
+              </div>
+              <div class="comments">
 
+              </div>
+              <div class="post-date">
+
+              </div>
+            </div>
           </div>
-          <div class="post-date">
-            
+        </div>
+        <div class="topic-card">
+          <div class="post-topic">{{postTopic}}</div>
+          <div class="poster-detail">
+            <div class="avatar">
+              <img [src]="posterImage" alt="">
+            </div>
+            <div class="name">{{posterName}}</div>
+            <div class="post-reactions">
+              <div class="likes">
+
+              </div>
+              <div class="comments">
+
+              </div>
+              <div class="post-date">
+
+              </div>
+            </div>
           </div>
-        </div> -->
         </div>
       </div>
-      <div class="topic-card">
-        <div class="post-topic">{{postTopic}}</div>
-        <div class="poster-detail">
-          <div class="avatar">
-            <img [src]="posterImage" alt="">
-          </div>
-        <div class="name">{{posterName}}</div>
-        <!-- <div class="post-reactions">
-          <div class="likes">
 
-          </div>
-          <div class="comments">
-
-          </div>
-          <div class="post-date">
-            
-          </div>
-        </div> -->
-        </div>
+      <div class="new-post-icon" (click)="swtichActivePage('new-post')">
+        <img src="../../../assets/images/newpost.svg" alt="">
       </div>
     </div>
-
-    <div class="new-post-icon" (click)="swtichActivePage('new-post')">
-      <img src="../../../assets/images/newpost.svg" alt="">
-    </div>
-  </div>
 
   <div class="post-details" *ngIf="isPostDetail">
     <app-post-detail></app-post-detail>

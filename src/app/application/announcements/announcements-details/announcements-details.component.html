@@ -1,0 +1,32 @@
+<div class="post-wrapper" >
+  <div class="post-content">
+    <div class="header" >
+      <div  class="title">
+          <div class="back-button" (click)="backButton()">
+            <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+          </div>
+        <div class="sub-title">Annoucements Details </div>
+      </div>
+      <div class="posted-time"></div>
+    </div>
+    <div class="main-post" *ngFor="let item of announcementData" >
+      <div class="post-topic">{{item?.title}}</div>
+      <div class="post-desc">{{item?.message}}</div>
+      <i class="post-date">{{item.entryDate | date: 'd-MMM-YYYY'}}</i>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <div class="comment-input">
+        <!-- <div class="send">
+          <textarea [(ngModel)] = "responseToQuestionsAsked"  placeholder="Enter comment here..." ></textarea>
+            <span class="button" (click)=" submit()">Send</span>
+        </div> -->
+    </div>
+
+      <!-- <div class="outgoing"  *ngFor="let comment of announcementData" >
+        <div class="res"> {{comment.commentDTOs[0].commentText}}</div>
+        <div class="date">{{comment.commentDTOs[0].commentDate | date: 'dd/MM/yyyy'}}</div>
+      </div> -->
+  </div>
+</div>

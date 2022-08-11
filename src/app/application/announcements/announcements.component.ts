@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
@@ -18,6 +18,8 @@ export class AnnouncementsComponent implements OnInit {
   isTopicList: boolean = true;
   isPostDetail: boolean = false;
   result: any;
+  annoucementPostId: any;
+  announcementDetails: any;
   loadingScreen!: HTMLIonLoadingElement;
 
 
@@ -29,10 +31,16 @@ export class AnnouncementsComponent implements OnInit {
     private loadingCtrl: LoadingController,
   ) { }
 
-  swtichActivePage(page){
-     if (page === 'post-detail') {
+  swtichActivePage(page, postId: any) {
+    if (page === 'annoucements-detail') {
+      let userData = this.result.filter((user) => { return user.postId == postId });
       this.isTopicList = false;
       this.isPostDetail = true;
+      this.annoucementPostId = postId;
+      this.announcementDetails = userData;
+      console.log('post id from annoucnemt', this.annoucementPostId);
+
+
     }
     else if (page === 'topic-list') {
       this.isTopicList = true;
@@ -40,105 +48,100 @@ export class AnnouncementsComponent implements OnInit {
     }
   }
 
-  closePage(){
-    this.isPostDetail = false;
-    this.isTopicList = true;
-  }
-
   memoryData: any = sessionStorage.getItem('userData');
 
-  verifyLogin(){
-    if (this.memoryData == undefined || this.memoryData == null ) {
+  verifyLogin() {
+    if (this.memoryData == undefined || this.memoryData == null) {
       setTimeout(() => {
         this.router.navigate(['/login']);
       }, 500);
     } else {
-      
-      
+
     }
   }
-  backButton(){
+  backButton() {
+    
     this.router.navigate(['/app/router/dashboard']);
   }
-    // Alerts
+  // Alerts
 
-    async successfulAlert() {
-      const alert = await this.alertController.create({
-        cssClass: "my-custom-class",
-        header: "Request Completed",
-        message: "Data Received",
-        buttons: [
-          {
-            text: "OK",
-            handler: () => {
-              this.router.navigate(["/app/drivers/router/dashboard"]);
-            },
+  async successfulAlert() {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Request Completed",
+      message: "Data Received",
+      buttons: [
+        {
+          text: "OK",
+          handler: () => {
+            this.router.navigate(["/app/drivers/router/dashboard"]);
           },
-        ],
-      });
-  
-      await alert.present();
-  
-      await alert
-        .onDidDismiss()
-        .then(() => this.router.navigate(["/app/drivers/router/dashboard"]));
-    }
-  
-    // Failed Alert
-  
-    async errorAlert(message) {
-      const alert = await this.alertController.create({
-        cssClass: "my-custom-class",
-        header: "Request Failed",
-        message: `Error getting Data from Server: ${message}`,
-        buttons: ["OK"],
-      });
-  
-      await alert.present();
-  
-      await alert.onDidDismiss();
-    }
-    /** generic method to dispaly alert message to user */
-    async presentAlert(
-      header: string = "Alert",
-      subHeader: string = "Subtitle",
-      message: string = "This is an alert message."
-    ) {
-      const alert = await this.alertController.create({
-        cssClass: 'my-custom-css',
-        header: header,
-        subHeader: subHeader,
-        message: message,
-        buttons: ["OK"],
-      });
-  
-      await alert.present();
-  
-      const { role } = await alert.onDidDismiss();
-      console.log("onDidDismiss resolved with role", role);
-    }
-  
-    async loadingModal(message: string = "Loading...") {
-      this.loadingScreen = await this.loadingCtrl.create({
-        cssClass: "my-custom-class",
-        message: message,
-      });
-  
-      return await this.loadingScreen.present();
-    }
-  
-    async alertModal(title: string, message: string) {
-      const alert = await this.alertController.create({
-        cssClass: "my-custom-class",
-        header: title,
-        message: message,
-        buttons: ["OK"],
-      });
-  
-      await alert.present();
-  
-      const { role } = await alert.onDidDismiss();
-    }
+        },
+      ],
+    });
+
+    await alert.present();
+
+    await alert
+      .onDidDismiss()
+      .then(() => this.router.navigate(["/app/drivers/router/dashboard"]));
+  }
+
+  // Failed Alert
+
+  async errorAlert(message) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Request Failed",
+      message: `Error getting Data from Server: ${message}`,
+      buttons: ["OK"],
+    });
+
+    await alert.present();
+
+    await alert.onDidDismiss();
+  }
+  /** generic method to dispaly alert message to user */
+  async presentAlert(
+    header: string = "Alert",
+    subHeader: string = "Subtitle",
+    message: string = "This is an alert message."
+  ) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-css',
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ["OK"],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log("onDidDismiss resolved with role", role);
+  }
+
+  async loadingModal(message: string = "Loading...") {
+    this.loadingScreen = await this.loadingCtrl.create({
+      cssClass: "my-custom-class",
+      message: message,
+    });
+
+    return await this.loadingScreen.present();
+  }
+
+  async alertModal(title: string, message: string) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: title,
+      message: message,
+      buttons: ["OK"],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+  }
   getUserData() {
     this.loadingModal();
     this.memoryData = JSON.parse(this.memoryData);
@@ -154,11 +157,11 @@ export class AnnouncementsComponent implements OnInit {
       error: data => {
         console.log('something went wrong', data);
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Ensure you have a steady Network'); });
         }, 1000);
 
       }
-      
+
     });
 
   }

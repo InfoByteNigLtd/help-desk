@@ -103,13 +103,7 @@ get() {
       this.responseData = data;
       console.log('full post', this.responseData);
       
-      // localStorage.setItem('userData', JSON.stringify(data));
       this.loadingScreen?.dismiss();
-      // this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message loaded Succefully'); });
-      // setTimeout(() => {
-      // this.loadingScreen?.dismiss();
-        
-      // }, 500);
       
     },
     error: data => {

@@ -1,0 +1,57 @@
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators'
+
+@Component({
+  selector: 'app-announcements-details',
+  templateUrl: './announcements-details.component.html',
+  styleUrls: ['./announcements-details.component.scss'],
+})
+export class AnnouncementsDetailsComponent implements OnInit {
+
+
+  @Input()  data: any;
+  @Input() announcementData: any;
+
+  loadingScreen!: HTMLIonLoadingElement;
+  private apiLink = environment.annoucementAPI;
+  responseData: any;
+  public results: any = [];
+
+  constructor(
+    private http: HttpClient,
+    private ref: ChangeDetectorRef,
+    private router: Router,
+    private alertController: AlertController,
+    private loadingCtrl: LoadingController,
+  ) { }
+
+  backButton(){
+    // this.router.navigate(['/app/router/announcements']);
+    // window.location.reload();
+    // this.isTopicList = false;
+    // this.isPostDetail = true;
+    window.history.back()
+    
+  }
+
+  memoryData: any = sessionStorage.getItem('userData');
+  verifyLogin() {
+    if (this.memoryData == undefined || this.memoryData == null) {
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 500);
+    } else {
+
+    }
+  }
+
+  ngOnInit() {
+    this.verifyLogin();
+    console.log('id from annoucement to annoucement details', this.announcementData);
+  }
+
+}
