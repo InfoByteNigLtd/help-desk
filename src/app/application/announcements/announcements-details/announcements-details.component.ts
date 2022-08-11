@@ -47,7 +47,7 @@ export class AnnouncementsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.verifyLogin();
-    console.log('id from annoucement to annoucement details', this.announcementData);
+    console.log('annoucement to annoucement details', this.announcementData);
   }
 
 }
