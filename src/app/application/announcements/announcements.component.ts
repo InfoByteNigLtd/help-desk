@@ -31,7 +31,7 @@ export class AnnouncementsComponent implements OnInit {
     private loadingCtrl: LoadingController,
   ) { }
 
-  swtichActivePage(page, postId: any) {
+  swtichActivePage(page, postId = 0) {
     if (page === 'annoucements-detail') {
       let userData = this.result.filter((user) => { return user.postId == postId });
       this.isTopicList = false;
