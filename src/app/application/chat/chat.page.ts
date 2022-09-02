@@ -55,20 +55,6 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   ) {
   }
 
-  // public questions: any = [
-  //   {id: 1, question: 'Guess you are doing well?'},
-  //   {id: 2, question: 'Would you like to know update about your application status'},
-  //   {id: 3, question: 'Oops!!! No update on your status now'},
-  //   {id: 4, question: 'How about your payment approval, would you like to know about it?'},
-  //   {id: 5, question: 'Payment process is yet to commence. You can ask me later '},
-  //   {id: 6, question: 'How about your accessment due date, would you like to know about it?'},
-  //   {id: 7, question: 'Your accessment due date is 20th of Jan 2023'},
-  //   {id: 8, question: 'Thanks for your time and patience. I have to leave now. Hope my response is helpful'},
-  //   {id: 9, question: 'Glad to know about that. I\'m always here to help you get updates anytime'},
-  //   {id: 10, question: 'Oops! I\'m sorry about that. Hope next time you find it helpful'},
-  //   {id: 11, question: 'Ok no problem. Kindly click on the link below to log your complain with the admin'},
-  // ];
-
   public realQuestions: any = [
     {id: 1, question: 'Hello '},
     {id: 2, question: 'click on any of the question below to get your updates'},
@@ -79,15 +65,8 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     {id: 7, question: 'click here to send your message to helpdesk center'}
   ];
 
-  // public mainQuestions: any = {
-  //  "applicationStatus" : "not yet available", 
-  //  "accruedRightPaid": 0, 
-  //  "totalContribution": 0, 
-  //  "paymentSchedule": 'not yet approved'
-  // }
-
   public selectedQuestion(id: number) {
-    console.log('clicked no', id);
+    // console.log('clicked no', id);
     switch(id){
       case 3:  this.newGetUserAnswers('A'); break;
       case 4:  this.newGetUserAnswers('B'); break;
@@ -110,89 +89,17 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked(): void {
     this.ref.detectChanges();
   }
-  // getResponse(event) {
-  //   console.log('response event', event);
-  //   if (event == 1) {
-  //     this.showChat(this.responses[0].response, this.messageType[1])
-  //   }
-  //   else  if (event == 2) {
-  //     this.showChat(this.responses[1].response, this.messageType[1]);
-  //   }
-  //   else  if (event == 3) {
-  //     this.showChat(this.responses[2].response, this.messageType[1]);
-  //   }
-  //   else  if (event == 4) {
-  //     this.showChat(this.responses[3].response, this.messageType[1]);
-  //   }
-
-  //   this.showResponse = false;
-  // }
-
-  // public postQuestion() {
-  //   if(this.qCounter < this.questions.length)
-  //   {
-  //     // wait half a seconds before showing the answer
-  //     setTimeout(() => {
-  //       this.showChat(this.questions[this.qCounter].question, this.messageType[0]);
-  //        // wait 2milliseconds before showing the response
-  //       this.showResponse = true;
-  //     }, 2000);
-  //   }
-  // }
-
-  // public showChat(newMsg, type) {
-  //   const msg = {id: this.mCounter, mtype: type, message: newMsg};
-  //   console.log('passed msg', msg);
-  //   this.messages.push(msg);
-  //   console.log('main msg', this.messages);
-  //   if (type === this.messageType[0]) {
-  //    this.prevMsgId = this.questions[this.qCounter].id;
-  //    this.qCounter++;
-  //   }
-  //   else {
-  //     if (newMsg === this.responses[1].response) {
-  //       if(this.prevMsgId == 2 ||
-  //         this.prevMsgId == 4 ||
-  //         this.prevMsgId == 6  ){
-  //           this.qCounter++;
-  //         }
-  //       else if(this.prevMsgId == 8) {
-  //         this.qCounter++;
-  //       }
-  //       this.postQuestion();
-  //     }
-  //     else if(newMsg === this.responses[3].response){
-  //       this.qCounter = 10;
-  //       this.postQuestion();
-  //       this.showResponse = false;
-  //       this.showSupportLink = true;
-  //     }
-  //     else{
-  //       this.postQuestion();
-  //     }
-  //   }
-  // }
+  
 
   navigateToSupport() {
     this.router.navigate(['/router/support']);
   }
  
-  // getUserAnswers(){
-  //   // http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/100050/D
 
-  //   this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/ ${this.memberId}`).subscribe((data: any) => {
-  //     console.log('member data', data);
-  //     this.mainQuestions.applicationStatus = 'application status -' + data?.applicationStatus;
-  //     this.mainQuestions.accruedRightPaid = data?.accruedRightPaid == 0 ? 'You currently do not have accrued right paid': data?.accruedRightPaid;
-  //     this.mainQuestions.totalContribution = 'payment status - ' + data?.paymentSchedule;
-  //     this.mainQuestions.certificateReady = data?.certificateReady == false ? 'Your certificate is not yet ready': data?.certificateReady ;
-  //     console.log('user answerr', this.mainQuestions);
-  //   })
-  // }
   newGetUserAnswers(questionId: any){
     this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/${this.computerNo}/${questionId}`, {headers: {'Content-type':'application/json'}}).subscribe({
       next: (data: any)=>{
-        console.log('testing the response',JSON.parse(data));
+        // console.log('testing the response',JSON.parse(data));
       },
       error: (data: any)=>{
         /** We are getting the answer as error or return as error so take note */
@@ -231,15 +138,15 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
   async getUserData(){
     this.memoryData = await JSON.parse(this.memoryData);
-    console.log('from local storage chat',this.memoryData);
+    // console.log('from local storage chat',this.memoryData);
     const fullname = this.memoryData?.fullname.split(" ");
     this.userName = `${fullname?.[0]} ${fullname?.[1]}`;
     this.userFirstName = fullname?.[0];
-    console.log('user name', this.userFirstName);
+    // console.log('user name', this.userFirstName);
     this.memberId = this.memoryData?.memberId;
-    console.log('member id', this.memberId);
+    // console.log('member id', this.memberId);
     this.computerNo = this.memoryData?.computerNo;
-    console.log('user computer number', this.computerNo);
+    // console.log('user computer number', this.computerNo);
     // this.getUserAnswers();
     
   }

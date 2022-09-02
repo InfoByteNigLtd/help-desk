@@ -28,16 +28,16 @@ export class PostDetailComponent implements OnInit {
 
   getPostTopic(event) {
     this.postTopic = event.target.value;
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
 
   getPostMessage(event) {
     this.postTopic = event.target.value;
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
 
   submit() {
-    console.log('ented values', this.postTopic, this.postMessage);
+    // console.log('ented values', this.postTopic, this.postMessage);
   }
 
 }

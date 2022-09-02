@@ -38,7 +38,7 @@ export class AnnouncementsComponent implements OnInit {
       this.isPostDetail = true;
       this.annoucementPostId = postId;
       this.announcementDetails = userData;
-      console.log('post id from annoucnemt', this.annoucementPostId);
+      // console.log('post id from annoucnemt', this.annoucementPostId);
 
 
     }
@@ -118,7 +118,7 @@ export class AnnouncementsComponent implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log("onDidDismiss resolved with role", role);
+    // console.log("onDidDismiss resolved with role", role);
   }
 
   async loadingModal(message: string = "Loading...") {
@@ -145,17 +145,17 @@ export class AnnouncementsComponent implements OnInit {
   getUserData() {
     this.loadingModal();
     this.memoryData = JSON.parse(this.memoryData);
-    console.log('from local storage', this.memoryData);
+    // console.log('from local storage', this.memoryData);
     this.memoryData?.fullname;
 
     this.http.get(`${this.apiLink}`, {}).subscribe({
       next: data => {
-        console.log('Annoucement Received', data);
+        // console.log('Annoucement Received', data);
         this.result = data;
         this.loadingScreen?.dismiss();
       },
       error: data => {
-        console.log('something went wrong', data);
+        // console.log('something went wrong', data);
         setTimeout(() => {
           this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Ensure you have a steady Network'); });
         }, 1000);

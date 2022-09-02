@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
     const file = event.target.files[0];
     // check the image size if not greater than maxSize allowed
     let imageSize = event.target.files[0].size / imageSizeDivisor;
-    console.log('image size', imageSizeDivisor, 'image size in mb ', imageSize);
+    // console.log('image size', imageSizeDivisor, 'image size in mb ', imageSize);
 
     if (imageSize <= maxSize) {
       const reader = new FileReader();
@@ -157,7 +157,7 @@ export class ProfileComponent implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log("onDidDismiss resolved with role", role);
+    // console.log("onDidDismiss resolved with role", role);
   }
 
 
@@ -180,14 +180,14 @@ export class ProfileComponent implements OnInit {
 
   getUserData() {
     this.memoryData = JSON.parse(this.memoryData);
-    console.log('from local storage', this.memoryData);
+    // console.log('from local storage', this.memoryData);
     this.memoryData?.fullname;
     this.computerNo = this.memoryData?.computerNo;
     this.memberId = this.memoryData?.memberId;
 
     this.http.get(`${this.apiEndPoit2}${this.memberId}`, {}).subscribe({
       next: data => {
-        console.log('sent successfully', data);
+        // console.log('sent successfully', data);
         this.result = data;
         this.loadingScreen?.dismiss();
         const result: any = data;
@@ -198,7 +198,7 @@ export class ProfileComponent implements OnInit {
         
       },
       error: data => {
-        console.log('something went wrong', data);
+        // console.log('something went wrong', data);
         setTimeout(() => {
           this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
         }, 1000);

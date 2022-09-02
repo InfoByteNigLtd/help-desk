@@ -49,8 +49,8 @@ export class SignUpComponent implements OnInit {
   }
 
   validateInput() {
-    console.log('email', this.email);
-    console.log('password', this.password);
+    // console.log('email', this.email);
+    // console.log('password', this.password);
     if (this.firstname === ' ' || this.firstname === undefined || this.lastname === ' ' || this.lastname === undefined || this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
       this.alertModal('Error!!!', 'All fields are required');
     }
@@ -59,7 +59,7 @@ export class SignUpComponent implements OnInit {
 
       this.http.post(this.apiEndPoit, { 'first-name': this.firstname, 'last-name': this.lastname, email: this.email, password: this.password }).subscribe({
         next: data => {
-          console.log('sent successfully');
+          // console.log('sent successfully');
 
         },
         error: data => {

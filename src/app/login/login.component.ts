@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   }
 
   validateInput() {
-    console.log('email', this.email);
-    console.log('password', this.password);
+    // console.log('email', this.email);
+    // console.log('password', this.password);
     if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
       this.alertModal('Error!!!', 'All fields are required');
     }
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
       this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }).subscribe({
         next: data => {
-          console.log('sent successfully', data);
+          // console.log('sent successfully', data);
           sessionStorage.setItem('userData', JSON.stringify(data));
           // stop the first loadingModal
           this.loadingScreen?.dismiss();
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
         },
         error: data => {
-          console.log('Invalid username/password', data);
+          // console.log('Invalid username/password', data);
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Invalid user credentials'); });
           }, 1000);
@@ -144,15 +144,15 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
 
     let lStatus = this.getStatus();
-    console.log('status', lStatus);
+    // console.log('status', lStatus);
 
     if (lStatus === 'active') {
-      console.log('active');
+      // console.log('active');
 
       this.isLogin = false;
       this.isLogout = true;
     } else {
-      console.log('inactive');
+      // console.log('inactive');
 
       this.isLogin = true;
       this.isLogout = false;

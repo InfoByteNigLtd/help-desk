@@ -63,10 +63,10 @@ export class InboxComponent implements OnInit {
   }
   getUserData() {
     this.memoryData = JSON.parse(sessionStorage.getItem('userData'));
-    console.log('from support', this.memoryData);
+    // console.log('from support', this.memoryData);
     this.computerNo = this.memoryData?.computerNo;
     this.id = this.memoryData?.memberId;
-    console.log('computer no', this.computerNo, 'memberId', this.id);
+    // console.log('computer no', this.computerNo, 'memberId', this.id);
   }
 
 async loadingModal() {
@@ -94,20 +94,20 @@ async alertModal(title: string, message: string) {
 get() {
   this.loadingModal();
 
-  console.log('passed arg', this.id, this.computerNo, this.plusConversations);
+  // console.log('passed arg', this.id, this.computerNo, this.plusConversations);
   
 
   this.http.get(`${this.apiEndPoit2}${this.computerNo}/0/${this.plusConversations}`, { }).subscribe({
     next: data => {
-      console.log('message gotten from ticket', data);
+      // console.log('message gotten from ticket', data);
       this.responseData = data;
-      console.log('full post', this.responseData);
+      // console.log('full post', this.responseData);
       
       this.loadingScreen?.dismiss();
       
     },
     error: data => {
-      console.log('something went wrong', data);
+      // console.log('something went wrong', data);
       setTimeout(() => {
         this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
       }, 1000);
@@ -124,17 +124,7 @@ backButton(){
 refreshDispatchers: boolean = false;
 
 public async getDispatchers(event?: any) {
-  // this.getDispatcherDebounceDelimiterTime(true,  async () => {
-  //   console.log(this.location);
-  //   if (this.location.lon == 0 || this.location.lon == null) {
-  //     window.location.reload();
-  //   }
-  //   else {
-  //     console.log('get dispatcher method called');
-      
-  //     this.parcelSocketService.getDispatcher(this.location);
-  //   }
-  // });
+
   if (event === 'refresh') {
     this.refreshDispatchers = true;
     this.get() //toget the latest update
