@@ -120,6 +120,30 @@ backButton(){
   this.router.navigate(['/app/router/dashboard']);
 }
 
+/** used to activate refresh dispatcher button spinning effect */
+refreshDispatchers: boolean = false;
+
+public async getDispatchers(event?: any) {
+  // this.getDispatcherDebounceDelimiterTime(true,  async () => {
+  //   console.log(this.location);
+  //   if (this.location.lon == 0 || this.location.lon == null) {
+  //     window.location.reload();
+  //   }
+  //   else {
+  //     console.log('get dispatcher method called');
+      
+  //     this.parcelSocketService.getDispatcher(this.location);
+  //   }
+  // });
+  if (event === 'refresh') {
+    this.refreshDispatchers = true;
+    this.get() //toget the latest update
+  setTimeout(() => {
+    this.refreshDispatchers = false;
+  }, 5000);
+  }
+}
+
   ngOnInit() {
     this.get()
   }

@@ -3,29 +3,43 @@
     <div class="forum-header">
       <div class="title">
         <div class="back-button" (click)="backButton()">
-          <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
+          <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom">
+          </app-font-icon>
         </div>
         <span class="sub-title">
           Support
         </span>
+        <div class="refresh-button-area">
+          <div class="btn-wrapper">
+            <div class="refresh-btn">
+              <app-font-icon
+                iconType="remix"
+                iconName="refresh-line"
+                iconColor="custom"
+                iconSize="custom"
+                (click)="getDispatchers('refresh')"
+                [class]="refreshDispatchers ? 'icon-spinner' : ''"
+              ></app-font-icon>
+            </div>
+            <!-- <div class="text">Reresh</div> -->
+          </div>
         </div>
-      <!-- <div class="search-area">
-        <input type="text" placeholder="search topics">
-      </div> -->
+      </div>
     </div>
 
     <div class="forum-topic-wrapper">
-      <div class="topic-card" *ngFor="let item of responseData" (click)="routeToInbox(item.computerNo, item.ticketCategoryId,  item.ticketId)">
+      <div class="topic-card" *ngFor="let item of responseData"
+        (click)="routeToInbox(item.computerNo, item.ticketCategoryId,  item.ticketId)">
         <div class="post-topic">{{item.subject}}</div>
         <div class="poster-detail">
           <div class="avatar">
             <img [src]="posterImage" alt="">
           </div>
-        <div class="name">{{item.ticketCategoryName}}</div>
-        <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
+          <div class="name">{{item.ticketCategoryName}}</div>
+          <div class="post-date">{{item.entryDate | date: 'dd/MM/yyyy'}}</div>
         </div>
       </div>
-     
+
     </div>
 
     <div class="new-post-icon" (click)="swtichActivePage('new-post')">

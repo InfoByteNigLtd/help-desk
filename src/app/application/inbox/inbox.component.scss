@@ -1,3 +1,68 @@
+.refresh-button-area {
+  // width: 100%;
+  // height: 40px;
+  // background-color: transparent;
+  // z-index: 10;
+  // position: absolute;
+  // top: 100px;
+  // display: flex;
+  // justify-content: flex-end;
+  // align-items: flex-end;
+
+  .btn-wrapper {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // background-color: #fff;
+    margin-right: 20px;
+
+    .text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--app-dark-color);
+    }
+
+    .refresh-btn {
+      // background-color: var(--app-dark-color);
+      border-radius: 100%;
+      overflow: hidden;
+      max-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    app-font-icon {
+      font-size: 30px;
+      padding: 10px;
+      color: #fff;
+      font-weight: 100;
+
+      &.icon-spinner {
+        position: relative;
+        animation: spin-animation 1s infinite;
+        display: inline-block;
+        transform-origin: center;
+        transform-box: fill-box;
+      }
+    }
+
+    @keyframes spin-animation {
+      0% {
+        transform: scale(1);
+        color: var(--app-base-color);
+      }
+
+      100% {
+        transform: scale(0.2);
+      }
+    }
+  }
+
+}
+
 .forum-page-wrapper {
   width: 100vw;
   height: 100vh;
@@ -6,6 +71,7 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #fff;
+
   .forum-header {
     width: 100%;
     display: flex;
@@ -25,6 +91,7 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+
       .back-button {
         background-color: #5ab7f4;
         border-radius: 4px;
@@ -33,19 +100,22 @@
         align-items: center;
         padding-top: 2px;
         margin-left: 12px;
+      }
+
+      .sub-title {
+        flex: 3;
+        text-align: center;
+      }
+
     }
-    .sub-title{
-      flex: 3;
-      text-align: center;
-    }
-    
-    }
+
     .search-area {
       background-color: #f9f9f9;
       width: 100%;
       padding: 2px;
       border-radius: 50px;
       overflow: hidden;
+
       input {
         background-color: #f9f9f9;
         color: #000;
@@ -56,6 +126,7 @@
         border: none;
         outline: none;
       }
+
       &:hover {
         border: 2px solid #ffc400;
       }
@@ -72,6 +143,7 @@
     align-items: center;
     background-color: #fff;
     padding-bottom: 20px;
+
     .topic-card {
       width: 90%;
       padding: 10px;
@@ -85,6 +157,7 @@
         width: 100%;
         padding: 10px;
       }
+
       .poster-detail {
         width: 100%;
         display: flex;
@@ -93,6 +166,7 @@
         align-items: center;
         background-color: #fff;
         padding-left: 10px;
+
         .avatar {
           width: 40px;
           height: 40px;
@@ -100,23 +174,27 @@
           overflow: hidden;
           margin-right: 10px;
         }
+
         .name {
           font-size: 14px;
           font-weight: 600px;
           color: #000;
         }
+
         .likes {
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
           align-items: center;
         }
+
         .comments {
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
           align-items: center;
         }
+
         .post-date {
           font-size: 12px;
           font-style: italic;
@@ -124,6 +202,7 @@
       }
     }
   }
+
   .new-post-icon {
     position: absolute;
     bottom: 20px;
