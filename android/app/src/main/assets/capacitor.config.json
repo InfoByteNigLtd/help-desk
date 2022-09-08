@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "com.app.deltastatepensionsbureau.helpdesk",
 	"appName": "help-desk",
 	"webDir": "www",
 	"bundledWebRuntime": false
