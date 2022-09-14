@@ -198,9 +198,9 @@ export class ProfileComponent implements OnInit {
         
       },
       error: data => {
-        // console.log('something went wrong', data);
+        console.log('something went wrong', data);
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Poor Network Detected'); });
         }, 1000);
 
       }
