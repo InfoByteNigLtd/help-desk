@@ -157,9 +157,8 @@ export class AnnouncementsComponent implements OnInit {
       error: data => {
         // console.log('something went wrong', data);
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Ensure you have a steady Network'); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Oops!!!', 'Ensure you have a steady Network'); });
         }, 1000);
-
       }
 
     });

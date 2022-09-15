@@ -109,7 +109,8 @@ get() {
     error: data => {
       // console.log('something went wrong', data);
       setTimeout(() => {
-        this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
+        this.loadingScreen?.dismiss().then(() => { this.alertModal('Oops!!!', 'Ensure you have a steady Network'); });
+
       }, 1000);
 
     }
