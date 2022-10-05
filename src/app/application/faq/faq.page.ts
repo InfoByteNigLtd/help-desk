@@ -19,7 +19,6 @@ export class FaqPageComponent implements OnInit {
 
   getUserData(){
     this.memoryData = JSON.parse(this.memoryData);
-    // console.log('from local storage faq',this.memoryData);
     this.memoryData?.fullname; 
     this.userName = this.memoryData?.fullname.split(" ");
     this.userName = `${this.userName?.[0]} ${this.userName?.[1]}`;

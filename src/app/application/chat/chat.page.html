@@ -39,26 +39,6 @@
     <div class="response-wrapper" *ngIf="showQResponse">
       <div class="response">{{qAnswer}}</div>
     </div>
-   
-    <!-- below comment is the old info -->
-    <!-- <div class="chat">
-      <div
-        *ngFor="let msg of messages"
-        [class]="msg.mtype === messageType[0] ? 'incoming' : 'outgoing' "
-      >
-        {{msg.message}}
-      </div>
-      <div style="width: 100%; min-height: 500px"></div>
-    </div>
-    <div class="response-wrapper" *ngIf="showResponse">
-      <div class="response" *ngFor="let u of responses">
-        <span (click)="getResponse(u.id)">{{u.response}}</span>
-      </div>
-    </div>
-    <div class="response-wrapper" *ngIf="showSupportLink">
-      <div class="response" style="background-color: #fff; color: #0f77ff">
-        <span (click)="navigateToSupport()">Admin help desk</span>
-      </div>
-    </div> -->
+
   </div>
 </ion-content>

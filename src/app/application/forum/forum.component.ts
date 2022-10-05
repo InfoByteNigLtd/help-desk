@@ -70,7 +70,6 @@ export class ForumComponent implements OnInit {
   
   ngOnInit() {
     this.verifyLogin();
-    // this.getForumData();
   }
 
 }

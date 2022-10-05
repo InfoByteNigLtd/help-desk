@@ -56,7 +56,7 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   }
 
   public realQuestions: any = [
-    {id: 1, question: 'Hello '},
+    {id: 1, question: 'Hello !, Welcome'},
     {id: 2, question: 'click on any of the question below to get your updates'},
     {id: 3, question: 'Application Status?'},
     {id: 4, question: 'Accrued right?'},
@@ -99,13 +99,11 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
   newGetUserAnswers(questionId: any){
     this.http.get(`http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/${this.computerNo}/${questionId}`, {headers: {'Content-type':'application/json'}}).subscribe({
       next: (data: any)=>{
-        // console.log('testing the response',JSON.parse(data));
       },
       error: (data: any)=>{
         /** We are getting the answer as error or return as error so take note */
         const returnData = JSON.parse(JSON.stringify(data));
         this.showAnswer(returnData?.error?.text);
-        // console.log('testing the response', returnData, returnData?.error?.text); 
       }
     })
   }
@@ -114,12 +112,6 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
     
     this.getUserData();
     this.verifyLogin();
-    // this.newGetUserAnswers('A');
-    // setTimeout(() => {
-    //    this.postQuestion();
-    // }, 2000);
-
-   
 
   }
   
@@ -138,16 +130,11 @@ export class ChatPageComponent implements OnInit, AfterContentChecked {
 
   async getUserData(){
     this.memoryData = await JSON.parse(this.memoryData);
-    // console.log('from local storage chat',this.memoryData);
     const fullname = this.memoryData?.fullname.split(" ");
     this.userName = `${fullname?.[0]} ${fullname?.[1]}`;
     this.userFirstName = fullname?.[0];
-    // console.log('user name', this.userFirstName);
     this.memberId = this.memoryData?.memberId;
-    // console.log('member id', this.memberId);
     this.computerNo = this.memoryData?.computerNo;
-    // console.log('user computer number', this.computerNo);
-    // this.getUserAnswers();
     
   }
 

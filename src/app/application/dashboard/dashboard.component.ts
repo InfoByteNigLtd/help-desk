@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
   ) {
     this.verifyLogin();
     this.platform.backButton.subscribeWithPriority(10, () => {
-      // console.log('Handler was called!');
     });
    }
   /**
@@ -101,7 +100,6 @@ export class DashboardComponent implements OnInit {
       await alert.present();
   
       const { role } = await alert.onDidDismiss();
-      // console.log("onDidDismiss resolved with role", role);
     }
 
     //local storage 
@@ -123,7 +121,6 @@ export class DashboardComponent implements OnInit {
 
     getUserData(){
       this.memoryData = JSON.parse(this.memoryData);
-      // console.log('from local storage',this.memoryData);
       this.memoryData?.fullname; 
       this.userName = this.memoryData?.fullname.split(" ");
       this.userName = `${this.userName?.[0]} ${this.userName?.[1]}`;

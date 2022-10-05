@@ -31,11 +31,9 @@ export class SupportComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     ) { 
       this.activatedRoute.params.subscribe( param => {
-        // console.log('params from suppoort', param);
         
         this.computerNo = param.computerNo;
         this.tkCatId = param.tkCatId;
-        // console.log('recieved data from route', this.computerNo, this.tkCatId);
       });
     }
 
@@ -77,31 +75,21 @@ export class SupportComponent implements OnInit {
 
   getUserData() {
     this.memoryData = JSON.parse(this.memoryData);
-    // console.log('from support', this.memoryData);
     this.computerNo = this.memoryData?.computerNo;
     this.memberId = this.memoryData?.memberId;
-    // console.log('computer no', this.computerNo, 'memberId', this.memberId);
   }
 
   updateTicketId(event) {
     this.ticketCategoryId = event.target.value;
-    // console.log('id', this.ticketCategoryId);
   }
   updateSubject(event) {
     this.subject = event.target.value;
-    // console.log('subject', this.subject);
   }
   updateDescripton(event) {
     this.description =event.target.value;
-    // console.log('desc', this.description);
   }
 
   validateInput() {
-    // console.log('ticketCategory', this.ticketCategoryId);
-    // console.log('computer No', this.computerNo);
-    // console.log('subject', this.subject);
-    // console.log('description', this.description);
-    // console.log('status', this.status);
 
     if (this.ticketCategoryId === ' ' || this.ticketCategoryId === undefined ||
       this.computerNo === ' ' || this.computerNo === undefined ||
@@ -120,13 +108,10 @@ export class SupportComponent implements OnInit {
         "status": "new"
     }).subscribe({
         next: data => {
-          // console.log('sent successfully', data);
-          // localStorage.setItem('userData', JSON.stringify(data));
           this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'message sent Succefully'); });
           this.router.navigate(['./app/router/dashboard']);
         },
         error: data => {
-          // console.log('something went wrong', data);
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
           }, 1000);
@@ -139,13 +124,11 @@ export class SupportComponent implements OnInit {
   get() {
     this.http.get(`${this.apiEndPoint1}`, { }).subscribe({
       next: data => {
-        // console.log('inbox details received', data);
         const ticketCategory = data;
         this.ticketCategoryApi = ticketCategory;
-        this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'laoded Succefully'); });
+        this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'Loaded Succefully'); });
       },
       error: data => {
-        // console.log('something went wrong', data);
       }
     });
   }

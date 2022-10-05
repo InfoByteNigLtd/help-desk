@@ -14,13 +14,6 @@ export class InboxDetailsComponent implements OnInit, AfterContentChecked {
   @Input() image: string = "../assets/images/images.jpg";
   posterImage = "../assets/images/images.jpg";
 
-  reactions: any = {likes: 451, commentNo: 40};
-  postComment = "I JUst like what you were saying sir. say anything you want and linke";
-
-
-  postTopic: string = "How about pension for 2000";
-  postMessage: string = 'Will they not pay us?';
-
   loadingScreen!: HTMLIonLoadingElement;
   computerNo: any;
   private tkCatId: any;
@@ -42,12 +35,9 @@ export class InboxDetailsComponent implements OnInit, AfterContentChecked {
     protected ref: ChangeDetectorRef
     ) { 
       this.activatedRoute.params.subscribe( param => {
-        // console.log('params from suppoort', param);
-        
         this.computerNo = param.computerNo;
         this.tkCatId = param.tkCatId;
         this.ticketId = param.ticketId;
-        // console.log('recieved data from route', this.computerNo, this.tkCatId, this.ticketId);
       });
     }
 
@@ -81,22 +71,11 @@ export class InboxDetailsComponent implements OnInit, AfterContentChecked {
     this.loadingModal();
     this.http.get(`${this.apiEndPoit2}${this.computerNo}/${this.ticketId}/true`, { }).subscribe({
       next: data => {
-        // console.log('computerno', this.computerNo, 'ticketId', this.ticketId);
-        // console.log('inbox details received working', data);
         this.responseData = data;
         this.commentData = data[0].conversationDTOs.slice();
-        // console.log('passed from inbox details',this.responseData);
-
-        // this.responseData = data.conversationDTOs;
-        // localStorage.setItem('userData', JSON.stringify(data));
         this.loadingScreen?.dismiss();
-
-        // this.loadingScreen?.dismiss().then(() => { this.alertModal('Success!!!', 'loaded Succefully'); });
-
-  
       },
       error: data => {
-        // console.log('something went wrong', data);
       }
     });
     this.loadingScreen?.dismiss();
@@ -104,24 +83,20 @@ export class InboxDetailsComponent implements OnInit, AfterContentChecked {
 
   getPostTopic(event) {
     this.responseToQuestionsAsked = event.target.value;
-    // console.log(event.target.value);
   }
 
 
   submit() {
-    // console.log('entered values', this.responseToQuestionsAsked);
       this.loadingModal();
       this.http.post(this.apiEndPoit1, {
         "ticketId": this.ticketId,
         "response": this.responseToQuestionsAsked
     }).subscribe({
       next: data => {
-        // console.log('inbox details received working', data);
         this.loadingScreen?.dismiss();
         this.getComment();
       },
       error: data => {
-        // console.log('something went wrong', data);
         this.loadingScreen?.dismiss();
       }
     });

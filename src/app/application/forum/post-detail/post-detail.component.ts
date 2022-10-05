@@ -16,10 +16,9 @@ export class PostDetailComponent implements OnInit {
   posterImage = "../assets/images/images.jpg";
 
   reactions: any = {likes: 451, commentNo: 40};
-  postComment = "I JUst like what you were saying sir. say anything you want and linke";
+  postComment = "I Just like what you were saying sir. say anything you want and linke";
 
-
-  postTopic: string = "How about pension for 2000";
+  postTopic: string = "How about pension for 2023";
   postMessage: string = 'Will they not pay us?';
 
   constructor() { }
@@ -28,16 +27,10 @@ export class PostDetailComponent implements OnInit {
 
   getPostTopic(event) {
     this.postTopic = event.target.value;
-    // console.log(event.target.value);
   }
 
   getPostMessage(event) {
     this.postTopic = event.target.value;
-    // console.log(event.target.value);
-  }
-
-  submit() {
-    // console.log('ented values', this.postTopic, this.postMessage);
   }
 
 }

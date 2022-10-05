@@ -38,8 +38,6 @@ export class AnnouncementsComponent implements OnInit {
       this.isPostDetail = true;
       this.annoucementPostId = postId;
       this.announcementDetails = userData;
-      // console.log('post id from annoucnemt', this.annoucementPostId);
-
 
     }
     else if (page === 'topic-list') {
@@ -118,7 +116,6 @@ export class AnnouncementsComponent implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    // console.log("onDidDismiss resolved with role", role);
   }
 
   async loadingModal(message: string = "Loading...") {
@@ -145,17 +142,14 @@ export class AnnouncementsComponent implements OnInit {
   getUserData() {
     this.loadingModal();
     this.memoryData = JSON.parse(this.memoryData);
-    // console.log('from local storage', this.memoryData);
     this.memoryData?.fullname;
 
     this.http.get(`${this.apiLink}`, {}).subscribe({
       next: data => {
-        // console.log('Annoucement Received', data);
         this.result = data;
         this.loadingScreen?.dismiss();
       },
       error: data => {
-        // console.log('something went wrong', data);
         setTimeout(() => {
           this.loadingScreen?.dismiss().then(() => { this.alertModal('Oops!!!', 'Ensure you have a steady Network'); });
         }, 1000);
@@ -168,7 +162,6 @@ export class AnnouncementsComponent implements OnInit {
   ngOnInit() {
     this.verifyLogin();
     this.getUserData()
-    // this.getForumData();
   }
 
 }

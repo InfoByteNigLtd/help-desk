@@ -3,7 +3,6 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } fro
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-announcements-details',
@@ -47,7 +46,7 @@ export class AnnouncementsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.verifyLogin();
-    console.log('annoucement to annoucement details', this.announcementData);
+    // console.log('annoucement to annoucement details', this.announcementData);
   }
 
 }

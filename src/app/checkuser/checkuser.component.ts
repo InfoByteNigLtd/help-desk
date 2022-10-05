@@ -17,7 +17,6 @@ export class CheckuserComponent implements OnInit {
   async getUserInfo() {
     const userData = await this.storage.fetch('user-data');
     if (userData === null) {
-      // console.log('it work');
       this.navigateTo('/app/tabs/sign-up');
     }
     else {

@@ -28,9 +28,6 @@ export class ProfileComponent implements OnInit {
   result: any;
   
   loadingScreen!: HTMLIonLoadingElement;
-
-
-
   private apiEndPoit2 = environment.memberAPI;
 
 
@@ -101,7 +98,6 @@ export class ProfileComponent implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    // console.log("onDidDismiss resolved with role", role);
   }
 
 
@@ -124,14 +120,12 @@ export class ProfileComponent implements OnInit {
 
   getUserData() {
     this.memoryData = JSON.parse(this.memoryData);
-    // console.log('from local storage', this.memoryData);
     this.memoryData?.fullname;
     this.computerNo = this.memoryData?.computerNo;
     this.memberId = this.memoryData?.memberId;
 
     this.http.get(`${this.apiEndPoit2}${this.memberId}`, {}).subscribe({
       next: data => {
-        // console.log('sent successfully', data);
         this.result = data;
         this.loadingScreen?.dismiss();
         const result: any = data;
@@ -142,9 +136,8 @@ export class ProfileComponent implements OnInit {
         
       },
       error: data => {
-        // console.log('something went wrong', data);
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Poor Network Detected'); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', 'Poor Network Detected'); });
         }, 1000);
 
       }
