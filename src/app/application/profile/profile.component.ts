@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
@@ -11,10 +11,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild("clickImage") clickImage: ElementRef;
   pageTitle = "Update Profile";
   loading: boolean = false;
-  pickedimageDispatcherImage: string = "../../assets/icon/user.svg";
   dispatcherImageStatus: boolean = true;
   dispatcherEmail: string = "";
   dispatcherAddress: string = "";
@@ -29,9 +27,6 @@ export class ProfileComponent implements OnInit {
   gender: string = "";
   result: any;
   
-
-
-  dispatcherId: any;
   loadingScreen!: HTMLIonLoadingElement;
 
 
@@ -50,7 +45,6 @@ export class ProfileComponent implements OnInit {
   backButton() {
     this.router.navigate(['/app/router/dashboard']);
   }
-  updateDispatcherProfile() { }
 
   // Alerts
 
