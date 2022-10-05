@@ -51,56 +51,6 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/app/router/dashboard']);
   }
   updateDispatcherProfile() { }
-  loadImageFromDevice(event, type) {
-    const maxSize = 5;
-    const imageSizeDivisor = 1024 * 1024; //to convert the image size to mb
-    const file = event.target.files[0];
-    // check the image size if not greater than maxSize allowed
-    let imageSize = event.target.files[0].size / imageSizeDivisor;
-    // console.log('image size', imageSizeDivisor, 'image size in mb ', imageSize);
-
-    if (imageSize <= maxSize) {
-      const reader = new FileReader();
-
-      reader.readAsArrayBuffer(file);
-
-      reader.onload = () => {
-        // get the blob of the image:
-        let blob: Blob = new Blob([new Uint8Array(reader.result as ArrayBuffer)]);
-
-        // create blobURL, such that we could use it in an image element:
-        let blobURL: string = URL.createObjectURL(blob);
-
-        //CONVERT TO BASE 64
-        async function blobToBase64(blob) {
-          return new Promise((resolve, _) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result);
-            reader.readAsDataURL(blob);
-          });
-        }
-        // <= your blob object goes here
-
-        blobToBase64(blob).then((base64String) =>
-          this.makeit(base64String, type)
-        );
-      };
-
-      reader.onerror = (error) => {
-        this.presentAlert('Error', 'Something went wrong', 'Ensure image size is less than 5mb');
-      };
-    }
-    else {
-      this.presentAlert('Error', 'Upload unsuccessful', 'Ensure image size is less than 5mb');
-    }
-  }
-  makeit(n, type) {
-    if (type == "PF") {
-      this.pickedimageDispatcherImage = "data:image/png;base64," + n.split(",")[1];
-
-      this.dispatcherImageStatus = false;
-    }
-  }
 
   // Alerts
 
