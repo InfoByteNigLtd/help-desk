@@ -15,18 +15,30 @@
 
       </div>
 
-        <input type="text" placeholder="Surname" value="{{surname}}" disabled />
-        <input type="text" placeholder="Other name" value="{{otherNames}}" disabled />
-        <input type="text" placeholder="ComputerNo" value="Computer No:  {{computerNo}}" disabled>
-        <input type="text" placeholder="accruedRight" value="Accrued Right: &#8358; {{result?.accruedRight | number}}" disabled>
-        <input type="text" placeholder="accruedRight" value="Indebtedness: &#8358; {{result?.indebtedness | number}}" disabled>
-        <input type="text" placeholder="MemberId" value="Apllication Status: {{result?.applicationStatus}}" disabled>
-        <input type="text" placeholder="paymentSchedule" value="Payment Schedule:  {{result?.paymentSchedule}}" disabled>
+      <input type="text" placeholder="Surname" value="{{surname}}" disabled />
+      <input type="text" placeholder="Other name" value="{{otherNames}}" disabled />
+      <input type="text" placeholder="ComputerNo" value="Computer No:  {{computerNo}}" disabled>
+      <input type="text" placeholder="accruedRight" value="Accrued Right: &#8358; {{result?.accruedRight | number}}"
+        disabled>
+      <input type="text" placeholder="accruedRight" value="Indebtedness: &#8358; {{result?.indebtedness | number}}"
+        disabled>
+      <input type="text" placeholder="MemberId" value="Apllication Status: {{result?.applicationStatus}}" disabled>
+      <input type="text" placeholder="paymentSchedule" value="Payment Schedule:  {{result?.paymentSchedule}}" disabled>
 
 
-        <input type="text" placeholder="PFA" value="PFA: {{pfaCode}}" disabled>
-        <input type="text" placeholder="PIN" value="PIN: {{pinNo}}" disabled>
+      <input type="text" placeholder="PFA" value="PFA: {{pfaCode}}" disabled>
+      <input type="text" placeholder="PIN" value="PIN: {{pinNo}}" disabled>
+
+      <input type="submit" value="Delete Account" (click)="confirmDelete();">
+
+     
 
     </fieldset>
+  </div>
+  <div class="delete-overlay" *ngIf="isDelete;">
+    <div class="confirm-delete">
+      <button class="yes" (click)="properDelete(computerNo)">Yes</button>
+      <button class="no" (click)="confirmDelete();">No</button>
+    </div>
   </div>
 </ion-content>

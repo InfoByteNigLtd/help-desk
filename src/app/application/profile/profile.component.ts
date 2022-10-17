@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
 
   dispatcherId: any;
   loadingScreen!: HTMLIonLoadingElement;
-
+  isDelete: boolean = false;
 
 
   private apiEndPoit2 = environment.memberAPI;
@@ -230,6 +231,46 @@ export class ProfileComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
+confirmDelete(){
+  setTimeout(() => {
+    if (this.isDelete == false) {
+    this.isDelete = true;
+  } else{
+     this.isDelete = false;
+  }
+  }, 500);
+  
+ 
+}
+properDelete(event: any){
+  setTimeout(() => {
+    console.log('computer number: ',event);
+    
+    this.http.delete(`${this.apiEndPoit2}${this.memberId}`, {}).subscribe({
+      next: data => {
+        console.log('sent successfully', data);
+        this.result = data;
+        this.loadingScreen?.dismiss();
+        const result: any = data;
+        this.surname = result.surname;
+        this.otherNames = result.firstName + " " + result.middleName
+        this.pfaCode = result.pfaCode;
+        this.pinNo = result.pinNo;
+        
+      },
+      error: data => {
+        // console.log('something went wrong', data);
+        setTimeout(() => {
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Poor Network Detected'); });
+        }, 1000);
+
+      }
+      
+    });
+  
+  }, 500);
+
+}
 
   ngOnInit() {
     this.verifyLogin();

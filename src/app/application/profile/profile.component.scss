@@ -118,3 +118,40 @@
     background-color: #5ab7f4;
     padding-top: 2px;
 }
+.delete-overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+  .confirm-delete{
+    background-color: rgb(147, 141, 141);
+    border: solid 1px #b5b5eb;
+    display: flex;
+    height: 100px;
+    width: 70%;
+    position: absolute;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    top: 30%;
+    .yes{
+        background-color: #d33131;
+    }
+    .no{
+        background-color: #3193d3;
+    }
+    .yes,.no{
+        padding: 8px 20px;
+        border-radius: 5px;
+        &:active{
+            opacity: 0.5;
+        }
+    }
+}  
+}
+
