@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,6 +29,9 @@ export class ProfileComponent implements OnInit {
   result: any;
   
   loadingScreen!: HTMLIonLoadingElement;
+  isDelete: boolean = false;
+
+
   private apiEndPoit2 = environment.memberAPI;
 
 
@@ -167,6 +171,48 @@ export class ProfileComponent implements OnInit {
     const { role } = await alert.onDidDismiss();
   }
 
+confirmDelete(){
+  setTimeout(() => {
+    if (this.isDelete == false) {
+    this.isDelete = true;
+  } else{
+     this.isDelete = false;
+  }
+  }, 500);
+  
+ 
+}
+properDelete(event: any){
+    // console.log('computer number: ',event);
+    
+    this.http.post(`${this.apiEndPoit2}${this.computerNo}`, {}).subscribe({
+      next: data => {
+        // console.log('sent successfully', data);
+         // show success Message
+         this.loadingModal("Account deactivated");
+         setTimeout(() => {
+           this.loadingScreen?.dismiss().then(() => {
+           });
+          //  this.router.navigate(['app/router/dashboard'])
+           this.router.navigate(['/login']);
+         }, 5000);
+        
+      },
+      error: data => {
+        console.log('something went wrong', data);
+        this.loadingScreen?.dismiss();
+        // show error Message
+        this.loadingModal(data.error);
+        setTimeout(() => {
+          this.loadingScreen?.dismiss().then(() => {
+          });
+        }, 5000);
+
+      }
+      
+    });
+
+}
 
   ngOnInit() {
     this.verifyLogin();
