@@ -31,14 +31,20 @@
 
       <input type="submit" value="Delete Account" (click)="confirmDelete();">
 
-     
+
 
     </fieldset>
   </div>
   <div class="delete-overlay" *ngIf="isDelete;">
     <div class="confirm-delete">
-      <button class="yes" (click)="properDelete(computerNo)">Yes</button>
-      <button class="no" (click)="confirmDelete();">No</button>
+      <div class="text">
+        <p>Are you sure you want to deactivate your account?</p>
+      </div>
+      <div class="yes-no">
+        <button class="yes" (click)="properDelete(computerNo)">Yes</button>
+        <button class="no" (click)="confirmDelete();">No</button>
+      </div>
+
     </div>
   </div>
 </ion-content>

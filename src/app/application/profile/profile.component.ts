@@ -243,32 +243,34 @@ confirmDelete(){
  
 }
 properDelete(event: any){
-  setTimeout(() => {
-    console.log('computer number: ',event);
+    // console.log('computer number: ',event);
     
-    this.http.delete(`${this.apiEndPoit2}${this.memberId}`, {}).subscribe({
+    this.http.post(`${this.apiEndPoit2}${this.computerNo}`, {}).subscribe({
       next: data => {
-        console.log('sent successfully', data);
-        this.result = data;
-        this.loadingScreen?.dismiss();
-        const result: any = data;
-        this.surname = result.surname;
-        this.otherNames = result.firstName + " " + result.middleName
-        this.pfaCode = result.pfaCode;
-        this.pinNo = result.pinNo;
+        // console.log('sent successfully', data);
+         // show success Message
+         this.loadingModal("Account deactivated");
+         setTimeout(() => {
+           this.loadingScreen?.dismiss().then(() => {
+           });
+          //  this.router.navigate(['app/router/dashboard'])
+           this.router.navigate(['/login']);
+         }, 5000);
         
       },
       error: data => {
-        // console.log('something went wrong', data);
+        console.log('something went wrong', data);
+        this.loadingScreen?.dismiss();
+        // show error Message
+        this.loadingModal(data.error);
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Poor Network Detected'); });
-        }, 1000);
+          this.loadingScreen?.dismiss().then(() => {
+          });
+        }, 5000);
 
       }
       
     });
-  
-  }, 500);
 
 }
 
