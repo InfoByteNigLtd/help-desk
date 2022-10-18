@@ -146,6 +146,9 @@
         .text {
             display: flex;
             justify-content: center;
+            p{
+               margin-left: 10px;
+            }
         }
 
         .yes-no {
