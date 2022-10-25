@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   isLogin: boolean = false;
   isLogout: boolean = true;
 
+  reactivation:boolean = false;
+
   userStatus: string = 'inactive';
 
   getStatus(): string {
@@ -66,6 +68,8 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
       this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }).subscribe({
         next: data => {
+          console.log('success',data);
+
           sessionStorage.setItem('userData', JSON.stringify(data));
           this.loadingScreen?.dismiss();
           this.loadingModal('Login successful...');
@@ -78,6 +82,19 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
         },
         error: data => {
+          console.log('error',data.error);
+          const errorMessage = data.error;
+          
+          if (errorMessage === 'Account not yet Activated or Deactivated by user.') {
+            console.log('ose');
+            this.reactivation = true;
+            
+          }else{
+            console.log('ko se');
+          }
+          
+          
+          
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Invalid user credentials'); });
           }, 1000);

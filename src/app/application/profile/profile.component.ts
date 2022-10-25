@@ -193,8 +193,8 @@ properDelete(event: any){
          setTimeout(() => {
            this.loadingScreen?.dismiss().then(() => {
            });
-          //  this.router.navigate(['app/router/dashboard'])
-           this.router.navigate(['/login']);
+           this.logout();
+          //  this.router.navigate(['/login']);
          }, 5000);
         
       },
@@ -212,6 +212,17 @@ properDelete(event: any){
       
     });
 
+}
+
+setStatus(value: string) {
+  sessionStorage.setItem('userStatus', value);
+}
+
+logout() {
+  sessionStorage.removeItem('userData');
+  this.setStatus('inactive');
+  this.router.navigate(['/login']);
+  window.location.reload();
 }
 
   ngOnInit() {
