@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   pinNo: string = "";
   gender: string = "";
   result: any;
-  
+
   loadingScreen!: HTMLIonLoadingElement;
   isDelete: boolean = false;
 
@@ -105,8 +105,8 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  //local storage 
-  /**change the localStorage to sessionStorage if you want session storage 
+  //local storage
+  /**change the localStorage to sessionStorage if you want session storage
    * localStirage.removeItem;
   */
   memoryData: any = sessionStorage.getItem('userData');
@@ -137,7 +137,7 @@ export class ProfileComponent implements OnInit {
         this.otherNames = result.firstName + " " + result.middleName
         this.pfaCode = result.pfaCode;
         this.pinNo = result.pinNo;
-        
+
       },
       error: data => {
         setTimeout(() => {
@@ -145,7 +145,7 @@ export class ProfileComponent implements OnInit {
         }, 1000);
 
       }
-      
+
     });
 
   }
@@ -179,12 +179,12 @@ confirmDelete(){
      this.isDelete = false;
   }
   }, 500);
-  
- 
+
+
 }
 properDelete(event: any){
     // console.log('computer number: ',event);
-    
+
     this.http.post(`${this.apiEndPoit2}${this.computerNo}`, {}).subscribe({
       next: data => {
         // console.log('sent successfully', data);
@@ -196,7 +196,7 @@ properDelete(event: any){
            this.logout();
           //  this.router.navigate(['/login']);
          }, 5000);
-        
+
       },
       error: data => {
         console.log('something went wrong', data);
@@ -207,9 +207,7 @@ properDelete(event: any){
           this.loadingScreen?.dismiss().then(() => {
           });
         }, 5000);
-
       }
-      
     });
 
 }
