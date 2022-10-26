@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
   public email;
   public password;
+  public ComputerNo;
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10008237/Admin@123';
 
@@ -59,6 +60,10 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     this.password = value;
   }
 
+  updateComputerNo(value) {
+    this.ComputerNo = value;
+  }
+
   validateInput() {
     if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
       this.alertModal('Error!!!', 'All fields are required');
@@ -84,19 +89,17 @@ export class LoginComponent implements OnInit, AfterContentChecked {
         error: data => {
           console.log('error',data.error);
           const errorMessage = data.error;
-          
+
           if (errorMessage === 'Account not yet Activated or Deactivated by user.') {
             console.log('ose');
             this.reactivation = true;
-            
+            this.isLogin = false;
+
           }else{
             console.log('ko se');
           }
-          
-          
-          
           setTimeout(() => {
-            this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Invalid user credentials'); });
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', `${data.error}`); });
           }, 1000);
 
         }

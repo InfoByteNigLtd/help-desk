@@ -19,9 +19,17 @@
 
 <div class="logout form" *ngIf="isLogout">
 	<div class="settings" style="display: flex; flex-direction:column;">
-		<!-- <button type="text" class="submit" (click)="refresh()">Refresh</button> -->
+<!--		 <button type="text" class="submit" (click)="refresh()">Refresh</button>-->
 		<button type="text" class="submit" (click)="logout()">Logout</button>
-
 	</div>
+
+</div>
+<div class="logout form"  *ngIf="reactivation">
+  <div class="settings" style="display: flex; flex-direction:column;">
+    <app-input (value)="updateComputerNo($event)" type="text" id="3" inputType="default" legend="Email"
+               placeholder="Computer Number" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+    <!--		 <button type="text" class="submit" (click)="refresh()">Refresh</button>-->
+    <button type="text" class="submit" (click)="logout()">Reactivate</button>
+  </div>
 
 </div>
