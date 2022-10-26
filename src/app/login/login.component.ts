@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
   public email;
   public password;
-  public ComputerNo;
+  public computerNo;
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10008237/Admin@123';
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   isLogin: boolean = false;
   isLogout: boolean = true;
 
-  reactivation:boolean = false;
+  reactivation: boolean = false;
 
   userStatus: string = 'inactive';
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   }
 
   updateComputerNo(value) {
-    this.ComputerNo = value;
+    this.computerNo = value;
   }
 
   validateInput() {
@@ -91,12 +91,12 @@ export class LoginComponent implements OnInit, AfterContentChecked {
           const errorMessage = data.error;
 
           if (errorMessage === 'Account not yet Activated or Deactivated by user.') {
-            console.log('ose');
+            console.log('Deactivated account');
             this.reactivation = true;
             this.isLogin = false;
 
           }else{
-            console.log('ko se');
+            console.log('Wrong details');
           }
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', `${data.error}`); });
@@ -153,6 +153,17 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     window.location.reload();
     this. gotoDashboard();
   }
+  backButton(){
+    window.location.reload();
+  }
+
+  reactivateUser(url: string) {
+    console.log('this number', this.computerNo);
+    setTimeout(() => {
+      window.open(url + `${this.computerNo}`, "_blank"); //to reactivation page
+    }, 500);
+  }
+
   ngOnInit() {
 
     let lStatus = this.getStatus();

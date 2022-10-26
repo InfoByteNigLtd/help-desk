@@ -5,7 +5,7 @@ body {
     justify-content: center;
     height: 100vh;
   }
-  
+
   .form {
     background-color: #15172b;
     box-sizing: border-box;
@@ -14,7 +14,7 @@ body {
     width: 100vw;
     height: 100vh;
   }
-  
+
   .title {
     color: #eee;
     font-family: sans-serif;
@@ -33,7 +33,7 @@ body {
   .input:focus ~ .placeholder {
     color: #dc2f55;
   }
-  
+
   .submit {
     background-color: #08d;
     border-radius: 12px;
@@ -47,7 +47,7 @@ body {
     text-align: center;
     width: 100%;
   }
-  
+
   .submit:active {
     background-color: #06b;
   }
@@ -61,3 +61,18 @@ body {
     justify-content: center;
     align-items: center;
   }
+.back-button {
+  background-color: #15172b;
+  border-radius: 4px;
+  top: 2%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  //justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+  left: 0;
+  app-font-icon{
+    font-size: 30px;
+  }
+}
