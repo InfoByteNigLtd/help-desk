@@ -107,9 +107,18 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  gotoSignup(url: string) {
+  //this is navigate to a browser page 
+
+  // gotoSignup(url: string) {
+  //   setTimeout(() => {
+  //     window.open(url, "_blank"); //to signup page
+  //   }, 500);
+  // }
+
+  //this is within the app
+  gotoSignup() {
     setTimeout(() => {
-      window.open(url, "_blank"); //to signup page
+     this.router.navigate(['/signup']); //to signup page
     }, 500);
   }
 

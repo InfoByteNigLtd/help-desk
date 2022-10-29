@@ -24,6 +24,7 @@ export class InputComponent implements OnInit {
   @Input() icon: string = '';
   @Input() color: string = 'inherit';
   @Input() sx: string = `background-color:${this.bgColor}; color:${this.color};`;
+  // @Input() disabled: never;
 
   prevInputType = 'none';
   prevIcon = 'none';

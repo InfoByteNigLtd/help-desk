@@ -11,30 +11,33 @@
 	<div class="cut cut-short"></div>
 	<button type="text" class="submit" (click)="validateInput()">submit</button>
 
-	<h3 class="subtitle new"
+	<!-- <h3 class="subtitle new"
 		(click)="gotoSignup('http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register')">Sign up <span
+			style="color: #23bfff;">here</span></h3> -->
+	<h3 class="subtitle new"
+		(click)="gotoSignup()">Sign up <span
 			style="color: #23bfff;">here</span></h3>
 
 </div>
 
 <div class="logout form" *ngIf="isLogout">
 	<div class="settings" style="display: flex; flex-direction:column;">
-<!--		 <button type="text" class="submit" (click)="refresh()">Refresh</button>-->
+		<!--		 <button type="text" class="submit" (click)="refresh()">Refresh</button>-->
 		<button type="text" class="submit" (click)="logout()">Logout</button>
 	</div>
 
 </div>
-<div class="logout form"  *ngIf="reactivation">
-  <div class="back-button" (click)="backButton()">
-    <app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom"></app-font-icon>
-    Back
-  </div>
-  <div class="settings" style="display: flex; flex-direction:column;">
-    <app-input (value)="updateComputerNo($event)" type="number" id="3" inputType="default" legend="Computer Number"
-               placeholder="Computer Number" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
-    <button type="text" class="submit"
-            (click)="reactivateUser('https://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Reactivate/')"
-    >Reactivate</button>
-  </div>
+<div class="logout form" *ngIf="reactivation">
+	<div class="back-button" (click)="backButton()">
+		<app-font-icon iconType="remix" iconName="arrow-left-s-line" iconSize="nav-icons" iconColor="custom">
+		</app-font-icon>
+		Back
+	</div>
+	<div class="settings" style="display: flex; flex-direction:column;">
+		<app-input (value)="updateComputerNo($event)" type="number" id="3" inputType="default" legend="Computer Number"
+			placeholder="Computer Number" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+		<button type="text" class="submit"
+			(click)="reactivateUser('https://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Reactivate/')">Reactivate</button>
+	</div>
 
 </div>

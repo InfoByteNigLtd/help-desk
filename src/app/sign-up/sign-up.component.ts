@@ -19,10 +19,12 @@ export class SignUpComponent implements OnInit {
 
   @Input() coatOfArm: string = "assets/images/coat-of-arm.png";
 
+  public computerNo: string;
+  public name: string;
+  public username: string;
   public email: string;
   public password: string;
-  public firstname: string;
-  public lastname: string;
+  public rpassword: string;
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'localhost://8100/api';
 
@@ -32,14 +34,17 @@ export class SignUpComponent implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private storage: StorageService
-    ) { }
+  ) { }
 
 
-  updateFirstName(value) {
-    this.firstname = value;
+  updateStaffNo(value) {
+    this.computerNo = value;
   }
-  updateLastName(value) {
-    this.lastname = value;
+  updateName(value) {
+    this.name = value;
+  }
+  updateUserName(value) {
+    this.username = value;
   }
   updateEmail(value) {
     this.email = value;
@@ -47,20 +52,49 @@ export class SignUpComponent implements OnInit {
   updatePassword(value) {
     this.password = value;
   }
+  updateRpassword(value) {
+    this.rpassword = value;
+  }
+
+  validatepassword(){
+    if (this.password === this.rpassword) {
+     this.validateInput();
+    } else{
+      this.alertModal('OOPS!!!', "Password and Repeat Password doesn't Match");
+    }
+     return false;
+  }
 
   validateInput() {
-    if (this.firstname === ' ' || this.firstname === undefined || this.lastname === ' ' || this.lastname === undefined || this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
+    if (this.computerNo === ' ' || this.computerNo === undefined ||
+      this.name === ' ' || this.name === undefined ||
+      this.username === ' ' || this.username === undefined ||
+      this.email === ' ' || this.email === undefined ) {
       this.alertModal('Error!!!', 'All fields are required');
     }
     else {
       this.loadingModal();
 
-      this.http.post(this.apiEndPoit, { 'first-name': this.firstname, 'last-name': this.lastname, email: this.email, password: this.password }).subscribe({
+      this.http.post(this.apiEndPoit,
+        {
+          'computerNo': this.computerNo,
+          'name': this.name,
+          'userName': this.username,
+          'email': this.email,
+          'password': this.password
+        }
+      ).subscribe({
         next: data => {
         },
         error: data => {
           /** note: this storage line should be move out of this error to next once api endpoint is profided */
-          this.storage.store('user-data', { 'first-name': this.firstname, 'last-name': this.lastname, email: this.email, password: this.password });
+          this.storage.store('user-data',  {
+            'computerNo': this.computerNo,
+            'name': this.name,
+            'userName': this.username,
+            'email': this.email,
+            'password': this.password
+          });
           this.storage.store('status', 'login');
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('Error!!!', 'Something went wrong'); });
@@ -73,7 +107,7 @@ export class SignUpComponent implements OnInit {
 
   gotoSignin() {
     setTimeout(() => {
-      this.router.navigate(['/tabs/login']);
+      this.router.navigate(['/login']);
     }, 500);
   }
   async loadingModal() {
