@@ -1,11 +1,11 @@
 <div class="form">
   <div class="title">Welcome</div>
   <div class="subtitle">Let's create your account!</div>
-
+  <div class="subtitle">{{name}}</div>
   <app-input (value)="updateStaffNo($event)" type="number" inputType="default" id="1" legend="Employee Number"
     placeholder="Computer Number" label="Computer Number" bgColor="#303245" color="#eee" icon="user-fill"></app-input>
-  <app-input (value)="updateName($event)" type="text" inputType="default" id="2" legend="Name"
-    placeholder="Name" label="Name" bgColor="#303245" color="#eee" icon="user-fill" readonly></app-input>
+  <!-- <app-input (value)="updateName($event)" type="text" inputType="default" id="2" legend="Name"
+    placeholder="Name" label="Name" bgColor="#303245" color="#eee" icon="user-fill" readonly></app-input> -->
   <app-input (value)="updateUserName($event)" type="text" inputType="default" id="3" legend="Username"
     placeholder="Username" label="username" bgColor="#303245" color="#eee" icon="user-fill"></app-input>
   <app-input (value)="updateEmail($event)" type="email" inputType="default" id="4" legend="Email"
