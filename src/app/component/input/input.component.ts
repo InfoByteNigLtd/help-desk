@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Component, OnInit, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -91,9 +91,9 @@ export class InputComponent implements OnInit {
     }
   }
 
-
   ngOnInit() {
   
   }
+
 
 }

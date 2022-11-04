@@ -2,24 +2,24 @@
   <div class="title">Welcome</div>
   <div class="subtitle">Let's create your account!</div>
 
-  <app-input (value)="updateStaffNo($event)" type="text" inputType="default" id="1" legend="Employee Number"
+  <app-input (value)="updateStaffNo($event)" type="number" inputType="default" id="1" legend="Employee Number"
     placeholder="Computer Number" label="Computer Number" bgColor="#303245" color="#eee" icon="user-fill"></app-input>
   <app-input (value)="updateName($event)" type="text" inputType="default" id="2" legend="Name"
-    placeholder="Name" label="Name" bgColor="#303245" color="#eee" icon="user-fill" disabled="disabled"></app-input>
+    placeholder="Name" label="Name" bgColor="#303245" color="#eee" icon="user-fill" readonly></app-input>
   <app-input (value)="updateUserName($event)" type="text" inputType="default" id="3" legend="Username"
     placeholder="Username" label="username" bgColor="#303245" color="#eee" icon="user-fill"></app-input>
   <app-input (value)="updateEmail($event)" type="email" inputType="default" id="4" legend="Email"
     placeholder="example@gmail.com" label="firstname" bgColor="#303245" color="#eee" icon="user-fill"></app-input>
     <!-- <input type="text" placeholder="Surname" value="" disabled /> -->
 
-  <app-input (value)="updatePassword($event)" type="password" id="2" inputType="default" legend="Password"
+  <app-input (value)="updatePassword($event)" type="password" id="5" inputType="default" legend="Password"
     placeholder="password" label="password" sx="background-color: #303245; color: #eee" icon="lock-line">
   </app-input>
-  <app-input (value)="updateRpassword($event)" type="password" id="2" inputType="default" legend="Repeat Password"
+  <app-input (value)="updateRpassword($event)" type="password" id="6" inputType="default" legend="Repeat Password"
     placeholder="password" label="lastname" sx="background-color: #303245; color: #eee" icon="lock-line">
   </app-input>
   <div class="cut cut-short"></div>
-  <button type="text" class="submit" (click)="validatepassword()">submit</button>
+  <button type="text" class="submit" (click)="validatepassword()" *ngIf="canRegister">submit</button>
   <h3 class="subtitle new" (click)="gotoSignin()">Already have an account? <span style="color: #23bfff;"> login</span>
   </h3>
 </div>
