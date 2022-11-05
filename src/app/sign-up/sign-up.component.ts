@@ -66,10 +66,13 @@ export class SignUpComponent implements OnInit {
     this.http.get(`${this.apiEndPoit}${this.computerNo}`, {  }).subscribe({
       next: data => {
         // this.loadingModal('user Found.');
-        console.log('success',data);
+        // console.log('success',data);
+        let numbers = Object.values(data);
+        this.name = numbers[3]+ ' ' + numbers[4] + ' '+ numbers[5];
+        this.canRegister = true;
         this.loadingScreen?.dismiss();
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success', `${data}`); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success', `${this.name}`); });
         }, 1000);
 
       },
@@ -82,13 +85,13 @@ export class SignUpComponent implements OnInit {
         this.name = data.error.text;
         if (this.name == undefined) {
           setTimeout(() => {
-            this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS', `${data.error}`); });
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', `User ${data.error.title}`); });
           }, 1000);
           
         } else {
            setTimeout(() => {
             this.canRegister = true;
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Alert', `${data.error.text}`); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('User Found', `${data.error.text}`); });
           this.name = data.error.text;
         }, 1000); 
         this.loadingScreen?.dismiss();
@@ -141,7 +144,16 @@ export class SignUpComponent implements OnInit {
       ).subscribe({
         next: data => {
           console.log('data for reg', data);
+
+          setTimeout(() => {
+            let response = Object.values(data);
+            console.log(response);
+            // this.name = numbers[3]+ ' ' + numbers[4] + ' '+ numbers[5];
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('User Found', `${response}`); });
           
+        }, 1000); 
+        this.router.navigate(['/login']);
+
         },
         error: data => {
           console.log('error' , data);
