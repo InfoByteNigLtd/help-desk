@@ -160,15 +160,6 @@ export class SignUpComponent implements OnInit {
           setTimeout(() => {
             this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS', `${data.error.message}`); });
           }, 1000);
-          /** note: this storage line should be move out of this error to next once api endpoint is profided */
-          // this.storage.store('user-data',  {
-          //   'computerNo': this.computerNo,
-          //   'name': this.name,
-          //   'userName': this.username,
-          //   'email': this.email,
-          //   'password': this.password
-          // });
-          // this.storage.store('status', 'login');
         }
       });
     }
