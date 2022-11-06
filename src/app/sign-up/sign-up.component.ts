@@ -72,7 +72,7 @@ export class SignUpComponent implements OnInit {
         this.canRegister = true;
         this.loadingScreen?.dismiss();
         setTimeout(() => {
-          this.loadingScreen?.dismiss().then(() => { this.alertModal('Success', `${this.name}`); });
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('User Found', `${this.name}`); });
         }, 1000);
 
       },
@@ -149,7 +149,7 @@ export class SignUpComponent implements OnInit {
             let response = Object.values(data);
             console.log(response);
             // this.name = numbers[3]+ ' ' + numbers[4] + ' '+ numbers[5];
-            this.loadingScreen?.dismiss().then(() => { this.alertModal('User Found', `${response}`); });
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('Success', `${response}`); });
           
         }, 1000); 
         this.router.navigate(['/login']);
@@ -158,7 +158,7 @@ export class SignUpComponent implements OnInit {
         error: data => {
           console.log('error' , data);
           setTimeout(() => {
-            this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS', `${data.error.message}`); });
+            this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', `Username: ${data.error.error}`); });
           }, 1000);
         }
       });

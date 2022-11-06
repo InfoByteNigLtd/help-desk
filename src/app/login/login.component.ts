@@ -71,13 +71,13 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     else {
       this.loadingModal();
 
-      // this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }
-      this.http.post(this.apiEndPoit2, 
-        { 
-          "username": this.email,
-          "password": this.password,
-          "rememberMe": true
-       }
+      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }
+      // this.http.post(this.apiEndPoit2, 
+      //   { 
+      //     "username": this.email,
+      //     "password": this.password,
+      //     "rememberMe": true
+      //  }
       
       ).subscribe({
         next: data => {
