@@ -19,10 +19,12 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   public email;
   public password;
   public computerNo;
+  public username;
   loadingScreen!: HTMLIonLoadingElement;
   private apiEndPoit = 'app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/10008237/Admin@123';
 
   private apiEndPoit2 = environment.memberAPI;
+  private reactivateAPI = environment.reactivateAPI;
 
   isLogin: boolean = false;
   isLogout: boolean = true;
@@ -63,6 +65,9 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   updateComputerNo(value) {
     this.computerNo = value;
   }
+  updateUsername(value) {
+    this.username = value;
+  }
 
   validateInput() {
     if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
@@ -71,14 +76,14 @@ export class LoginComponent implements OnInit, AfterContentChecked {
     else {
       this.loadingModal();
 
-      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }
-      // this.http.post(this.apiEndPoit2, 
-      //   { 
-      //     "username": this.email,
-      //     "password": this.password,
-      //     "rememberMe": true
-      //  }
-      
+      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {}
+        // this.http.post(this.apiEndPoit2, 
+        //   { 
+        //     "username": this.email,
+        //     "password": this.password,
+        //     "rememberMe": true
+        //  }
+
       ).subscribe({
         next: data => {
           // console.log('success',data);
@@ -95,7 +100,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
         },
         error: data => {
-          // console.log('error',data.error);
+          console.log('error', data.error);
           const errorMessage = data.error;
 
           if (errorMessage === 'Account not yet Activated or Deactivated by user.') {
@@ -103,7 +108,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
             this.reactivation = true;
             this.isLogin = false;
 
-          }else{
+          } else {
             // console.log('Wrong details');
           }
           setTimeout(() => {
@@ -126,7 +131,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   //this is within the app
   gotoSignup() {
     setTimeout(() => {
-     this.router.navigate(['/signup']); //to signup page
+      this.router.navigate(['/signup']); //to signup page
     }, 500);
   }
 
@@ -168,19 +173,51 @@ export class LoginComponent implements OnInit, AfterContentChecked {
 
   refresh() {
     window.location.reload();
-    this. gotoDashboard();
+    this.gotoDashboard();
   }
-  backButton(){
+  backButton() {
     // window.location.reload();
     this.reactivation = false;
     this.isLogin = true;
   }
 
-  reactivateUser(url: string) {
-    // console.log('this number', this.computerNo);
-    setTimeout(() => {
-      window.open(url + `${this.computerNo}`, "_blank"); //to reactivation page
-    }, 500);
+  // reactivateUser(url: string) {
+  // console.log('this number', this.computerNo);
+  // setTimeout(() => {
+  //   window.open(url + `${this.computerNo}`, "_blank"); //to reactivation page
+  // }, 500);
+
+  reactivateUser() {
+
+    this.http.post(this.reactivateAPI,
+      {
+        "email": this.email,
+        "username": this.username,
+        "password": this.password,
+        "rememberMe": true
+      }
+    ).subscribe({
+      next: data => {
+        console.log('reacivation message', data);
+
+        setTimeout(() => {
+          let response = Object.values(data);
+          // console.log(response);
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('Account Reactivated', `${response[6]}`); });
+
+        }, 2000);
+
+        this.reactivation = false;
+        this.isLogin = true;
+
+      },
+      error: data => {
+        console.log('error', data);
+        setTimeout(() => {
+          this.loadingScreen?.dismiss().then(() => { this.alertModal('OOPS!!!', `Username: ${data.error.error}`); });
+        }, 1000);
+      }
+    });
   }
 
   ngOnInit() {

@@ -12,5 +12,7 @@ export const environment = {
   annoucementAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Posts/GetAnnouncements',
   signupAPI: 'https://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Members/GetMemberByComputerNo?id=',
   fullSignUpAPI: 'https://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Auth/Register',
+  reactivateAPI: 'http://app.deltastatepensionsbureau.com/IBHelpDeskWebAPI/api/Auth/Reactivate'
+
 
 };

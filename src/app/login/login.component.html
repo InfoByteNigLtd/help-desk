@@ -14,9 +14,7 @@
 	<!-- <h3 class="subtitle new"
 		(click)="gotoSignup('http://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Register')">Sign up <span
 			style="color: #23bfff;">here</span></h3> -->
-	<h3 class="subtitle new"
-		(click)="gotoSignup()">Sign up <span
-			style="color: #23bfff;">here</span></h3>
+	<h3 class="subtitle new" (click)="gotoSignup()">Sign up <span style="color: #23bfff;">here</span></h3>
 
 </div>
 
@@ -34,10 +32,19 @@
 		Back
 	</div>
 	<div class="settings" style="display: flex; flex-direction:column;">
-		<app-input (value)="updateComputerNo($event)" type="number" id="3" inputType="default" legend="Computer Number"
-			placeholder="Computer Number" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
-		<button type="text" class="submit"
-			(click)="reactivateUser('https://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Reactivate/')">Reactivate</button>
+		<!-- <app-input (value)="updateComputerNo($event)" type="number" id="3" inputType="default" legend="Computer Number"
+			placeholder="Computer Number" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input> -->
+		<app-input (value)="updateEmail($event)" type="email" id="9" inputType="default" legend="Email"
+			placeholder="mail@gmail.com" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+			<app-input (value)="updateUsername($event)" type="text" id="8" inputType="default" legend="Username"
+			placeholder="username@gmail.com" bgColor="#303245" color="#eee" icon="inbox-fill"></app-input>
+		<app-input (value)="updatePassword($event)" type="password" id="7" inputType="default" legend="Password"
+			placeholder="password" label="lastname" sx="background-color: #303245; color: #eee" icon="lock-line">
+		</app-input>
+		<!-- <button type="text" class="submit"
+			(click)="reactivateUser('https://app.deltastatepensionsbureau.com/IBHelpDesk/Account/Reactivate/')">Reactivate</button> -->
+			<button type="text" class="submit"
+			(click)="reactivateUser()">Reactivate</button>
 	</div>
 
 </div>
