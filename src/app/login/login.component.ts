@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   }
 
   validateInput() {
-    if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
+    if (this.email == ' ' && this.email == undefined && this.password == ' ' && this.password == undefined) {
       this.alertModal('Error!!!', 'All fields are required');
     }
     else {
