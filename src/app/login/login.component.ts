@@ -66,13 +66,21 @@ export class LoginComponent implements OnInit, AfterContentChecked {
   }
 
   validateInput() {
-    if (this.email === '' || this.email === undefined || this.password === '' || this.password === undefined) {
+    if (this.email === ' ' || this.email === undefined || this.password === ' ' || this.password === undefined) {
       this.alertModal('Error!!!', 'All fields are required');
     }
     else {
       this.loadingModal();
 
-      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }).subscribe({
+      this.http.post(`${this.apiEndPoit2}${this.email}/${this.password}`, {  }
+      // this.http.post(this.apiEndPoit2, 
+      //   { 
+      //     "username": this.email,
+      //     "password": this.password,
+      //     "rememberMe": true
+      //  }
+      
+      ).subscribe({
         next: data => {
           // console.log('success',data);
 
