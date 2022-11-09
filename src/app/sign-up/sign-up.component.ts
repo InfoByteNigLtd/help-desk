@@ -121,10 +121,10 @@ export class SignUpComponent implements OnInit {
 
 
   validateInput() {
-    if (this.computerNo == ' ' && this.computerNo == undefined && this.computerNo == null &&
-      this.name == ' ' && this.name == undefined && this.name == null &&
-      this.username == ' ' && this.username  == undefined && this.username == null &&
-      this.email == ' ' && this.email == undefined && this.email == null) {
+    if (this.computerNo === '' || this.computerNo === undefined || this.computerNo === null ||
+      this.name == '' || this.name == undefined || this.name === null ||
+      this.username === '' || this.username  === undefined || this.username === null ||
+      this.email === '' || this.email === undefined || this.email === null) {
       this.alertModal('Error!!!', 'All fields are required');
     }
     else {
